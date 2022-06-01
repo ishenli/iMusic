@@ -9,12 +9,12 @@ import SwiftUI
 
 @main
 struct iMusicApp: App {
-    let persistenceController = PersistenceController.shared
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
-        }
+  var body: some Scene {
+    WindowGroup {
+      HomeView()
+        .background(Color.white)
+        .frame(maxWidth: 970, maxHeight: 800)
     }
+  }
 }

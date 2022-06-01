@@ -1,0 +1,642 @@
+{
+    "status": 1,
+    "error": "",
+    "data": {
+        "timestamp": 1653297564,
+        "vipspecials": [],
+        "info": [
+            {
+                "specialname": "台湾经典偶像剧：前方一波回忆杀！",
+                "intro": "回忆与青春，\n伴随着一幕幕的经典光影而浮现。\n随着音乐声起，\n代表着你青春的，\n又是哪一布经典偶像剧呢？",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 237,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1508839047_237_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 1000,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220523/20220523143237421008.jpg",
+                "suid": 1508839047,
+                "specialid": 5561291,
+                "type": 0,
+                "username": "酷小编",
+                "collectcount": 0,
+                "publishtime": "2022-05-23"
+            },
+            {
+                "specialname": "粤语怀旧：点一首歌送给亲爱的你",
+                "intro": "人生就是，一路走，一路歌...人生就是一首总听不厌的经典老歌...",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 66,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026759_66_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 15986,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220520/20220520112230780682.jpg",
+                "suid": 2132026759,
+                "specialid": 5547317,
+                "type": 0,
+                "username": "李铃铛哒",
+                "collectcount": 18,
+                "publishtime": "2022-05-20"
+            },
+            {
+                "specialname": "百听不厌！英语课上的经典英文歌",
+                "intro": "那些年你在课堂上听老师们放过的经典英文歌...希望你可以在不同的经典英语歌中感受到不一样的文化气息，在学习英语的同时，听着英文歌让自己有更大的提升...",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 62,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026828_62_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 4163,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220520/20220520113916625278.jpg",
+                "suid": 2132026828,
+                "specialid": 5547350,
+                "type": 0,
+                "username": "SHHO魔法部",
+                "collectcount": 7,
+                "publishtime": "2022-05-20"
+            },
+            {
+                "specialname": "闽南语精选：用心聆听逝去的时光故事",
+                "intro": "每一首经典闽南语老歌都是一段心情记忆的回放，让我们一起用心聆听逝去的时光故事吧...\n\n封面来源于网络，侵删！",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 68,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026803_68_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 2348,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220520/20220520115125665191.jpg",
+                "suid": 2132026803,
+                "specialid": 5547396,
+                "type": 0,
+                "username": "娱乐SEO",
+                "collectcount": 17,
+                "publishtime": "2022-05-20"
+            },
+            {
+                "specialname": "90后记忆：带你聆听网络金曲巅峰时代",
+                "intro": "年少不懂音乐的魅力，总是在成长过后再回首，才会发现旋律的美妙，那些年我们用MP3听的那些网络热歌，大家还有记忆吗？",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 64,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026803_64_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 257375,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220517/20220517163800370627.jpg",
+                "suid": 2132026803,
+                "specialid": 5536831,
+                "type": 0,
+                "username": "娱乐SEO",
+                "collectcount": 179,
+                "publishtime": "2022-05-17"
+            },
+            {
+                "specialname": "最经典：炙热年代里的华语回忆",
+                "intro": "安静的旋律，缓缓流淌，静静勾起我们的思绪,这些炙热年代里的华语老歌，你都还记得吗？",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 63,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026802_63_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 128565,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220517/20220517170031549378.jpg",
+                "suid": 2132026802,
+                "specialid": 5536908,
+                "type": 0,
+                "username": "大力学姐",
+                "collectcount": 86,
+                "publishtime": "2022-05-17"
+            },
+            {
+                "specialname": "小霸王游戏机：记录童年经典游戏~",
+                "intro": "FC游戏是一种模拟20世纪80年代出品的游戏，代表作品主要有《魂斗罗系列》、《93超级魂》、《沙罗曼蛇系列》、《超级玛丽》、《赤色要塞》、《双截龙》、《飞龙之拳3》、《坦克大战》、《松鼠大作战》、《最终幻想》等。\n\nFC游戏主要在游戏机上进行游戏，当时的游戏机品牌主要为小霸王，我们的童年也由此开始~",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 52,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026754_52_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 6433,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220511/20220511173933271579.jpg",
+                "suid": 2132026754,
+                "specialid": 5428188,
+                "type": 0,
+                "username": "快乐源泉李小半",
+                "collectcount": 75,
+                "publishtime": "2022-05-13"
+            },
+            {
+                "specialname": "全面战争｜英雄，在此崛起",
+                "intro": "《全面战争》是一款由The Creative Assembly开发的回合策略与即时战术相结合的游戏，于2000年发行。\n该游戏系列已发行12部主系列作品，分别是《幕府将军：全面战争》、《中世纪：全面战争》、《罗马：全面战争》、《中世纪2：全面战争》、《帝国：全面战争》、《拿破仑：全面战争》、《全面战争：幕府将军2》、《全面战争：罗马2》、《全面战争：阿提拉》、《全面战争：战锤》、《全面战争：战锤2》、《全面战争：三国》以及《全面战争：战锤3》.\n此外，全面战争还推出了《全面战争传奇》系列游戏，包括《全面战争传奇：侍之凋落》、《全面战争传奇：大不列颠王座》与《全面战争传奇：特洛伊》。相较于《全面战争》主系列，《全面战争传奇》更加注重于某个特定的时间段而非整个时代，战役方面注重以小规模战场格局表现大量著名战役。2013年10月10日，经典战争策略游戏系列《全面战争》开发商Creative Assembly已经率先宣布全力支持Steam OS。 2016年4月，《全面战争》游戏系列的总销量达到了2000万套。2020年3月，《全面战争：竞技场》将于网易平台开启首轮测试。",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 37,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026830_37_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 2039,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220512/20220512105400728697.jpg",
+                "suid": 2132026830,
+                "specialid": 5428371,
+                "type": 0,
+                "username": "黄浦春马",
+                "collectcount": 10,
+                "publishtime": "2022-05-13"
+            },
+            {
+                "specialname": "最爱粤语：倾听时光缝隙的往事",
+                "intro": "把这些经典的粤语歌曲送给你，愿你找到属于你的独家回忆...",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 53,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026829_53_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 57559,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220513/20220513132432467491.jpg",
+                "suid": 2132026829,
+                "specialid": 5513792,
+                "type": 0,
+                "username": "小梅花情怀",
+                "collectcount": 36,
+                "publishtime": "2022-05-13"
+            },
+            {
+                "specialname": "情义绵绵：聆听闽南风味情",
+                "intro": "只为你一人演唱的歌\n简单几句 代表阮所有的心声\n你若是有心相信你会知影\n用阮的生命所写的演歌\n也袂唱完已经哭袂出声",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 66,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026754_66_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 22685,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220513/20220513133535541370.jpg",
+                "suid": 2132026754,
+                "specialid": 5513851,
+                "type": 0,
+                "username": "快乐源泉李小半",
+                "collectcount": 13,
+                "publishtime": "2022-05-13"
+            },
+            {
+                "specialname": "经典珍藏陈淑桦",
+                "intro": "陈淑桦（Sarah Chen），1958年5月14日生于台湾，中国台湾流行乐女歌手。",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 14,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132029040_14_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 50183,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220512/20220512102245704996.jpg",
+                "suid": 2132029040,
+                "specialid": 5507987,
+                "type": 0,
+                "username": "酷乐推荐",
+                "collectcount": 63,
+                "publishtime": "2022-05-12"
+            },
+            {
+                "specialname": "影视经典：忆年少时追过的剧",
+                "intro": "年少时追过的那些优质剧集，你们都还记得哪些呢？而那些优质的演员，你们又能想起几个呢？现在他们也早己年华老去，慢慢淡出了大众视线，只留下那余音袅袅，环绕在我们耳边...",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 58,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026759_58_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 59336,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220510/20220510170520892083.jpg",
+                "suid": 2132026759,
+                "specialid": 5499741,
+                "type": 0,
+                "username": "李铃铛哒",
+                "collectcount": 26,
+                "publishtime": "2022-05-10"
+            },
+            {
+                "specialname": "部部精彩！《速度与激情》系列原声大盘点",
+                "intro": "《速度与激情》是罗伯·科恩等执导，于2001年至2017年范·迪塞尔、保罗·沃克、米歇尔·罗德里格兹、乔丹娜·布鲁斯特、泰瑞斯·吉布森、卢达·克里斯等主演的赛车题材的动作犯罪类电影，截至2018年，一共拍了八部。之后两部续集正式定档，《速度与激情9》和《速度与激情10》分别于2020年4月10日和2021年4月2日上映。让我们一起敬请期待吧！",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 877,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_877_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 12495,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220509/20220509192257274236.jpg",
+                "suid": 1081536272,
+                "specialid": 5494925,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 44,
+                "publishtime": "2022-05-09"
+            },
+            {
+                "specialname": "《隐秘的角落》网剧歌曲集/原声带",
+                "intro": "《隐秘的角落》，改编自紫金陈的推理小说《坏小孩》，由韩三平监制，辛爽执导，秦昊、王景春领衔主演，荣梓杉、史彭元、王圣迪特别主演，张颂文、刘琳、芦芳生、李梦、黄米依主演的国内首部家庭悬疑剧集。\n该剧主要讲述沿海小城的三个孩子在景区游玩时无意拍摄记录了一次mousha由此展开冒险的故事。\n此歌单收录了《隐秘的角落》剧中的插曲、片头片尾曲。欢迎各位收藏收听。",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 879,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_879_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 1650,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220509/20220509192753103148.jpg",
+                "suid": 1081536272,
+                "specialid": 5494952,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 4,
+                "publishtime": "2022-05-09"
+            },
+            {
+                "specialname": "【FB/神奇动物在哪里】持续更新",
+                "intro": "电影《神奇动物在哪里》系列原声全收录",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 869,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_869_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 1202,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220508/20220508164628344295.jpg",
+                "suid": 1081536272,
+                "specialid": 5488719,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 17,
+                "publishtime": "2022-05-08"
+            },
+            {
+                "specialname": "《天龙八部》合集：恩仇罪罚，生死浮沉",
+                "intro": "本歌单为《天龙八部》影视合集，收录所有与天龙八部有关影视的歌曲，官方歌曲，同人歌曲，配乐等。\n\n 北宋年间，外族纷纷觊觎大宋国土，形成汉、辽对立的局面。丐帮帮主乔峰因拒绝副帮主妻康敏之爱遭报复指为契丹人后裔而受尽中原武林人士唾弃。乔峰为平反遂四处追查身世，期间认识了大理世子段誉及虚竹和尚，并结拜为兄弟。\n 乔峰追寻身世时屡遭奸人所害，含冤莫白，更错杀红颜知己阿朱，后为救朱妹阿紫寻医至大辽，辗转成为大辽国南院大王，但与中原关系则更趋恶劣。\n 段誉为人豁达开朗，对貌若天仙的王语嫣一见倾心，可惜语嫣只钟情其表哥慕容复，令三人陷入一段纠缠不清的苦恋。\n 虚竹天性纯良，宅心仁厚，深得高人指点，武功高强，后被选为西夏驸马。\n乔峰、段誉和虚竹在异域拥有着举足轻重的地位，在汉辽相争的时势下，各种江湖及情感上的恩恩怨怨正等着他们去面对。\n\n⭐主角：段誉、乔峰(萧峰)、虚竹\n⭐门派：\n星宿--行到毒云惨淡处，尘看天地同寿时 \n明教--光明圣火洞地来，燃尽人间不平事 \n逍遥--此生逍遥天休问，古来万事东流水 \n丐帮--醉卧江湖君莫笑，纵死犹闻侠骨香 \n峨眉--不见青丝红颜老，只留正气满乾坤 \n少林--武林北斗君须记，看我横戈云上行 \n武当--征袍漫卷南岩下，青锋三尺笑红尘\n\n⭐⭐⭐经典语录⭐⭐⭐\n⭐红颜弹指老，刹那芳华，与其天涯思君，恋恋不舍，莫若相忘于江湖。\n⭐沐春风，惹一身红尘；望秋月，化半缕轻烟。顾盼间乾坤倒转，一霎时沧海桑田。方晓，弹指红颜老，刹那芳华逝。\n⭐人生在世，去若朝露。魂归来兮，哀我何悲。\n⭐天山鸟飞绝，故人两相忘。\n⭐你连我在边角上的纠缠也摆脱不了，还想逐鹿中原么？\n⭐是以不在取与不取，而在用之为善为恶。\n⭐霸主大业，如烟如雾。血海深仇，都归尘土。\n⭐有常无常，双树荣枯，东西南北，非假非空。\n⭐庶民如尘土，帝王亦如尘土。大燕不复国是空，复国亦空。\n\n编辑/整理：幻汐\n2020.06.30",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 870,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_870_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 6745,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220508/20220508165648109811.jpg",
+                "suid": 1081536272,
+                "specialid": 5488775,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 12,
+                "publishtime": "2022-05-08"
+            },
+            {
+                "specialname": "经典影视·新白娘子传奇歌曲剧情版",
+                "intro": "《新白娘子传奇》讲述的是白素贞和许仙之间凄美的爱情神话故事。全剧共分五十集，在每一集的剧情中都穿插有各自相应的音乐对白，基本都采用了“边演边唱”的创新形式，仅仅说唱部分就多达近一百五十分钟，当属一部经典的音乐电视剧，同时也影响了整整一个时代的人！\n歌单整理了剧中所有的经典唱段，喜欢的话记得不要忘了多转发分享哦！",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 872,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_872_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 71375,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220508/20220508175207643388.jpg",
+                "suid": 1081536272,
+                "specialid": 5489090,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 132,
+                "publishtime": "2022-05-08"
+            },
+            {
+                "specialname": "闽南语老歌：唱尽世间情和爱",
+                "intro": "闽南老歌，别样的风味情，一起去感受闽南语歌词中独特的爱情故事吧...",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 94,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026805_94_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 259815,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220507/20220507135800554054.jpg",
+                "suid": 2132026805,
+                "specialid": 5481617,
+                "type": 0,
+                "username": "深夜一只猫",
+                "collectcount": 180,
+                "publishtime": "2022-05-07"
+            },
+            {
+                "specialname": "车载经典：脑细胞重新跳舞的快乐节奏",
+                "intro": "让我们重新回到我们的杀马特时代，燃爆公路吧！\n图来自网络，侵权删除。",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 45,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026829_45_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 350431,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220507/20220507180627822277.jpg",
+                "suid": 2132026829,
+                "specialid": 5482994,
+                "type": 0,
+                "username": "小梅花情怀",
+                "collectcount": 351,
+                "publishtime": "2022-05-07"
+            },
+            {
+                "specialname": "《加勒比海盗》系列原声精选：冒险航行",
+                "intro": "《加勒比海盗》是由戈尔·维宾斯基、罗伯·马歇尔、乔阿吉姆·罗恩尼以及艾斯彭·山德伯格执导，约翰尼·德普、奥兰多·布鲁姆、凯拉·奈特莉等人主演的奇幻冒险电影系列。\n系列电影包括《加勒比海盗：黑珍珠号的诅咒》、《加勒比海盗2：聚魂棺》、《加勒比海盗3：世界的尽头》、《加勒比海盗4：惊涛怪浪》以及《加勒比海盗5：死无对证》共5部。\n主要讲述了17世纪的海盗杰克·斯帕罗充满危险的加勒比冒险之旅的故事。",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 859,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_859_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 18747,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220506/20220506164405556038.jpg",
+                "suid": 1081536272,
+                "specialid": 5477009,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 106,
+                "publishtime": "2022-05-06"
+            },
+            {
+                "specialname": "儿时的回忆啊-86版西游记所有配乐",
+                "intro": "滿滿都是儿時的記憶啊！",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 860,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_860_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 5187,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220506/20220506164647265945.jpg",
+                "suid": 1081536272,
+                "specialid": 5477031,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 14,
+                "publishtime": "2022-05-06"
+            },
+            {
+                "specialname": "《海上钢琴师》电影原声带",
+                "intro": "《海上钢琴师》是由朱塞佩·托纳托雷执导，蒂姆·罗斯、比尔·努恩、梅兰尼·蒂埃里主演的剧情片，于2019年11月15日在意大利上映。",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 861,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_861_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 6681,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220506/20220506165036772309.jpg",
+                "suid": 1081536272,
+                "specialid": 5477052,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 53,
+                "publishtime": "2022-05-06"
+            },
+            {
+                "specialname": "《复仇者联盟》系列原声精选：英雄集结",
+                "intro": "《复仇者联盟》（The Avengers），通常简称“复联”，是由乔斯·韦登（第1、2部）、罗素兄弟（第3、4部）执导，小罗伯特·唐尼、克里斯·埃文斯、克里斯·海姆斯沃斯等人主演的动作科幻电影系列。\n\n“复仇者联盟”应运而生 超级英雄集结！",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 862,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_862_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 6479,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220506/20220506165344315736.jpg",
+                "suid": 1081536272,
+                "specialid": 5477062,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 41,
+                "publishtime": "2022-05-06"
+            },
+            {
+                "specialname": "哈利波特音乐合辑",
+                "intro": "哈利波特的音乐合辑。",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 868,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_868_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 10672,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220507/20220507193027469097.jpg",
+                "suid": 1081536272,
+                "specialid": 5477076,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 193,
+                "publishtime": "2022-05-06"
+            },
+            {
+                "specialname": "《哈利波特与死亡圣器》电影原声带",
+                "intro": "《哈利波特与死亡圣器》(上下两部)电影配乐，当你听完《Lily's Theme》时，你会被斯内普对莉莉的爱所感动。有兴趣的哈迷可以收藏一下哈。",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 863,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_863_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 1731,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220506/20220506180034972487.jpg",
+                "suid": 1081536272,
+                "specialid": 5477402,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 20,
+                "publishtime": "2022-05-06"
+            },
+            {
+                "specialname": "《变形金刚5：最后的骑士》电影原声",
+                "intro": "《变形金刚5：最后的骑士》是《变形金刚》系列第五部电影，是科幻动作片，由迈克尔·贝执导，马克·沃尔伯格、乔什·杜哈明、斯坦利·图齐、安东尼·霍普金斯、劳拉·哈德克、杰洛·卡迈克尔、伊莎贝拉·莫奈、约翰·特托罗联合主演。\n该片讲述了地球陷入毁灭危机，以凯德·伊格尔为首的人类反抗小组，与汽车人联手反击霸天虎在内的入侵者的故事。",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 864,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_864_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 1727,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220506/20220506180954119406.jpg",
+                "suid": 1081536272,
+                "specialid": 5477449,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 3,
+                "publishtime": "2022-05-06"
+            },
+            {
+                "specialname": "延禧攻略 电视剧原声带",
+                "intro": "延禧攻略 电视剧原声带",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 865,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_865_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 2846,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220506/20220506181245598114.jpg",
+                "suid": 1081536272,
+                "specialid": 5477462,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 7,
+                "publishtime": "2022-05-06"
+            },
+            {
+                "specialname": "谍战片之王，007系列电影主题曲",
+                "intro": "封面电影：《007：大战皇家赌场》\n\n007是风靡全球的一系列谍战电影，在007电影故事里，詹姆斯·邦德James Bond是英国情报机构军情六处的间谍，代号007，被授予可以除去任何妨碍行动的人的权力。\n\n此外，詹姆斯·邦德总是有美女相伴，那些女士被称为“邦女郎”。他冷酷但多情，机智且勇敢，总能在最危难时化险为夷，也总能邂逅一段浪漫的爱情。\n\n历任007都是帅哥型男，再加上性感漂亮的邦女郎，以及扣人心弦的精彩剧情，让这部影片直至今天仍被广大影迷所热爱。\n\n另据英国广播公司10月31日消息，英国著名演员肖恩·康纳利去世，享年90岁。\n\n康纳利曾经被誉为“世界上最性感的男人”，在60－70年代作为007的第一任扮演者，康纳利共主演了六部正式 007系列片。其后在1983年再多演一部非正式007片。他凭1987年主演的 《铁面无私》荣获奥斯卡最佳男配角金像奖。\n\n歌单在此致敬这位永远的007！\n\n以下为按照时间顺序排列的007系列电影主题曲\n\n1：《诺博士》1962\n2：《俄罗斯之恋》1963\n3：《金手指》1964\n4：《霹雳弹》1965\n5：《雷霆谷》1967\n6：《女王密使》1969\n7：《金刚钻》1971\n8：《生死关头》1973\n9：《金枪人》1974\n10：《海底城》1977\n11：《太空城》1979\n12：《最高机密》1981\n13：《八爪女》1983\n14：《雷霆杀机》1985\n15：《黎明生机》1987\n16：《SR执照》1989\n17：《黄金眼》1995\n18：《明日帝国》1997\n19：《黑日危机》2000\n20：《择日而亡》2002\n21：《皇家赌场》2006\n22：《量子危机》2008\n23：《天幕杀机》2012\n24：《幽灵党》2015\n25：《无瑕赴死》2021",
+                "ugc_talent_review": 1,
+                "percount": 0,
+                "slid": 866,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_1081536272_866_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 2130,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220506/20220506181502789713.jpg",
+                "suid": 1081536272,
+                "specialid": 5477470,
+                "type": 0,
+                "username": "影视小编-栗子",
+                "collectcount": 19,
+                "publishtime": "2022-05-06"
+            },
+            {
+                "specialname": "何炅老师生日快乐，经典曲一并奉上",
+                "intro": "何灵，1974年4月28日出生于湖南省长沙市雨花区，毕业于北京外国语大学，中国内地主持人、演员、歌手、导演、作家。1995年，主持央视节目《大风车》;1998年起，主持湖南卫视访谈类综艺节目《快乐大本营》;其后还主持了《快乐男声》《舞动奇迹》《百变大咖秀》等热门综艺节目;2004年7月，推出个人首支单曲《栀子花开》;9月，获得第二十二届中国电视金鹰奖优秀主持人奖。2005年，担任《超级女声》主持人;2007年，主持湖南卫视第一届《快乐男声》;8月，主持舞蹈节目《舞动奇迹》;2010年，获得第二十五届中国电视金鹰奖优秀主持人奖; 2012年，担任晚间综艺节目《百变大咖秀》的主持;2014年起，连续三年主持央视公益节目《开学第一课》;2015年7月，被聘任为中国电视艺术家协会主持人专业委员会副主任;同月，执导的电影处女作《栀子花开》上映;12月29日，加盟阿里音乐任CCO; 2016年3月，与赖声川再度合作打造话剧《水中之书》;2020年8月27日，何灵名列《2020福布斯中国名人榜》第53位;同年，与刘涛搭档主持第13届金鹰节颁奖晚会;2021年2月26日，与李维嘉、杜海涛共同主持《2021湖南卫视元宵喜乐会》。曾获中国影视网络影响力颁布盛最具网络影响力的十大电视主持人、上海电视节电视节目主持人30年年度风云人物、《新周刊》最佳娱乐秀主持人等荣誉。",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 8,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132029040_8_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 39021,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220427/20220427164508534625.jpg",
+                "suid": 2132029040,
+                "specialid": 5422516,
+                "type": 0,
+                "username": "酷乐推荐",
+                "collectcount": 50,
+                "publishtime": "2022-04-27"
+            },
+            {
+                "specialname": "龙珠系列 | 我的命运只遵从我的意志",
+                "intro": "“很久很久以前流传着一个古老传说，这世上存在着七颗名为龙珠的圆球散落各处，只要集齐七颗龙珠并念出咒文，便可召唤出神龙，无论任何愿望都可替许愿人达成”。\n住在深山中的孙悟空本领高强，一次偶然的机会他随天才科学家·布尔玛一起走出大山，开始致力于寻找分散在世界各地的七颗龙珠。在这期间，还结识了好色的龟仙人与乌龙、一看到女人就面红耳赤的雅木茶以及自大的和尚小林等伙伴，不但经历了各种各样的冒险和奇遇，也惹出一连串爆笑的故事。当然，也有许多邪恶的家伙们为了满足私欲而寻找龙珠，为此与悟空等人展开了一连番的激斗。为了实现愿望、突破自我、变得更强，围绕着悟空及他的伙伴们，在大世界的浪漫冒险就这样开始了 ！",
+                "ugc_talent_review": null,
+                "percount": 0,
+                "slid": 39,
+                "trans_param": {
+                    "special_tag": 0
+                },
+                "global_specialid": "collection_3_2132026828_39_0",
+                "singername": "",
+                "verified": 0,
+                "playcount": 16643,
+                "imgurl": "http://imge.kugou.com/soft/collection/{size}/20220515/20220515021342516496.jpg",
+                "suid": 2132026828,
+                "specialid": 5423057,
+                "type": 0,
+                "username": "SHHO魔法部",
+                "collectcount": 79,
+                "publishtime": "2022-04-27"
+            }
+        ],
+        "total": 600
+    },
+    "errcode": 0
+}

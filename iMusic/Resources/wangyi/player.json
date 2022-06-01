@@ -1,0 +1,161 @@
+
+{
+    "data": [
+        {
+            "id": 1431448890,
+            "url": "http://m701.music.126.net/20220529200736/8e121c94a35b8761882e4eeab1677e40/jdymusic/obj/w5zDlMODwrDDiGjCn8Ky/1721396136/fd63/d0ec/9fb7/950f55a522a252f87322cbcebe94d2de.mp3",
+            "br": 320000,
+            "size": 9622509,
+            "md5": "950f55a522a252f87322cbcebe94d2de",
+            "code": 200,
+            "expi": 1200,
+            "type": "mp3",
+            "gain": 0,
+            "fee": 0,
+            "uf": null,
+            "payed": 0,
+            "flag": 128,
+            "canExtend": false,
+            "freeTrialInfo": null,
+            "level": "exhigh",
+            "encodeType": "mp3",
+            "freeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "listenType": null
+            },
+            "freeTimeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "type": 0,
+                "remainTime": 0
+            },
+            "urlSource": 0
+        },
+        {
+            "id": 29759733,
+            "url": "http://m801.music.126.net/20220529200736/63b49e8e9d6927b8cfe0fb3eb0f96124/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/14096407901/1198/fd35/f521/616c2fa28b06073f8d0609e34e4bb3f8.mp3",
+            "br": 128001,
+            "size": 5523374,
+            "md5": "616c2fa28b06073f8d0609e34e4bb3f8",
+            "code": 200,
+            "expi": 1200,
+            "type": "mp3",
+            "gain": 0,
+            "fee": 8,
+            "uf": null,
+            "payed": 1,
+            "flag": 2,
+            "canExtend": false,
+            "freeTrialInfo": null,
+            "level": "standard",
+            "encodeType": "mp3",
+            "freeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "listenType": null
+            },
+            "freeTimeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "type": 0,
+                "remainTime": 0
+            },
+            "urlSource": 0
+        },
+        {
+            "id": 191273,
+            "url": "http://m801.music.126.net/20220529200736/95fda559f1536f56bb546610f6c56556/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/14096578607/9902/b7f8/8561/8bbd19c1a19a0db36a8264ee68f3705e.flac",
+            "br": 954296,
+            "size": 31840150,
+            "md5": "8bbd19c1a19a0db36a8264ee68f3705e",
+            "code": 200,
+            "expi": 1200,
+            "type": "flac",
+            "gain": 0,
+            "fee": 8,
+            "uf": null,
+            "payed": 1,
+            "flag": 260,
+            "canExtend": false,
+            "freeTrialInfo": null,
+            "level": "lossless",
+            "encodeType": "mp3",
+            "freeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "listenType": null
+            },
+            "freeTimeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "type": 0,
+                "remainTime": 0
+            },
+            "urlSource": 0
+        },
+        {
+            "id": 441491828,
+            "url": "http://m701.music.126.net/20220529200736/42ced4c75008fb3b626f5d0e586fdb64/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/14096417612/6137/67ad/207c/135b1bf1b12a2112359b675d52aa9f89.flac",
+            "br": 727540,
+            "size": 29580595,
+            "md5": "135b1bf1b12a2112359b675d52aa9f89",
+            "code": 200,
+            "expi": 1200,
+            "type": "flac",
+            "gain": 0,
+            "fee": 8,
+            "uf": null,
+            "payed": 1,
+            "flag": 260,
+            "canExtend": false,
+            "freeTrialInfo": null,
+            "level": "lossless",
+            "encodeType": "mp3",
+            "freeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "listenType": null
+            },
+            "freeTimeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "type": 0,
+                "remainTime": 0
+            },
+            "urlSource": 0
+        },
+        {
+            "id": 26425004,
+            "url": "http://m7.music.126.net/20220529200736/3bd93b0431fdf2bed114eefe0f4beac8/ymusic/5127/10f9/c246/926a39dcc8295d7be8620a6d30b82488.mp3",
+            "br": 320000,
+            "size": 10051065,
+            "md5": "926a39dcc8295d7be8620a6d30b82488",
+            "code": 200,
+            "expi": 1200,
+            "type": "mp3",
+            "gain": 0,
+            "fee": 1,
+            "uf": null,
+            "payed": 1,
+            "flag": 256,
+            "canExtend": false,
+            "freeTrialInfo": null,
+            "level": "exhigh",
+            "encodeType": "mp3",
+            "freeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "listenType": null
+            },
+            "freeTimeTrialPrivilege": {
+                "resConsumable": false,
+                "userConsumable": false,
+                "type": 0,
+                "remainTime": 0
+            },
+            "urlSource": 0
+        }
+    ],
+    "code": 200
+}

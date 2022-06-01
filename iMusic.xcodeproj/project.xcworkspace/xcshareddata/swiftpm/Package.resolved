@@ -1,0 +1,68 @@
+{
+  "pins" : [
+    {
+      "identity" : "alamofire",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Alamofire/Alamofire",
+      "state" : {
+        "revision" : "354dda32d89fc8cd4f5c46487f64957d355f53d8",
+        "version" : "5.6.1"
+      }
+    },
+    {
+      "identity" : "cocoalumberjack",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/CocoaLumberjack/CocoaLumberjack",
+      "state" : {
+        "revision" : "80ada1f753b0d53d9b57c465936a7c4169375002",
+        "version" : "3.7.4"
+      }
+    },
+    {
+      "identity" : "cryptoswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/krzyzanowskim/CryptoSwift",
+      "state" : {
+        "revision" : "039f56c5d7960f277087a0be51f5eb04ed0ec073",
+        "version" : "1.5.1"
+      }
+    },
+    {
+      "identity" : "promisekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mxcl/PromiseKit",
+      "state" : {
+        "revision" : "c946b7561fbe11379a874e59faa2c5f8077ae0e1",
+        "version" : "6.17.1"
+      }
+    },
+    {
+      "identity" : "sparkle",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/sparkle-project/Sparkle",
+      "state" : {
+        "revision" : "286edd1fa22505a9e54d170e9fd07d775ea233f2",
+        "version" : "2.1.0"
+      }
+    },
+    {
+      "identity" : "stacknavigationview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/lbrndnr/StackNavigationView",
+      "state" : {
+        "branch" : "master",
+        "revision" : "285e9d633ed22430445b8c769a769f762607594b"
+      }
+    },
+    {
+      "identity" : "swift-log",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-log.git",
+      "state" : {
+        "revision" : "5d66f7ba25daf4f94100e7022febf3c75e37a6c7",
+        "version" : "1.4.2"
+      }
+    }
+  ],
+  "version" : 2
+}
