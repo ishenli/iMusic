@@ -9,18 +9,15 @@ import SwiftUI
 import StackNavigationView
 
 struct HomeView: View {
-  @State var currentOption = CategoryKey.Rank;
-  @State private var selection: Int? = 0
+  @State private var selection: CategoryKey? = CategoryKey.Rank
   
   var body: some View {
     StackNavigationView(selection: $selection) {
       SideNav(
-        currentSelection: $currentOption,
         selection: $selection
       )
       Text("右侧区域")
     }
-    .frame(minWidth: 600, maxWidth: 980, minHeight: 400)
     ControlBar(imageUrl: "http://imge.kugou.com/v2/mobile_class_banner/6f96931ffde89cd1860cd2f9af1b39f2.jpg").padding(.top, -10.0)
   }
 }
@@ -39,17 +36,24 @@ struct MyTextFieldStyle: TextFieldStyle {
 
 
 struct MainView: View {
-  var currentOption: Int
+  var currentOption: CategoryKey;
   var body: some View {
-    switch currentOption {
-    case 0:
-      RankView()
-    case 1:
-      Text("我的歌单")
-    case 3:
-      Text("设置")
-    default:
-      Text("控制面板-默认兜底")
+    ZStack {
+      VStack {
+        switch currentOption {
+        case CategoryKey.Rank:
+          RankView()
+        case CategoryKey.MySong:
+          Text("我的歌单-1")
+        case CategoryKey.PlaySetting:
+          Text("设置-2")
+        case CategoryKey.PersonInfo:
+          Text("个人信息-2")
+        default:
+          Text("控制面板-默认兜底")
+        }
+      }.frame(minWidth: 800, minHeight: 560).background(.white)
+      SidePlayList()
     }
   }
 }

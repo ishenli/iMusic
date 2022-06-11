@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C72719CD28462AA400A08A88 /* StackNavigationView in Frameworks */ = {isa = PBXBuildFile; productRef = C72719CC28462AA400A08A88 /* StackNavigationView */; };
+		C72719CF28478D9500A08A88 /* DemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72719CE28478D9500A08A88 /* DemoView.swift */; };
+		C72719D128489EB400A08A88 /* Base.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72719D028489EB400A08A88 /* Base.swift */; };
 		C72BFF4B28426D0300974067 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = C72BFF4A28426D0300974067 /* PromiseKit */; };
 		C72BFF4F284284A600974067 /* CodableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BFF4E284284A600974067 /* CodableObjects.swift */; };
 		C72BFF522843292E00974067 /* channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72BFF512843292E00974067 /* channel.swift */; };
@@ -19,14 +20,27 @@
 		C73CD2E0283B33F600FC0BD8 /* kgapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CD2DF283B33F600FC0BD8 /* kgapi.swift */; };
 		C73CD2E3283B7E0C00FC0BD8 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = C73CD2E2283B7E0C00FC0BD8 /* Header.swift */; };
 		C740D76B2840DD4300B03264 /* SideNav.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740D76A2840DD4300B03264 /* SideNav.swift */; };
-		C740D76E2841286D00B03264 /* ControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740D76D2841286D00B03264 /* ControlBar.swift */; };
+		C740D76E2841286D00B03264 /* ControlBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740D76D2841286D00B03264 /* ControlBarView.swift */; };
 		C740D7702841320900B03264 /* ControlBarVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C740D76F2841320900B03264 /* ControlBarVM.swift */; };
 		C745459928392F39001A638D /* iMusicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C745459828392F39001A638D /* iMusicApp.swift */; };
 		C745459D28392F3D001A638D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C745459C28392F3D001A638D /* Assets.xcassets */; };
 		C74545A028392F3D001A638D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C745459F28392F3D001A638D /* Preview Assets.xcassets */; };
 		C74545B0283930D6001A638D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74545AF283930D6001A638D /* HomeView.swift */; };
 		C74545B32839E1E1001A638D /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = C74545B22839E1E1001A638D /* Color.swift */; };
+		C7492EC828531EAD004501D0 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = C7492EC728531EAD004501D0 /* SDWebImage */; };
+		C7492ECA2853586C004501D0 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7492EC92853586C004501D0 /* ImageLoader.swift */; };
+		C7492ECC28535D88004501D0 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7492ECB28535D88004501D0 /* String.swift */; };
+		C7492ECE28539E1D004501D0 /* SidePlayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7492ECD28539E1D004501D0 /* SidePlayListView.swift */; };
+		C7492ED028542C02004501D0 /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7492ECF28542C02004501D0 /* Popover.swift */; };
+		C7727DEC28544DF700ECB495 /* Tabler in Frameworks */ = {isa = PBXBuildFile; productRef = C7727DEB28544DF700ECB495 /* Tabler */; };
+		C7727DEE2854832000ECB495 /* SidePlayListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727DED2854832000ECB495 /* SidePlayListVM.swift */; };
+		C7727DF02854C0AD00ECB495 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727DEF2854C0AD00ECB495 /* View.swift */; };
+		C7727DF22854D6BF00ECB495 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727DF12854D6BF00ECB495 /* Preferences.swift */; };
 		C7B826E92842517900222DF8 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B826E82842517900222DF8 /* PlayCore.swift */; };
+		C7D0B59A284F23E40040DFB7 /* StackNavigationView in Frameworks */ = {isa = PBXBuildFile; productRef = C7D0B599284F23E40040DFB7 /* StackNavigationView */; };
+		C7D0B5A9284F48FC0040DFB7 /* PlayListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0B5A8284F48FC0040DFB7 /* PlayListTableView.swift */; };
+		C7D0B5AB2850D4020040DFB7 /* PlayCoreMediaKeysExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0B5AA2850D4020040DFB7 /* PlayCoreMediaKeysExtension.swift */; };
+		C7D0B5B12850D7BE0040DFB7 /* GSPlayer in Frameworks */ = {isa = PBXBuildFile; productRef = C7D0B5B02850D7BE0040DFB7 /* GSPlayer */; };
 		C7D1C6C728432A3200A0C01C /* CocoaLumberjack in Frameworks */ = {isa = PBXBuildFile; productRef = C7D1C6C628432A3200A0C01C /* CocoaLumberjack */; };
 		C7D1C6C928432A3200A0C01C /* CocoaLumberjackSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C7D1C6C828432A3200A0C01C /* CocoaLumberjackSwift */; };
 		C7D1C6CF28432E1800A0C01C /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1C6CE28432E1800A0C01C /* ModelData.swift */; };
@@ -41,6 +55,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C72719CE28478D9500A08A88 /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
+		C72719D028489EB400A08A88 /* Base.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base.swift; sourceTree = "<group>"; };
 		C72BFF4E284284A600974067 /* CodableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodableObjects.swift; sourceTree = "<group>"; };
 		C72BFF512843292E00974067 /* channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = channel.swift; sourceTree = "<group>"; };
 		C72BFF532843299400974067 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
@@ -52,7 +68,7 @@
 		C73CD2E2283B7E0C00FC0BD8 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		C73CD2E9283B89E400FC0BD8 /* recommend.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = recommend.json; sourceTree = "<group>"; };
 		C740D76A2840DD4300B03264 /* SideNav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideNav.swift; sourceTree = "<group>"; };
-		C740D76D2841286D00B03264 /* ControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBar.swift; sourceTree = "<group>"; };
+		C740D76D2841286D00B03264 /* ControlBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarView.swift; sourceTree = "<group>"; };
 		C740D76F2841320900B03264 /* ControlBarVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlBarVM.swift; sourceTree = "<group>"; };
 		C745459528392F39001A638D /* iMusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C745459828392F39001A638D /* iMusicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iMusicApp.swift; sourceTree = "<group>"; };
@@ -62,7 +78,16 @@
 		C74545A628392F3D001A638D /* iMusic.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iMusic.entitlements; sourceTree = "<group>"; };
 		C74545AF283930D6001A638D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		C74545B22839E1E1001A638D /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		C7492EC92853586C004501D0 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		C7492ECB28535D88004501D0 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		C7492ECD28539E1D004501D0 /* SidePlayListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlayListView.swift; sourceTree = "<group>"; };
+		C7492ECF28542C02004501D0 /* Popover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
+		C7727DED2854832000ECB495 /* SidePlayListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlayListVM.swift; sourceTree = "<group>"; };
+		C7727DEF2854C0AD00ECB495 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		C7727DF12854D6BF00ECB495 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		C7B826E82842517900222DF8 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
+		C7D0B5A8284F48FC0040DFB7 /* PlayListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListTableView.swift; sourceTree = "<group>"; };
+		C7D0B5AA2850D4020040DFB7 /* PlayCoreMediaKeysExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCoreMediaKeysExtension.swift; sourceTree = "<group>"; };
 		C7D1C6CE28432E1800A0C01C /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		C7D1C6D02843411D00A0C01C /* recommend.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = recommend.json; sourceTree = "<group>"; };
 		C7D1C6D32843423D00A0C01C /* playlist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = playlist.json; sourceTree = "<group>"; };
@@ -81,12 +106,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C72719CD28462AA400A08A88 /* StackNavigationView in Frameworks */,
+				C7727DEC28544DF700ECB495 /* Tabler in Frameworks */,
+				C7D0B59A284F23E40040DFB7 /* StackNavigationView in Frameworks */,
 				C7D1C6C728432A3200A0C01C /* CocoaLumberjack in Frameworks */,
 				C73CD2D7283A773C00FC0BD8 /* Alamofire in Frameworks */,
+				C7492EC828531EAD004501D0 /* SDWebImage in Frameworks */,
 				C7D1C6C928432A3200A0C01C /* CocoaLumberjackSwift in Frameworks */,
 				C7D1C6E2284374B100A0C01C /* Sparkle in Frameworks */,
 				C7D1C6DF284373B800A0C01C /* CryptoSwift in Frameworks */,
+				C7D0B5B12850D7BE0040DFB7 /* GSPlayer in Frameworks */,
 				C72BFF4B28426D0300974067 /* PromiseKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -97,6 +125,7 @@
 		C72BFF502843291500974067 /* wangyi */ = {
 			isa = PBXGroup;
 			children = (
+				C72BFF4E284284A600974067 /* CodableObjects.swift */,
 				C73CD2DD283B333200FC0BD8 /* wyapi.swift */,
 				C72BFF512843292E00974067 /* channel.swift */,
 				C7D1C6F02844F3AD00A0C01C /* netease.swift */,
@@ -109,7 +138,6 @@
 			children = (
 				C7D1C6D72843437800A0C01C /* kugou */,
 				C72BFF502843291500974067 /* wangyi */,
-				C72BFF4E284284A600974067 /* CodableObjects.swift */,
 				C7D1C6CE28432E1800A0C01C /* ModelData.swift */,
 				C7D1C6D82843447600A0C01C /* MusicPlatform.swift */,
 			);
@@ -120,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				C73CD2E2283B7E0C00FC0BD8 /* Header.swift */,
+				C7492ECF28542C02004501D0 /* Popover.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -135,7 +164,7 @@
 		C740D76C2841284F00B03264 /* ControlBar */ = {
 			isa = PBXGroup;
 			children = (
-				C740D76D2841286D00B03264 /* ControlBar.swift */,
+				C740D76D2841286D00B03264 /* ControlBarView.swift */,
 				C740D76F2841320900B03264 /* ControlBarVM.swift */,
 			);
 			path = ControlBar;
@@ -146,6 +175,10 @@
 			children = (
 				C7B826E82842517900222DF8 /* PlayCore.swift */,
 				C72BFF532843299400974067 /* Log.swift */,
+				C7D0B5AA2850D4020040DFB7 /* PlayCoreMediaKeysExtension.swift */,
+				C7492EC92853586C004501D0 /* ImageLoader.swift */,
+				C7727DEF2854C0AD00ECB495 /* View.swift */,
+				C7727DF12854D6BF00ECB495 /* Preferences.swift */,
 			);
 			path = Lib;
 			sourceTree = "<group>";
@@ -204,6 +237,7 @@
 				C740D7692840DD1400B03264 /* SideNav */,
 				C73CD2E4283B7E1100FC0BD8 /* Component */,
 				C74545AF283930D6001A638D /* HomeView.swift */,
+				C72719CE28478D9500A08A88 /* DemoView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -220,6 +254,8 @@
 			children = (
 				C74545B22839E1E1001A638D /* Color.swift */,
 				C7D1C6ED2843D11D00A0C01C /* Sequence.swift */,
+				C72719D028489EB400A08A88 /* Base.swift */,
+				C7492ECB28535D88004501D0 /* String.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -280,6 +316,9 @@
 			children = (
 				C7D1C6E82843B7EB00A0C01C /* PlayListView.swift */,
 				C7D1C6EA2843B9E800A0C01C /* PlayListVM.swift */,
+				C7D0B5A8284F48FC0040DFB7 /* PlayListTableView.swift */,
+				C7492ECD28539E1D004501D0 /* SidePlayListView.swift */,
+				C7727DED2854832000ECB495 /* SidePlayListVM.swift */,
 			);
 			path = PlayList;
 			sourceTree = "<group>";
@@ -316,7 +355,10 @@
 				C7D1C6C828432A3200A0C01C /* CocoaLumberjackSwift */,
 				C7D1C6DE284373B800A0C01C /* CryptoSwift */,
 				C7D1C6E1284374B100A0C01C /* Sparkle */,
-				C72719CC28462AA400A08A88 /* StackNavigationView */,
+				C7D0B599284F23E40040DFB7 /* StackNavigationView */,
+				C7D0B5B02850D7BE0040DFB7 /* GSPlayer */,
+				C7492EC728531EAD004501D0 /* SDWebImage */,
+				C7727DEB28544DF700ECB495 /* Tabler */,
 			);
 			productName = iMusic;
 			productReference = C745459528392F39001A638D /* iMusic.app */;
@@ -352,8 +394,10 @@
 				C7D1C6C528432A3200A0C01C /* XCRemoteSwiftPackageReference "CocoaLumberjack" */,
 				C7D1C6DD284373B800A0C01C /* XCRemoteSwiftPackageReference "CryptoSwift" */,
 				C7D1C6E0284374B100A0C01C /* XCRemoteSwiftPackageReference "Sparkle" */,
-				C7D1C6F22845ECF200A0C01C /* XCRemoteSwiftPackageReference "StackNavigationView" */,
-				C72719CB28462AA400A08A88 /* XCRemoteSwiftPackageReference "StackNavigationView" */,
+				C7D0B598284F23E40040DFB7 /* XCRemoteSwiftPackageReference "StackNavigationView" */,
+				C7D0B5AF2850D7BE0040DFB7 /* XCRemoteSwiftPackageReference "GSPlayer" */,
+				C7492EC628531EAD004501D0 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				C7727DEA28544DF700ECB495 /* XCRemoteSwiftPackageReference "SwiftTabler" */,
 			);
 			productRefGroup = C745459628392F39001A638D /* Products */;
 			projectDirPath = "";
@@ -382,24 +426,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C7D0B5A9284F48FC0040DFB7 /* PlayListTableView.swift in Sources */,
 				C7D1C6EB2843B9E800A0C01C /* PlayListVM.swift in Sources */,
 				C73CD2DB283A788F00FC0BD8 /* RankView.swift in Sources */,
+				C7492ECC28535D88004501D0 /* String.swift in Sources */,
 				C73CD2E0283B33F600FC0BD8 /* kgapi.swift in Sources */,
+				C7D0B5AB2850D4020040DFB7 /* PlayCoreMediaKeysExtension.swift in Sources */,
 				C7D1C6D92843447600A0C01C /* MusicPlatform.swift in Sources */,
+				C7492ED028542C02004501D0 /* Popover.swift in Sources */,
+				C72719CF28478D9500A08A88 /* DemoView.swift in Sources */,
 				C72BFF542843299400974067 /* Log.swift in Sources */,
 				C740D7702841320900B03264 /* ControlBarVM.swift in Sources */,
 				C73CD2E3283B7E0C00FC0BD8 /* Header.swift in Sources */,
 				C7D1C6F12844F3AD00A0C01C /* netease.swift in Sources */,
+				C7492ECE28539E1D004501D0 /* SidePlayListView.swift in Sources */,
 				C7B826E92842517900222DF8 /* PlayCore.swift in Sources */,
+				C7492ECA2853586C004501D0 /* ImageLoader.swift in Sources */,
 				C72BFF522843292E00974067 /* channel.swift in Sources */,
+				C7727DEE2854832000ECB495 /* SidePlayListVM.swift in Sources */,
+				C7727DF22854D6BF00ECB495 /* Preferences.swift in Sources */,
 				C74545B0283930D6001A638D /* HomeView.swift in Sources */,
 				C745459928392F39001A638D /* iMusicApp.swift in Sources */,
 				C73CD2DE283B333200FC0BD8 /* wyapi.swift in Sources */,
 				C72BFF4F284284A600974067 /* CodableObjects.swift in Sources */,
 				C7D1C6E92843B7EB00A0C01C /* PlayListView.swift in Sources */,
 				C740D76B2840DD4300B03264 /* SideNav.swift in Sources */,
-				C740D76E2841286D00B03264 /* ControlBar.swift in Sources */,
+				C740D76E2841286D00B03264 /* ControlBarView.swift in Sources */,
 				C7D1C6CF28432E1800A0C01C /* ModelData.swift in Sources */,
+				C72719D128489EB400A08A88 /* Base.swift in Sources */,
+				C7727DF02854C0AD00ECB495 /* View.swift in Sources */,
 				C73CD2D9283A780300FC0BD8 /* RankVM.swift in Sources */,
 				C7D1C6EE2843D11D00A0C01C /* Sequence.swift in Sources */,
 				C74545B32839E1E1001A638D /* Color.swift in Sources */,
@@ -606,14 +661,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C72719CB28462AA400A08A88 /* XCRemoteSwiftPackageReference "StackNavigationView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/lbrndnr/StackNavigationView";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 		C72BFF4928426D0300974067 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mxcl/PromiseKit";
@@ -628,6 +675,38 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.0.0;
+			};
+		};
+		C7492EC628531EAD004501D0 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		C7727DEA28544DF700ECB495 /* XCRemoteSwiftPackageReference "SwiftTabler" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/openalloc/SwiftTabler";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.6;
+			};
+		};
+		C7D0B598284F23E40040DFB7 /* XCRemoteSwiftPackageReference "StackNavigationView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lbrndnr/StackNavigationView";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		C7D0B5AF2850D7BE0040DFB7 /* XCRemoteSwiftPackageReference "GSPlayer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/wxxsw/GSPlayer";
+			requirement = {
+				branch = master;
+				kind = branch;
 			};
 		};
 		C7D1C6C528432A3200A0C01C /* XCRemoteSwiftPackageReference "CocoaLumberjack" */ = {
@@ -654,22 +733,9 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		C7D1C6F22845ECF200A0C01C /* XCRemoteSwiftPackageReference "StackNavigationView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/lbrndnr/StackNavigationView";
-			requirement = {
-				branch = master;
-				kind = branch;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C72719CC28462AA400A08A88 /* StackNavigationView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C7D1C6F22845ECF200A0C01C /* XCRemoteSwiftPackageReference "StackNavigationView" */;
-			productName = StackNavigationView;
-		};
 		C72BFF4A28426D0300974067 /* PromiseKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C72BFF4928426D0300974067 /* XCRemoteSwiftPackageReference "PromiseKit" */;
@@ -679,6 +745,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C73CD2D5283A773C00FC0BD8 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		C7492EC728531EAD004501D0 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7492EC628531EAD004501D0 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+		C7727DEB28544DF700ECB495 /* Tabler */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7727DEA28544DF700ECB495 /* XCRemoteSwiftPackageReference "SwiftTabler" */;
+			productName = Tabler;
+		};
+		C7D0B599284F23E40040DFB7 /* StackNavigationView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7D0B598284F23E40040DFB7 /* XCRemoteSwiftPackageReference "StackNavigationView" */;
+			productName = StackNavigationView;
+		};
+		C7D0B5B02850D7BE0040DFB7 /* GSPlayer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7D0B5AF2850D7BE0040DFB7 /* XCRemoteSwiftPackageReference "GSPlayer" */;
+			productName = GSPlayer;
 		};
 		C7D1C6C628432A3200A0C01C /* CocoaLumberjack */ = {
 			isa = XCSwiftPackageProductDependency;

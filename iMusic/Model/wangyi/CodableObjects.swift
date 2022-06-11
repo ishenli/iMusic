@@ -17,18 +17,52 @@ struct ServerError: Decodable, Error {
   let message: String?
 }
 
-class Track: NSObject, Decodable {
+
+struct Playlist: Decodable {
+  let subscribed: Bool
+  let coverImgUrl: URL
+  let playCount: Int
+  let name: String
+  let trackCount: Int
+  let description: String?
+  let tags: [String]?
+  let id: Int
+  var tracks: [Track]
+  let trackIds: [TrackId]?
+  let creator: Creator?
+  let createTime: Int
+  var createTimeStr: String?
+  
+  struct TrackId: Decodable {
+    let id: Int
+    let v: Int
+    
+  }
+  
+  struct Creator: Decodable {
+    let nickname: String
+    let userId: Int
+    let avatarUrl: URL
+  }
+}
+
+class Track: NSObject, Decodable, Identifiable {
   let name: String
   let secondName: String
   let id: Int
   let artists: [Artist]
   let album: Album
   let duration: Int
+  let durationStr: String
   var song: Song?
   
   let pop: Int
   
   var index = -1
+  
+  lazy var artistsString: String = {
+      return artists.artistsString()
+  }()
   
   // privileges - st
   // playable st == 0
@@ -115,7 +149,7 @@ class Track: NSObject, Decodable {
       self.name = try container.decode(String.self, forKey: .name)
       self.id = try container.decode(Int.self, forKey: .id)
       if let str = try container.decodeIfPresent(String.self, forKey: .picUrl) {
-//        self.picUrl = URL(string: str.https)
+        self.picUrl = URL(string: str.https)
       } else {
         self.picUrl = nil
       }
@@ -151,10 +185,8 @@ class Track: NSObject, Decodable {
     let sortContainer = try decoder.container(keyedBy: SortCodingKeys.self)
     let fullName = try container.decode(String.self, forKey: .name)
     if fullName.contains("("), fullName.last == ")" {
-//      name = fullName.substring(to: 1)
-//      secondName = "(" + fullName.substring(from: 1, to: ")") + ")"
-      name = fullName
-      secondName = ""
+      name = fullName.subString(to: "1")
+      secondName = "(" + fullName.subString(from: "1", to: ")") + ")"
     } else {
       name = fullName
       secondName = ""
@@ -167,6 +199,7 @@ class Track: NSObject, Decodable {
     self.artists = try container.decodeIfPresent([Artist].self, forKey: .artists) ?? sortContainer.decode([Artist].self, forKey: .artists)
     self.album = try container.decodeIfPresent(Album.self, forKey: .album) ?? sortContainer.decode(Album.self, forKey: .album)
     self.duration = try container.decodeIfPresent(Int.self, forKey: .duration) ?? sortContainer.decode(Int.self, forKey: .duration)
+    self.durationStr = Double(self.duration).duration2Date() 
   }
 }
 
@@ -348,4 +381,13 @@ struct NUserProfile: Decodable {
   let userId: Int
   let nickname: String
   let avatarUrl: String
+}
+
+
+extension Array where Element: Track.Artist {
+    func artistsString() -> String {
+        return self.map {
+            $0.name
+            }.joined(separator: " / ")
+    }
 }

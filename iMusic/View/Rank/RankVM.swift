@@ -35,6 +35,8 @@ struct TabItems: Hashable, Identifiable {
 //MusicPlatformConfig[MusicPlatform.qq]!.title,
 
 class RankViewModel: ObservableObject {
+  static let Shared: RankViewModel = RankViewModel()
+  
   @Published var isLoading = true
   @Published var ranks = [Rank]()
   

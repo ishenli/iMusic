@@ -9,7 +9,7 @@ import Foundation
 
 protocol AbstractMusicPlatform {
   func fetchRecommend() async -> [Rank]
-  func fetchPlayList() async -> Playlist?
+  func fetchPlayList(_ id: Int) async -> Playlist?
 //  func fetchSong()
 }
 
@@ -35,31 +35,6 @@ let MusicPlatformList: [MusicPlatformMeta]  = [
   .init(name: MusicPlatformEnum.qq, title: "QQ", searchable: true, supportLogin: true, id: 3),
 ]
 
-
-struct Playlist: Decodable {
-  let subscribed: Bool
-  let coverImgUrl: URL
-  let playCount: Int
-  let name: String
-  let trackCount: Int
-  let description: String?
-  let tags: [String]?
-  let id: Int
-  var tracks: [Track]
-  let trackIds: [TrackId]?
-  let creator: Creator?
-  
-  struct TrackId: Decodable {
-    let id: Int
-    let v: Int
-    
-  }
-  
-  struct Creator: Decodable {
-    let nickname: String
-    let userId: Int
-  }
-}
 
 func getPlatformById(id: Int) -> MusicPlatformMeta {
   if let foo = MusicPlatformList.first(where: {$0.id == id}) {

@@ -13,8 +13,8 @@ struct iMusicApp: App {
   var body: some Scene {
     WindowGroup {
       HomeView()
-        .background(Color.white)
-        .frame(maxWidth: 970, maxHeight: 800)
+        .background(Color.yellow)
+        .frame(maxWidth: 1200, maxHeight: 800)
     }
   }
 }

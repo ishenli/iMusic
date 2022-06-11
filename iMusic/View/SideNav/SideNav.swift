@@ -39,16 +39,18 @@ struct SideNav: View {
       .init(key: .MySinger, title: "歌星", image: "person.fill"),
       .init(key: .PlaySetting, title: "播放器设置", image: "gear.circle"),
       .init(key: .PersonInfo, title: "个人信息", image: "info.circle"),
-    ])
+    ]),
+//    .init(key: "Setting", title: "我的音乐", categoryList: [
+//
+//    ])
   ]
   
-  @Binding var currentSelection: CategoryKey
-  @Binding var selection: Int?;
+  @Binding var selection: CategoryKey?;
   
   var body: some View {
     VStack {
       Spacer()
-        .frame(minWidth: 200, maxHeight: 14)
+        .frame(height: 14)
       UserSearchView()
       VStack(
         alignment: .leading
@@ -56,35 +58,34 @@ struct SideNav: View {
         ForEach((works), id: \.self) { option in
           CategoryView (
             workItem: option,
-            currentSelection: $currentSelection,
             selection: $selection
           )
         }
       }
-      .padding(10)
-      .frame(minWidth: 200, maxWidth: 300, alignment: .topLeading)
+      .frame(alignment: .topLeading)
+      .padding(.top, 10)
       Spacer()
-    }
-    
+    }.frame(width: 220)
   }
 }
 
+struct NavigationLinkStyle: ButtonStyle {
+  func makeBody(configuration: Configuration) -> some View {
+    configuration.label
+      .background(.red)
+  }
+}
 
 struct CategoryView : View {
   var workItem: WorkItem
-  @Binding var currentSelection: CategoryKey
-  @Binding var selection: Int?;
+  
+  @Binding var selection: CategoryKey?;
   
   var body: some View {
-    VStack(alignment: .leading) {
-      HStack{
-        Text(workItem.title)
-          .font(.system(size: 12))
-          .foregroundColor(Color.gray)
-      }
-      ForEach(Array(workItem.categoryList.enumerated()), id: \.offset) { index, option in
-        VStack(alignment: .leading) {
-          SidebarNavigationLink(destination: MainView(currentOption: selection!), tag: index, selection: $selection) {
+    
+      List {
+        ForEach(Array(workItem.categoryList.enumerated()), id: \.offset) { index, option in
+          SidebarNavigationLink(destination: MainView(currentOption: option.key), tag: option.key, selection: $selection){
             HStack {
               Image(systemName: option.image)
                 .resizable()
@@ -93,20 +94,15 @@ struct CategoryView : View {
                 .foregroundColor(Color.red)
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
               Text(option.title)
-              Text(String(selection!))
-              Text(String(index))
               Spacer()
             }
             .frame(width:180, height: 30)
-            .contentShape(Rectangle())
-            .background(index == selection ? .init(hex:"C7C5CA"): Color.gray.opacity(0))
-            .cornerRadius(5)
+//            .contentShape(Rectangle())
+//            .background(option.key == selection ? .init(hex:"C7C5CA"): Color.gray.opacity(0))
+            
           }
-          .buttonStyle(PlainButtonStyle())
         }
-        .padding(0)
-      }
-    }
+      }.listStyle(SidebarListStyle())
   }
 }
 
@@ -122,7 +118,7 @@ struct UserSearchView: View {
         "Search",
         text: $username
       )
-      .focused($emailFieldIsFocused)
+      //      .focused($emailFieldIsFocused)
       .onSubmit {
         print(username)
       }
@@ -132,8 +128,7 @@ struct UserSearchView: View {
     .padding([.horizontal], 8)
     .background(Color.init(hex:"C7C5CA"))
     .cornerRadius(4)
-    .padding([.horizontal], 8)
-    //    .overlay(RoundedRectangle(cornerRadius: 4).stroke(Color.gray).background(Color.init(hex:"C7C5CA")).zIndex(1))
+    .padding([.horizontal], 10)
   }
 }
 
@@ -161,9 +156,10 @@ struct SideNav_Previews: PreviewProvider {
     //      )
     //    }
     
-    SideNav(
-      currentSelection: .constant(CategoryKey.Rank),
-      selection: .constant(0)
-    ).frame(width: 200)
+    Group {
+      SideNav(
+        selection: .constant(CategoryKey.Rank)
+      ).frame(width: 200)
+    }
   }
 }

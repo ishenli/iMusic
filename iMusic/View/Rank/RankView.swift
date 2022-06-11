@@ -10,9 +10,11 @@ import Alamofire
 import StackNavigationView
 
 struct RankView: View {
-  @ObservedObject var vm = RankViewModel()
+  @StateObject var vm = RankViewModel.Shared
   var body: some View {
-    ScrollView {
+    GeometryReader { geo in
+      Text("w: \(geo.size.width, specifier: "%.1f")  h: \(geo.size.height, specifier: "%.1f")")
+      
       RankPanelView().task {
         await vm.fetch()
       }.environmentObject(vm)
@@ -48,7 +50,7 @@ struct RankPanelView: View {
           LazyVGrid(columns: gridItemLayout, spacing: 0) {
             ForEach(vm.ranks) { rank in
               VStack(alignment: .leading) {
-                StackNavigationLink(destination: PlayListView()) {
+                StackNavigationLink(destination: PlayListView(id: rank.id)) {
                   AsyncImage(url: URL(string: rank.imageUrl)) { image in
                     image.resizable().aspectRatio(contentMode: .fill)
                       .frame(width: 120, height: 120)
@@ -68,10 +70,7 @@ struct RankPanelView: View {
       }
       .padding(40)
       .frame( minWidth: 0,
-              maxWidth: .infinity,
-              minHeight: 0,
-              maxHeight: .infinity)
-      .background(Color.white)
+              minHeight: 600)
     }
   }
 }
