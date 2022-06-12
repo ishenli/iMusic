@@ -17,6 +17,45 @@ class PlayListViewModel: ObservableObject {
   @Published var isLoading = true
   @Published var tracks = [Track]()
   
+  var currentTrackObserver: NSKeyValueObservation?
+  var playerStateObserver: NSKeyValueObservation?
+  
+  init() {
+    initObservers()
+  }
+  
+  func initObservers() {
+    currentTrackObserver?.invalidate()
+    playerStateObserver?.invalidate()
+    
+    // 监听当前播放的歌曲，用来高亮
+    currentTrackObserver = PlayCore.shared.observe(\.currentTrack, options: [.new, .initial]) { (pc, _) in
+        self.initCurrentTrack()
+    }
+    
+    playerStateObserver =  PlayCore.shared.observe(\.timeControlStatus, options: [.new, .initial]) { (pc, _) in
+        let pc = PlayCore.shared
+        self.tracks.first {
+            $0.isCurrentTrack
+            }?.isPlaying = pc.player.timeControlStatus == .playing
+    }
+  }
+  
+  func initCurrentTrack() {
+      let pc = PlayCore.shared
+      tracks.filter {
+          $0.isCurrentTrack
+      }.forEach {
+          $0.isCurrentTrack = false
+      }
+      
+      guard let c = pc.currentTrack else { return }
+
+      let t = tracks.first {$0.id == c.id}
+      t?.isCurrentTrack = true
+      t?.isPlaying = pc.player.timeControlStatus == .playing
+  }
+  
   
   @MainActor
   func fetch(id: Int) async -> Void {
@@ -25,14 +64,10 @@ class PlayListViewModel: ObservableObject {
     
     var data = await NetEaseMusic().fetchPlayList(id);
 
-    
     if ((data?.createTime) != nil) {
       let df = DateFormatter()
       df.dateFormat = "yyyy-MM-dd"
-      //      let date = df.date(from: String(1490837055281))
-      print(data!.createTime)
-      let interval:TimeInterval = TimeInterval.init(Double(data!.createTime))
-      print(interval)
+      let interval:TimeInterval = TimeInterval.init(Double(data!.createTime) / 1000) // 是毫秒
       let date = Date(timeIntervalSince1970: interval)
       data?.createTimeStr = df.string(from: date)
     }

@@ -1,17 +1,35 @@
 //
-//  NeteaseMusicAPI.swift
-//  NeteaseMusic
+//  netease.swift
+//  iMusic
 //
-//  Created by xjbeta on 2019/3/31.
-//  Copyright © 2019 xjbeta. All rights reserved.
+//  Created by michael.sl on 2022/5/30.
 //
-
+import Foundation
 import Cocoa
 import Alamofire
-import PromiseKit
+import CryptoSwift
 
-class NeteaseMusicAPI {
+
+struct TopList: Decodable {
+  let code: Int
+  let list: [Playlist]
   
+  struct Playlist: Decodable {
+    let id: Int
+    let name: String
+    let description: String?
+    let coverImgUrl: String
+  }
+}
+
+enum RequestError: Error {
+  case error(Error)
+  case noData
+  case errorCode((Int, String))
+  case unknown
+}
+
+class NetEaseMusic : AbstractMusicPlatform {
   let nmDeviceId: String
   let nmAppver: String
   let channel: NMChannel
@@ -46,6 +64,8 @@ class NeteaseMusicAPI {
      "os": "osx",
      "appver": nmAppver,
      "channel": "netease",
+     // 临时添加
+     "MUSIC_U": "687d56c651f440af825e90a782b55089b6390486f0bae018899e7ee605727eb57c4bb615af8ed51c68eff3e0cbbdcf59136f3bf144faa3b4a18228ec15c68b1104e1557b3b6e0e0b56b5785f932ffd38",
      "osver": "Version%2010.16%20(Build%2020G165)",
     ].compactMap {
       HTTPCookie(properties: [
@@ -64,76 +84,139 @@ class NeteaseMusicAPI {
   }
   
   
-  var uid = -1
-  var csrf: String {
-    get {
-      return HTTPCookieStorage.shared.cookies?.filter({ $0.name == "__csrf" }).first?.value ?? ""
-    }
-  }
-  
-  struct CodeResult: Decodable {
-    let code: Int
-    let msg: String?
-  }
-  
-  func startNRMListening() {
-    stopNRMListening()
-    
-    reachabilityManager = NetworkReachabilityManager(host: "music.163.com")
-    reachabilityManager?.startListening { status in
-      switch status {
-      case .reachable(.cellular):
-        Log.error("NetworkReachability reachable cellular.")
-      case .reachable(.ethernetOrWiFi):
-        Log.error("NetworkReachability reachable ethernetOrWiFi.")
-      case .notReachable:
-        Log.error("NetworkReachability notReachable.")
-      case .unknown:
-        break
+  func eapiRequest<T: Decodable>(
+    _ url: String,
+    _ params: [String: Any],
+    _ resultType: T.Type,
+    shouldDeSerial: Bool = false) async throws -> T {
+      
+      do {
+        let p = try channel.serialData(params, url: url)
+        let dataTask = nmSession.request(url, method: .post, parameters: ["params": p]).serializingData()
+        let re = await dataTask.response
+        
+        guard var data = re.data else {
+          Log.error(RequestError.noData)
+          throw RequestError.noData
+        }
+        data = re.data!
+        
+        if shouldDeSerial {
+          if let d = try self.channel.deSerialData(data.toHexString(), split: false)?.data(using: .utf8) {
+            data = d
+          } else {
+            throw RequestError.noData
+          }
+        }
+        return try JSONDecoder().decode(resultType.self, from: data)
+        
+      } catch let error where error is ServerError {
+        Log.error(error)
+        throw RequestError.error(error)
+      } catch let error {
+        Log.error(error)
+        throw RequestError.error(error)
       }
     }
+  
+  func fetchRecommend() async -> [Rank] {
+    let rankList: [Rank] = [];
+    do {
+      let data = try await self.eapiRequest(
+        "https://music.163.com/eapi/v1/discovery/recommend/resource",
+        [:],
+        RecommendResource.self)
+      
+      return data.recommend.map {
+        Rank.init(name: $0.name, imageUrl: $0.picUrl.absoluteString, id: $0.id, theme: 0)
+      }
+    } catch {
+      print("Fetching fetchRecommend failed with error \(error)")
+    }
+    return rankList
   }
   
-  func stopNRMListening() {
-    reachabilityManager?.stopListening()
-    reachabilityManager = nil
-  }
-  
-  func nuserAccount() -> Promise<NUserProfile?> {
+  func fetchPlayList(_ id: Int) async -> Playlist? {
     struct Result: Decodable {
+      let playlist: Playlist
+      let privileges: [Track.Privilege]?
       let code: Int
-      let profile: NUserProfile?
     }
     
-    return eapiRequest(
-      "https://music.163.com/eapi/nuser/account/get",
-      [:],
-      Result.self).map {
-        $0.profile
+    do {
+      
+      let re = try await self.eapiRequest(
+        "https://music.163.com/eapi/v3/playlist/detail",
+        ["id": id,
+         "n": 0,
+         "s": 0,
+         "t": -1],
+        Result.self)
+      
+      //      let re:Result = load("wangyi/playlist");
+      let playlist = re.playlist;
+      
+      // 每首歌请求详情
+      guard let ids = re.playlist.trackIds?.map({ $0.id }) else {
+        return nil
       }
+      let list = stride(from: 0, to: ids.count, by: 500).map {
+        Array(ids[$0..<($0+500 >= ids.count ? ids.count : $0+500)])
+      }
+      
+      
+      let rt:[[Track]] = await list.concurrentMap{ ids in
+        let tracker = await self.songDetail(ids);
+        return tracker
+      }
+      
+      let tracks = rt.flatMap { $0 }
+      var pl = playlist
+      pl.tracks = tracks
+      return pl
+    } catch {
+      print("Fetching fetchRecommend failed with error \(error)")
+      return nil;
+    }
   }
   
-  func userPlaylist() -> Promise<[Playlist]> {
+  func songDetail(_ ids: [Int]) async -> [Track] {
     struct Result: Decodable {
-      let playlist: [Playlist]
+      let songs: [Track]
       let code: Int
+      let privileges: [Track.Privilege]
     }
+
+//    // 加载song.json的数据
+//    let res: Result = load("wangyi/song.json");
+    
+
+    let c = "[" + ids.map({ "{\"id\":\"\($0)\", \"v\":\"\(0)\"}" }).joined(separator: ",") + "]"
     
     let p = [
-      "uid": uid,
-      "offset": 0,
-      "limit": 1000
+        "c": c
     ]
-    
-    return eapiRequest("https://music.163.com/eapi/user/playlist/",
-                       p,
-                       Result.self).map {
-      $0.playlist
+    do {
+      let data = try await self.eapiRequest(
+        "https://music.163.com/eapi/v3/song/detail",
+        p,
+        Result.self)
+      
+      let re = data.songs
+      let p = data.privileges
+      re.enumerated().forEach {
+          guard $0.element.id == p[$0.offset].id else { return }
+          re[$0.offset].privilege = p[$0.offset]
+      }
+      return re
+    } catch {
+      print("Fetching fetchRecommend failed with error \(error)")
     }
+    return []
   }
   
   
-  func songUrl(_ ids: [Int], _ br: Int) -> Promise<([Song])> {
+  func songUrl(_ ids: [Int], _ br: Int) async -> [Song]  {
     struct Result: Decodable {
       let data: [Song]
       let code: Int
@@ -145,141 +228,19 @@ class NeteaseMusicAPI {
       "e_r": true
     ]
     
-    let r: Result = load("wangyi/player")
-  
-    return Promise { resolver in
-      resolver.fulfill(r.data)
-    }
-    
-//    return eapiRequest("https://music.163.com/eapi/song/enhance/player/url",
-//                       p,
-//                       Result.self,
-//                       shouldDeSerial: true).map {
-//      $0.data
-//    }
-  }
-  
-  func recommendResource() -> Promise<[RecommendResource.Playlist]> {
-    eapiRequest(
-      "https://music.163.com/eapi/v1/discovery/recommend/resource",
-      [:],
-      RecommendResource.self).map {
-        $0.recommend
-      }
-  }
-  
-  func recommendSongs() -> Promise<[Track]> {
-    eapiRequest(
-      "https://music.163.com/eapi/v1/discovery/recommend/songs",
-      [:],
-      RecommendSongs.self).map {
-        $0.recommend
-      }.map {
-//        $0.forEach {
-//          $0.from = (.discoverPlaylist, -114514, "recommend songs")
-//        }
-        return $0
-      }
-  }
-  
-  func lyric(_ id: Int) -> Promise<(LyricResult)> {
-    let u = "https://music.163.com/api/song/lyric?os=osx&id=\(id)&lv=-1&kv=-1&tv=-1"
-    
-    return Promise { resolver in
-      AF.request(u).responseDecodable(of: LyricResult.self) {
-        do {
-          resolver.fulfill(try $0.result.get())
-        } catch let error {
-          resolver.reject(error)
-        }
-      }
-    }
-  }
-  
-  
-  func eapiRequest<T: Decodable>(
-    _ url: String,
-    _ params: [String: Any],
-    _ resultType: T.Type,
-    shouldDeSerial: Bool = false,
-    debug: Bool = false) -> Promise<T> {
-      
-      
-      
-      return Promise { resolver in
-        let p = try channel.serialData(params, url: url)
-        
-        nmSession.request(url, method: .post, parameters: ["params": p]).response { re in
-          
-          if debug, let d = re.data,
-             let str = String(data: d, encoding: .utf8) {
-            Log.verbose(str)
-          }
-          
-          if let error = re.error {
-            resolver.reject(RequestError.error(error))
-            return
-          }
-          guard var data = re.data else {
-            resolver.reject(RequestError.noData)
-            return
-          }
-          
-          do {
-            if shouldDeSerial {
-              if let d = try self.channel.deSerialData(data.toHexString(), split: false)?.data(using: .utf8) {
-                data = d
-              } else {
-                throw RequestError.noData
-              }
-            }
-            
-            if let re = try? JSONDecoder().decode(ServerError.self, from: data),
-               re.code != 200 {
-              throw re
-            }
-            
-            let re = try JSONDecoder().decode(resultType.self, from: data)
-            
-            resolver.fulfill(re)
-          } catch let error where error is ServerError {
-            guard let err = error as? ServerError else { return }
-            
-            var msg = err.msg ?? err.message ?? ""
-            
-            if err.code == -462 {
-              msg = "绑定手机号或短信验证成功后，可进行下一步操作哦~🙃"
-            }
-            
-            let u = re.request?.url?.absoluteString ?? ""
-            resolver.reject(RequestError.errorCode((err.code, "\(u)  \(msg)")))
-          } catch let error {
-            resolver.reject(error)
-          }
-        }
-      }
-    }
-  
-  enum RequestError: Error {
-    case error(Error)
-    case noData
-    case errorCode((Int, String))
-    case unknown
-  }
-  
-  
-  enum APIError: Error {
-    case errorCode(Int)
-  }
-  
-}
 
-extension Encodable {
-  func jsonString() -> String {
-    guard let data = try? JSONEncoder().encode(self),
-          let str = String(data: data, encoding: .utf8) else {
-      return ""
+    
+    do {
+      let res = try await self.eapiRequest(
+        "https://music.163.com/eapi/song/enhance/player/url",
+        p,
+        Result.self,
+        shouldDeSerial: true)
+      
+      return res.data
+    } catch {
+      print("Fetching songUrl failed with error \(error)")
     }
-    return str
+    return []
   }
 }

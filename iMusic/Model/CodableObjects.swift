@@ -9,7 +9,6 @@
 import Foundation
 import AVFoundation
 import AppKit
-import PromiseKit
 
 struct ServerError: Decodable, Error {
   let code: Int

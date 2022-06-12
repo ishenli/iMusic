@@ -36,6 +36,7 @@
 		C7727DEE2854832000ECB495 /* SidePlayListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727DED2854832000ECB495 /* SidePlayListVM.swift */; };
 		C7727DF02854C0AD00ECB495 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727DEF2854C0AD00ECB495 /* View.swift */; };
 		C7727DF22854D6BF00ECB495 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727DF12854D6BF00ECB495 /* Preferences.swift */; };
+		C7727DFD28559FF500ECB495 /* GoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727DFC28559FF500ECB495 /* GoTests.swift */; };
 		C7B826E92842517900222DF8 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B826E82842517900222DF8 /* PlayCore.swift */; };
 		C7D0B59A284F23E40040DFB7 /* StackNavigationView in Frameworks */ = {isa = PBXBuildFile; productRef = C7D0B599284F23E40040DFB7 /* StackNavigationView */; };
 		C7D0B5A9284F48FC0040DFB7 /* PlayListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0B5A8284F48FC0040DFB7 /* PlayListTableView.swift */; };
@@ -51,8 +52,17 @@
 		C7D1C6E92843B7EB00A0C01C /* PlayListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1C6E82843B7EB00A0C01C /* PlayListView.swift */; };
 		C7D1C6EB2843B9E800A0C01C /* PlayListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1C6EA2843B9E800A0C01C /* PlayListVM.swift */; };
 		C7D1C6EE2843D11D00A0C01C /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1C6ED2843D11D00A0C01C /* Sequence.swift */; };
-		C7D1C6F12844F3AD00A0C01C /* netease.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D1C6F02844F3AD00A0C01C /* netease.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C7727DFE28559FF500ECB495 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C745458D28392F39001A638D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C745459428392F39001A638D;
+			remoteInfo = iMusic;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		C72719CE28478D9500A08A88 /* DemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoView.swift; sourceTree = "<group>"; };
@@ -85,6 +95,8 @@
 		C7727DED2854832000ECB495 /* SidePlayListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidePlayListVM.swift; sourceTree = "<group>"; };
 		C7727DEF2854C0AD00ECB495 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		C7727DF12854D6BF00ECB495 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		C7727DFA28559FF500ECB495 /* GoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C7727DFC28559FF500ECB495 /* GoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoTests.swift; sourceTree = "<group>"; };
 		C7B826E82842517900222DF8 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
 		C7D0B5A8284F48FC0040DFB7 /* PlayListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListTableView.swift; sourceTree = "<group>"; };
 		C7D0B5AA2850D4020040DFB7 /* PlayCoreMediaKeysExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCoreMediaKeysExtension.swift; sourceTree = "<group>"; };
@@ -98,7 +110,6 @@
 		C7D1C6EA2843B9E800A0C01C /* PlayListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListVM.swift; sourceTree = "<group>"; };
 		C7D1C6ED2843D11D00A0C01C /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		C7D1C6EF2844F2ED00A0C01C /* toplist.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = toplist.json; sourceTree = "<group>"; };
-		C7D1C6F02844F3AD00A0C01C /* netease.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = netease.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,16 +130,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7727DF728559FF500ECB495 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		C72BFF502843291500974067 /* wangyi */ = {
 			isa = PBXGroup;
 			children = (
-				C72BFF4E284284A600974067 /* CodableObjects.swift */,
 				C73CD2DD283B333200FC0BD8 /* wyapi.swift */,
 				C72BFF512843292E00974067 /* channel.swift */,
-				C7D1C6F02844F3AD00A0C01C /* netease.swift */,
 			);
 			path = wangyi;
 			sourceTree = "<group>";
@@ -140,6 +156,7 @@
 				C72BFF502843291500974067 /* wangyi */,
 				C7D1C6CE28432E1800A0C01C /* ModelData.swift */,
 				C7D1C6D82843447600A0C01C /* MusicPlatform.swift */,
+				C72BFF4E284284A600974067 /* CodableObjects.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -188,6 +205,7 @@
 			children = (
 				C79B2D632841D84500884423 /* Packages */,
 				C745459728392F39001A638D /* iMusic */,
+				C7727DFB28559FF500ECB495 /* Tests */,
 				C745459628392F39001A638D /* Products */,
 				C7B826D028424D2800222DF8 /* Frameworks */,
 			);
@@ -197,6 +215,7 @@
 			isa = PBXGroup;
 			children = (
 				C745459528392F39001A638D /* iMusic.app */,
+				C7727DFA28559FF500ECB495 /* GoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +277,14 @@
 				C7492ECB28535D88004501D0 /* String.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		C7727DFB28559FF500ECB495 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C7727DFC28559FF500ECB495 /* GoTests.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		C79B2D632841D84500884423 /* Packages */ = {
@@ -364,6 +391,24 @@
 			productReference = C745459528392F39001A638D /* iMusic.app */;
 			productType = "com.apple.product-type.application";
 		};
+		C7727DF928559FF500ECB495 /* GoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C7727E0028559FF500ECB495 /* Build configuration list for PBXNativeTarget "GoTests" */;
+			buildPhases = (
+				C7727DF628559FF500ECB495 /* Sources */,
+				C7727DF728559FF500ECB495 /* Frameworks */,
+				C7727DF828559FF500ECB495 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C7727DFF28559FF500ECB495 /* PBXTargetDependency */,
+			);
+			name = GoTests;
+			productName = GoTests;
+			productReference = C7727DFA28559FF500ECB495 /* GoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -376,6 +421,10 @@
 				TargetAttributes = {
 					C745459428392F39001A638D = {
 						CreatedOnToolsVersion = 13.3;
+					};
+					C7727DF928559FF500ECB495 = {
+						CreatedOnToolsVersion = 13.3;
+						TestTargetID = C745459428392F39001A638D;
 					};
 				};
 			};
@@ -404,6 +453,7 @@
 			projectRoot = "";
 			targets = (
 				C745459428392F39001A638D /* iMusic */,
+				C7727DF928559FF500ECB495 /* GoTests */,
 			);
 		};
 /* End PBXProject section */
@@ -416,6 +466,13 @@
 				C7D1C6E62843949B00A0C01C /* player.json in Resources */,
 				C74545A028392F3D001A638D /* Preview Assets.xcassets in Resources */,
 				C745459D28392F3D001A638D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C7727DF828559FF500ECB495 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,7 +495,6 @@
 				C72BFF542843299400974067 /* Log.swift in Sources */,
 				C740D7702841320900B03264 /* ControlBarVM.swift in Sources */,
 				C73CD2E3283B7E0C00FC0BD8 /* Header.swift in Sources */,
-				C7D1C6F12844F3AD00A0C01C /* netease.swift in Sources */,
 				C7492ECE28539E1D004501D0 /* SidePlayListView.swift in Sources */,
 				C7B826E92842517900222DF8 /* PlayCore.swift in Sources */,
 				C7492ECA2853586C004501D0 /* ImageLoader.swift in Sources */,
@@ -461,7 +517,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C7727DF628559FF500ECB495 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C7727DFD28559FF500ECB495 /* GoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C7727DFF28559FF500ECB495 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C745459428392F39001A638D /* iMusic */;
+			targetProxy = C7727DFE28559FF500ECB495 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C74545A728392F3D001A638D /* Debug */ = {
@@ -637,6 +709,38 @@
 			};
 			name = Release;
 		};
+		C7727E0128559FF500ECB495 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ishenli.GoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iMusic.app/Contents/MacOS/iMusic";
+			};
+			name = Debug;
+		};
+		C7727E0228559FF500ECB495 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ishenli.GoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/iMusic.app/Contents/MacOS/iMusic";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -654,6 +758,15 @@
 			buildConfigurations = (
 				C74545AA28392F3D001A638D /* Debug */,
 				C74545AB28392F3D001A638D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C7727E0028559FF500ECB495 /* Build configuration list for PBXNativeTarget "GoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7727E0128559FF500ECB495 /* Debug */,
+				C7727E0228559FF500ECB495 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

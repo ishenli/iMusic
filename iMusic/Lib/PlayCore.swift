@@ -139,10 +139,14 @@ class PlayCore: NSObject {
   }
   
   // MARK: - AVPlayer Waiting
-  
   private var itemWaitingToLoad: Int?
   private var loadingList = [Int]()
-  var timeControlStatus: AVPlayer.TimeControlStatus = .waitingToPlayAtSpecifiedRate
+  
+  @objc dynamic var timeControlStatus: AVPlayer.TimeControlStatus = .waitingToPlayAtSpecifiedRate
+  
+  
+  
+  
   
   override init() {
     player = AVPlayer()
@@ -165,7 +169,7 @@ class PlayCore: NSObject {
         self.playerState = player.rate.isZero ? .paused : .playing
     }
     
-    periodicTimeObserverToken = player .addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
+    periodicTimeObserverToken = player.addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
         let pc = PlayCore.shared
         let player = pc.player
         

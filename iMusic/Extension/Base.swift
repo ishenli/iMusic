@@ -24,7 +24,13 @@ extension Double {
     formatter.unitsStyle = .positional
     formatter.allowedUnits = [.minute, .second]
     formatter.zeroFormattingBehavior = .pad
-    return formatter.string(from: TimeInterval(self)) ?? "00:00"
+    do {
+      return formatter.string(from: TimeInterval(self)) ?? "00:00"
+    } catch {
+      Log.error("durationFormatter error with \(error) \(self)")
+      return "00:00"
+    }
+    
   }
   
   
@@ -39,7 +45,14 @@ extension Double {
   }
 }
 
-extension Int {
- 
-}
 
+
+extension Encodable {
+    func jsonString() -> String {
+        guard let data = try? JSONEncoder().encode(self),
+            let str = String(data: data, encoding: .utf8) else {
+                return ""
+        }
+        return str
+    }
+}

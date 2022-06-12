@@ -97,6 +97,7 @@ class ControlBarViewModel: ObservableObject {
       self?.durationSlider.doubleValue = cd
       self?.durationSlider.cachedDoubleValue = player.currentBufferDuration
       
+//      print("cd:\(cd), td:\(td)")
       self?.durationTextField.text = "\(cd.durationFormatter()) / \(td.durationFormatter())"
     }
     
@@ -200,7 +201,7 @@ class ControlBarViewModel: ObservableObject {
     let mute = pref.mute
     pc.player.isMuted = mute
     
-    print("volumie:\(volume)")
+//    print("volumie:\(volume)")
     
     var imageName = ""
     var color = Color.black
