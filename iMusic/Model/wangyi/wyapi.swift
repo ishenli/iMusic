@@ -186,15 +186,15 @@ class NetEaseMusic : AbstractMusicPlatform {
       let code: Int
       let privileges: [Track.Privilege]
     }
-
-//    // 加载song.json的数据
-//    let res: Result = load("wangyi/song.json");
     
-
+    //    // 加载song.json的数据
+    //    let res: Result = load("wangyi/song.json");
+    
+    
     let c = "[" + ids.map({ "{\"id\":\"\($0)\", \"v\":\"\(0)\"}" }).joined(separator: ",") + "]"
     
     let p = [
-        "c": c
+      "c": c
     ]
     do {
       let data = try await self.eapiRequest(
@@ -205,8 +205,8 @@ class NetEaseMusic : AbstractMusicPlatform {
       let re = data.songs
       let p = data.privileges
       re.enumerated().forEach {
-          guard $0.element.id == p[$0.offset].id else { return }
-          re[$0.offset].privilege = p[$0.offset]
+        guard $0.element.id == p[$0.offset].id else { return }
+        re[$0.offset].privilege = p[$0.offset]
       }
       return re
     } catch {
@@ -228,7 +228,7 @@ class NetEaseMusic : AbstractMusicPlatform {
       "e_r": true
     ]
     
-
+    
     
     do {
       let res = try await self.eapiRequest(
@@ -243,4 +243,54 @@ class NetEaseMusic : AbstractMusicPlatform {
     }
     return []
   }
+
+  
+  
+  
+  // 根据关键词进行搜索
+  func search(_ keywords: String,
+              limit: Int,
+              page: Int,
+              type: SearchResultType) async -> SearchResult.Result? {
+    var p: [String: Any] = [
+      "s": keywords,
+      "limit": limit,
+      "offset": page * limit,
+      "total": true
+    ]
+    
+    
+    var u = "https://music.163.com/eapi/search/pc"
+    
+    // 1: 单曲, 10: 专辑, 100: 歌手, 1000: 歌单, 1002: 用户, 1004: MV, 1006: 歌词, 1009: 电台, 1014: 视频
+    switch type {
+    case .songs:
+      p["type"] = 1
+      u = "https://music.163.com/eapi/cloudsearch/pc"
+    case .albums:
+      p["type"] = 10
+    case .artists:
+      p["type"] = 100
+    case .playlists:
+      p["type"] = 1000
+    default:
+      p["type"] = 0
+    }
+    
+    do {
+      let res = try await self.eapiRequest(u,p,SearchResult.self);
+//      res.result.songs.forEach {
+////        $0.from = (.searchResults, 0, "Search Result")
+//      }
+      
+      return res.result
+    } catch {
+      print("Fetching songUrl failed with error \(error)")
+      return nil
+    }
+  }
+
+  
+  
+  
 }

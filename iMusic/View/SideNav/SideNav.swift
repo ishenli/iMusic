@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import StackNavigationView
 
 struct CategoryItem: Hashable {
   let key: CategoryKey
@@ -110,6 +109,7 @@ struct CategoryView : View {
 struct UserSearchView: View {
   @State private var username: String = ""
   @FocusState private var emailFieldIsFocused: Bool
+  @Environment(\.StackNavigationPush) var StackNavigationPush
   
   var body: some View {
     HStack {
@@ -120,7 +120,7 @@ struct UserSearchView: View {
       )
       //      .focused($emailFieldIsFocused)
       .onSubmit {
-        print(username)
+        StackNavigationPush(AnyView(SearchResultView(keyword: username)), nil)
       }
       .frame(height: 28)
       .textFieldStyle(PlainTextFieldStyle())

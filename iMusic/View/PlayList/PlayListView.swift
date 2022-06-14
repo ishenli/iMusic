@@ -22,7 +22,7 @@ struct PlayListView: View {
           PlayListHeaderView().environmentObject(vm)
           PlayListTableView().environmentObject(vm)
         }
-      }.frame(minWidth: 800, minHeight: 560).background(.white)
+      }.frame(minWidth: 600, minHeight: 560).background(.white)
       .task {
         await vm.fetch(id: id)
       }

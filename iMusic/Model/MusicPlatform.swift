@@ -11,8 +11,15 @@ protocol AbstractMusicPlatform {
   func fetchRecommend() async -> [Rank]
   func fetchPlayList(_ id: Int) async -> Playlist?
 //  func fetchSong()
+  func search(_ keywords: String,
+              limit: Int,
+              page: Int,
+              type: SearchResultType) async -> SearchResult.Result?
 }
 
+enum SearchResultType: Int {
+    case none, songs, albums, artists, playlists
+}
 
 enum MusicPlatformEnum {
   case netease

@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import StackNavigationView
 
 struct ChildView: View {
   var sidebar: String

@@ -7,7 +7,6 @@
 
 import SwiftUI
 import Alamofire
-import StackNavigationView
 
 struct RankView: View {
   @StateObject var vm = RankViewModel.Shared
@@ -69,7 +68,7 @@ struct RankPanelView: View {
         Spacer()
       }
       .padding(40)
-      .frame( minWidth: 0,
+      .frame( minWidth: 500,
               minHeight: 600)
     }
   }
