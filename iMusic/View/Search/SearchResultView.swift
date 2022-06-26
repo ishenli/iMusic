@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct SerachPagination: PaginationProtocol {
   func onChange(page: Int, pageSize: Int) {
     SearchViewModel.Shared.fetchWithPage(page: page - 1)
@@ -59,7 +60,7 @@ struct SearchResultView: View {
             ProgressView()
           } else {
             if (vm.searchType == .songs) {
-              PlayTable(tracks: vm.searchSongList)
+              PlaySongTable(tracks: vm.searchSongList)
             } else {
               PlayListTable(playList: vm.searchPlayList)
             }

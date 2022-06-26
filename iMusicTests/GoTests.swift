@@ -6,6 +6,7 @@
 //
 
 import XCTest
+@testable import iMusic
 
 // 参考代码：https://github.com/Alamofire/Alamofire/blob/master/Tests/CacheTests.swift
 // 参考文档：https://blog.csdn.net/lin1109221208/article/details/91955462

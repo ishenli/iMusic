@@ -25,16 +25,6 @@ enum PNItemType: Int {
   case interrupted = 4
 }
 
-enum RepeatMode: Int {
-  case noRepeat, repeatPlayList, repeatItem
-}
-
-
-enum ShuffleMode: Int {
-  case noShuffle, shuffleItems, shuffleAlbums
-}
-
-
 
 class PlayCore: NSObject {
   static let shared = PlayCore();
@@ -53,8 +43,12 @@ class PlayCore: NSObject {
   
   var pnItemType: PNItemType = .withoutPreviousAndNext
   var fmMode = false
-  @objc dynamic  var currentTrack: Track?
   var player: AVPlayer
+  
+  
+  @objc dynamic  var currentTrack: Track?
+  
+  @objc dynamic  var toastMessage: String?
   
   
   private var internalPlaylist = [Int]()
@@ -88,9 +82,9 @@ class PlayCore: NSObject {
   }
   
   @objc dynamic var playProgress: Double = 0 {
-      didSet {
-          updateNowPlayingInfo()
-      }
+    didSet {
+      updateNowPlayingInfo()
+    }
   }
   
   var periodicTimeObserverToken: Any?
@@ -117,7 +111,7 @@ class PlayCore: NSObject {
   private var playingNextList: [Int] {
     get {
       
-      let repeatMode = RepeatMode.noRepeat;
+      let repeatMode = Preferences.shared.repeatMode;
       updateInternalPlaylist()
       
       switch repeatMode {
@@ -156,32 +150,32 @@ class PlayCore: NSObject {
   
   func initPlayerObservers() {
     timeControlStautsObserver = player.observe(\.timeControlStatus, options: [.initial, .new]) { [weak self] (player, changes) in
-        self?.timeControlStatus = player.timeControlStatus
+      self?.timeControlStatus = player.timeControlStatus
     }
     
     let timeScale = CMTimeScale(NSEC_PER_SEC)
     let time = CMTime(seconds: 0.5, preferredTimescale: timeScale)
     
-
+    
     playerStateObserver = player.observe(\.rate, options: [.initial, .new]) { player, _ in
-        guard player.status == .readyToPlay else { return }
-        
-        self.playerState = player.rate.isZero ? .paused : .playing
+      guard player.status == .readyToPlay else { return }
+      
+      self.playerState = player.rate.isZero ? .paused : .playing
     }
     
     periodicTimeObserverToken = player.addPeriodicTimeObserver(forInterval: time, queue: .main) { [weak self] time in
-        let pc = PlayCore.shared
-        let player = pc.player
-        
-        self?.playProgress = player.playProgress
-        
+      let pc = PlayCore.shared
+      let player = pc.player
+      
+      self?.playProgress = player.playProgress
+      
     }
     
     playerShouldNextObserver = NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: .main) { _ in
-        self.nextSong()
+      self.nextSong()
     }
   }
-
+  
   
   func togglePlayPause() {
     guard player.error == nil else { return }
@@ -199,22 +193,22 @@ class PlayCore: NSObject {
       }
       
       if currentTrack != nil {
-          playOrPause()
+        playOrPause()
       }
     }
   }
   
   
   func playNow(_ tracks: [Track]) {
-      if let currentTrack = currentTrack,
-          let i = playlist.enumerated().filter({ $0.element == currentTrack }).first?.offset {
-          playlist.insert(contentsOf: tracks, at: i + 1)
-      } else {
-          playlist.append(contentsOf: tracks)
-      }
-      if let t = tracks.first {
-          play(t)
-      }
+    if let currentTrack = currentTrack,
+       let i = playlist.enumerated().filter({ $0.element == currentTrack }).first?.offset {
+      playlist.insert(contentsOf: tracks, at: i + 1)
+    } else {
+      playlist.append(contentsOf: tracks)
+    }
+    if let t = tracks.first {
+      play(t)
+    }
   }
   
   
@@ -234,13 +228,23 @@ class PlayCore: NSObject {
     let repeatMode = Preferences.shared.repeatMode
     // 重复播放
     guard repeatMode != .repeatItem else {
-        player.seek(to: CMTime(value: 0, timescale: 1000))
-        player.play()
-        return
+      player.seek(to: CMTime(value: 0, timescale: 1000))
+      player.play()
+      return
     }
-
+    
     updateInternalPlaylist()
-    let id = internalPlaylist[internalPlaylistIndex + 1]
+    
+    var nextSongIndex = internalPlaylistIndex + 1
+    
+    if internalPlaylist.count == nextSongIndex { // 最后一首歌
+      stop()
+      return
+    }
+    
+    let id = internalPlaylist[nextSongIndex]
+    
+    
     guard let track = playlist.first(where: { $0.id == id })
     else {
       print("Can't find next track.")
@@ -305,10 +309,10 @@ class PlayCore: NSObject {
       !($0.song?.urlValid ?? false)
     }
     
-    // 每次保留4首歌曲
+    // 每次保留5首歌曲
     var ids = [track.id]
     var tracks = [track]
-
+    
     if list.count >= 4 {
       let l = list[0..<4].map { $0.id }
       let t = list[0..<4].map { $0 }
@@ -331,6 +335,11 @@ class PlayCore: NSObject {
       
       let res = await api.getSongsDetail(tracks);
       
+      if res.count == 0 {
+//        AppViewModel.Shared.showToast(content: "该歌曲没有版权，请切换其他渠道")
+        toastMessage = "该歌曲没有版权，请切换其他渠道"
+        return
+      }
       
       res.forEach { song in
         guard let track = self.playlist.first(where: { $0.id == song.id }) else { return }
@@ -389,14 +398,23 @@ class PlayCore: NSObject {
   }
   
   func stop() {
-    
+    playerState = .stopped
+    player.pause()
+    player.currentItem?.cancelPendingSeeks()
+    player.currentItem?.asset.cancelLoading()
+    player.replaceCurrentItem(with: nil)
+    currentTrack = nil
+    internalPlaylist.removeAll()
+    internalPlaylistIndex = -1
+    pnItemType = .withoutPreviousAndNext
+    playlist.removeAll()
   }
   
   
   
   private func initInternalPlaylist(_ sid: Int) {
-    let repeatMode = RepeatMode.noRepeat
-    let shuffleMode = ShuffleMode.noShuffle
+    let repeatMode = Preferences.shared.repeatMode
+    let shuffleMode = Preferences.shared.shuffleMode
     internalPlaylist.removeAll()
     let idList = playlist.map {
       $0.id
@@ -451,33 +469,34 @@ class PlayCore: NSObject {
   func updateInternalPlaylist() {
     guard !fmMode else { return }
     guard playlist.count > 0 else {
-        Log.error("Nothing playable.")
-        internalPlaylistIndex = -1
-        currentTrack = nil
-        return
+      Log.error("Nothing playable.")
+      internalPlaylistIndex = -1
+      currentTrack = nil
+      return
     }
     
-    let repeatMode = RepeatMode.repeatPlayList
-    let shuffleMode = ShuffleMode.noShuffle
+    let repeatMode = Preferences.shared.repeatMode
+    let shuffleMode = Preferences.shared.shuffleMode
     
     let idList = playlist.map {
-        $0.id
+      $0.id
     }
     
     switch (repeatMode, shuffleMode) {
     case (.repeatPlayList, .noShuffle):
-        while internalPlaylist.count - internalPlaylistIndex < playingNextLimit {
-            internalPlaylist.append(contentsOf: idList)
-        }
+      //      while internalPlaylist.count - internalPlaylistIndex < playingNextLimit { // 这里为什么要循环？
+//        internalPlaylist.append(contentsOf: idList)
+//      }
+      break
     case (.repeatPlayList, .shuffleItems):
-        while internalPlaylist.count - internalPlaylistIndex < playingNextLimit {
-            let list = idList + idList
-            internalPlaylist.append(contentsOf: list.shuffled())
-        }
+      while internalPlaylist.count - internalPlaylistIndex < playingNextLimit {
+        let list = idList + idList
+        internalPlaylist.append(contentsOf: list.shuffled())
+      }
     case (.repeatPlayList, .shuffleAlbums):
-        break
+      break
     default:
-        break
+      break
     }
   }
   

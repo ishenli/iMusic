@@ -19,9 +19,9 @@ class SearchViewModel: ObservableObject {
   static let Shared: SearchViewModel = SearchViewModel()
   
   private var keyword: String = ""
-  @Published var searchType: SearchType = SearchType.songs
   private var page: Int = 0
-  
+
+  @Published var searchType: SearchType = SearchType.songs
   @Published var isLoading = true
   @Published var searchSongList = [Track]()
   @Published var searchPlayList = [SearchPlayList]()
@@ -43,25 +43,29 @@ class SearchViewModel: ObservableObject {
   
   init() {
     initObservers()
+    initCurrent()
   }
   
   func initObservers() {
     
     currentTrackObserver = PlayCore.shared.observe(\.currentTrack, options: [.new, .initial]) { (pc, _) in
-      
-      self.searchSongList.filter {
-        $0.isCurrentTrack
-      }.forEach {
-        $0.isCurrentTrack = false
-      }
-      
-      guard let c = pc.currentTrack else { return }
-      self.searchSongList.first {
-        $0.id == c.id
-      }?.isCurrentTrack = true
+      self.initCurrent()
     }
   }
   
+  
+  func initCurrent() {
+    self.searchSongList.filter {
+      $0.isCurrentTrack
+    }.forEach {
+      $0.isCurrentTrack = false
+    }
+    
+    guard let c = PlayCore.shared.currentTrack else { return }
+    self.searchSongList.first {
+      $0.id == c.id
+    }?.isCurrentTrack = true
+  }
   
   
   
@@ -137,6 +141,7 @@ class SearchViewModel: ObservableObject {
     if data?.songs != nil {
       data!.songs.initIndexes()
       self.searchSongList = data?.songs ?? []
+      initCurrent()
     }
   }
 }

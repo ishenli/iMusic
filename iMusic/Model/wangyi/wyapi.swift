@@ -96,12 +96,13 @@ class NetEaseMusic : AbstractMusicPlatform {
     _ resultType: T.Type,
     shouldDeSerial: Bool = false) async throws -> T {
       
+      var data: Data = Data()
       do {
         let p = try channel.serialData(params, url: url)
         let dataTask = nmSession.request(url, method: .post, parameters: ["params": p]).serializingData()
         let re = await dataTask.response
         
-        guard var data = re.data else {
+        guard re.data != nil else {
           Log.error(RequestError.noData)
           throw RequestError.noData
         }
@@ -121,6 +122,7 @@ class NetEaseMusic : AbstractMusicPlatform {
         throw RequestError.error(error)
       } catch let error {
         Log.error(error)
+        Log.error(data)
         throw RequestError.error(error)
       }
     }
@@ -164,9 +166,10 @@ class NetEaseMusic : AbstractMusicPlatform {
         Rank.init(name: $0.name, imageUrl: $0.picUrl.absoluteString, id: $0.id, theme: 0)
       }
     } catch {
-      print("Fetching fetchRecommend failed with error \(error)")
+//      print("Fetching fetchRecommend failed with error \(error)")
+      return rankList
     }
-    return rankList
+    
   }
   
   func fetchPlayList(_ id: Int) async -> Playlist? {
@@ -274,9 +277,9 @@ class NetEaseMusic : AbstractMusicPlatform {
       
       return data
     } catch {
-      print("Fetching songUrl failed with error \(error)")
+      return []
     }
-    return []
+    
   }
   
   

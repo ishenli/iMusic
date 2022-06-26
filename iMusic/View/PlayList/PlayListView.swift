@@ -11,10 +11,12 @@ struct PlayListView: View {
   @StateObject var vm = PlayListViewModel.Shared
   
   var id: Int
-  
   var body: some View {
     ZStack {
       VStack(spacing: 0) {
+        HStack {
+          Spacer()
+        }
         if vm.isLoading {
           ProgressView()
             .frame(width: 400, height: 400)
@@ -22,7 +24,8 @@ struct PlayListView: View {
           PlayListHeaderView().environmentObject(vm)
           PlayListTableView().environmentObject(vm)
         }
-      }.frame(minWidth: 600, minHeight: 560).background(.white)
+        Spacer()
+      }.frame(minHeight: 560).background(.white)
       .task {
         await vm.fetch(id: id)
       }

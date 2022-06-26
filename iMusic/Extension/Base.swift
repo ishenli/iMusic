@@ -20,17 +20,15 @@ class DurationTransformer: ValueTransformer {
 
 extension Double {
   func durationFormatter() -> String {
+    if (self.isNaN) {
+      return "00:00"
+    }
     let formatter = DateComponentsFormatter()
     formatter.unitsStyle = .positional
     formatter.allowedUnits = [.minute, .second]
     formatter.zeroFormattingBehavior = .pad
-    do {
-      return formatter.string(from: TimeInterval(self)) ?? "00:00"
-    } catch {
-      Log.error("durationFormatter error with \(error) \(self)")
-      return "00:00"
-    }
-    
+
+    return formatter.string(from: TimeInterval(self)) ?? "00:00"
   }
   
   

@@ -4,7 +4,7 @@ import SwiftUI
 struct PlayListTableView: View {
   @EnvironmentObject var vm : PlayListViewModel
   var body: some View {
-    PlayTable(tracks: vm.tracks).padding(.horizontal, 20)
+    PlaySongTable(tracks: vm.tracks).padding(.horizontal, 20)
   }
 }
 

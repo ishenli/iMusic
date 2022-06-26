@@ -68,7 +68,7 @@ struct RankPanelView: View {
         Spacer()
       }
       .padding(40)
-      .frame( minWidth: 500,
+      .frame(minWidth: 500,
               minHeight: 600)
     }
   }

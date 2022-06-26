@@ -39,32 +39,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "D7CF38C4-494F-4289-BF22-D619E0A3F773"
+            uuid = "3303CC7D-AA5B-488E-BA14-58A6BA329F86"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iMusic/View/ControlBar/ControlBarVM.swift"
+            filePath = "iMusic/Lib/PlayCore.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "init()"
+            startingLineNumber = "262"
+            endingLineNumber = "262"
+            landmarkName = "play(_:time:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "754F2E67-1943-4090-BB2A-830F51356EBC"
-            shouldBeEnabled = "Yes"
+            uuid = "DC2CC2C7-1F3D-4435-A449-704769FD86C9"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "iMusic/Extension/Base.swift"
+            filePath = "iMusic/Lib/PlayCore.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
-            landmarkName = "durationFormatter()"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
+            landmarkName = "nextSong()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

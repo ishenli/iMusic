@@ -8,7 +8,7 @@
 import SwiftUI
 import Tabler
 
-struct PlayTable: View {
+struct PlaySongTable: View {
   @State var hoverSelectTableRow: Int?
   @StateObject var vm = SidePlayListViewModel.Shared
   

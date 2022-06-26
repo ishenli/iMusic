@@ -6,14 +6,13 @@
 //
 
 import SwiftUI
-
+import ToastUI
 
 struct HomeView: View {
   @State private var selection: CategoryKey? = CategoryKey.Rank
-  
+
   var body: some View {
     StackNavigationView(selection: $selection) {
-//    NavigationView {
       SideNav(
         selection: $selection
       )
@@ -40,6 +39,9 @@ struct MyTextFieldStyle: TextFieldStyle {
 struct MainView: View {
   var currentOption: CategoryKey;
   @Environment(\.StackNavigationPush) var StackNavigationPush
+  
+  @State private var presentingToast: Bool = false
+  
   var body: some View {
     ZStack {
       VStack {
@@ -54,14 +56,19 @@ struct MainView: View {
           })
           
         case CategoryKey.PlaySetting:
-          Text("设置-2")
+          Text("toat-\(String(AppViewModel.Shared.globalToastShow))")
+          Button("Tap me") {
+            AppViewModel.Shared.showToast(content: "haha")
+          }
+          
         case CategoryKey.PersonInfo:
           Pagination()
         default:
           Text("控制面板-默认兜底")
         }
-//      }.frame(minWidth: 600, minHeight: 560).background(.white)
-      }.frame(minHeight: 560).background(.white)
+        //      }.frame(minWidth: 600, minHeight: 560).background(.white)
+      }
+      .frame(minHeight: 560).background(.white)
       SidePlayList()
     }
   }

@@ -34,6 +34,10 @@ extension Color {
     )
   }
   
+  static var black1: Color {
+    return Color.init(hex: "000000")
+  }
+  
   static var gray1: Color {
     return Color.init(hex: "666666")
   }
@@ -46,7 +50,21 @@ extension Color {
     return Color.init(hex: "BBBBBB")
   }
   
+  
+  // 这个颜色来着 ant.design 的容器
   static var blue1: Color {
     return Color.init(hex: "7F9ABE")
+  }
+  
+  static var blue2: Color {
+    return Color.init(hex: "E6F7FF") // 容器
+  }
+  
+  static var blue3: Color {
+    return Color.init(hex: "91D5FF") // 边框
+  }
+  
+  static var blue6: Color {
+    return Color.init(hex: "1890FF") // 按钮
   }
 }

@@ -10,7 +10,17 @@ import Tabler
 
 struct SidePlayList: View {
   @StateObject var vm = SidePlayListViewModel.Shared
+  @StateObject var vm2: AppViewModel = AppViewModel.Shared
   var body: some View {
+//    // notice
+//    Text("").toast(isPresented: $vm2.globalToastShow, dismissAfter: 2.0) {
+//      print("Toast globalShowToast")
+//    } content: {
+//      VStack {
+//        MessageView(text: vm2.globalToastText)
+//      }
+//    }.toastDimmedBackground(false)
+
     if vm.isVisible {
       HStack(alignment: .bottom, spacing: 0) {
         Spacer()
