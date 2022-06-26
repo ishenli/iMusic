@@ -17,67 +17,74 @@ struct ServerError: Decodable, Error {
 }
 
 
-struct Playlist: Decodable {
+struct WYPlaylist: Decodable {
   let subscribed: Bool
   let coverImgUrl: URL
   let playCount: Int
-  let name: String
+  var name: String
   let trackCount: Int
   let description: String?
   let tags: [String]?
   let id: Int
-  var tracks: [Track]
+  var tracks: [WYTrack]
   let trackIds: [TrackId]?
   let creator: Creator?
   let createTime: Int
   var createTimeStr: String?
   
-  struct TrackId: Decodable {
-    let id: Int
-    let v: Int
+  func toPlaylist(p1: WYPlaylist) -> Playlist {
+    let tracks = p1.tracks.map({ WYTrack in
+      return WYTrack.toTrack()
+    })
     
-  }
-  
-  struct Creator: Decodable {
-    let nickname: String
-    let userId: Int
-    let avatarUrl: URL
+    return Playlist(subscribed: p1.subscribed, coverImgUrl: p1.coverImgUrl, playCount: p1.playCount, name: p1.name, trackCount: p1.trackCount, description: p1.description, tags: p1.tags, id: p1.id, tracks:tracks,
+                    trackIds: p1.trackIds ?? [], creator: p1.creator, createTime: p1.createTime)
   }
 }
 
-class Track: NSObject, Decodable, Identifiable {
-  let name: String
-  let secondName: String
-  let id: Int
-  let artists: [Artist]
-  let album: Album
-  let duration: Int
-  let durationStr: String
+class WYTrack: NSObject, Decodable, Identifiable, TrackProtocol {
+  var platform: MusicPlatformEnum
+  
+  
+  typealias ArtistType = Artist
+  typealias AlbumType = Album
+  
+  var id: Int
+  
+  var album: Album
+  
+  var duration: Int
+  
+  var durationStr: String
+  
+  var artists: [Artist]
+  
+  var name: String
+  
   var song: Song?
   
   let pop: Int
   
   var index = -1
   
-  lazy var artistsString: String = {
-      return artists.artistsString()
-  }()
-  
+  //  lazy var artistsString: String = {
+  //      return artists.artistsString()
+  //  }()
+  //
   // privileges - st
   // playable st == 0
-  var playable: Bool {
+  var playable: Bool{
     get {
       if let p = privilege {
         return p.status == .playable
-      } else {
-        return false
       }
+      return true
     }
   }
   
   var privilege: Privilege?
   
-//  var from: (type: SidebarViewController.ItemType, id: Int, name: String?) = (.none, 0, nil)
+  //  var from: (type: SidebarViewController.ItemType, id: Int, name: String?) = (.none, 0, nil)
   
   dynamic var isCurrentTrack = false
   dynamic var isPlaying = false
@@ -124,13 +131,17 @@ class Track: NSObject, Decodable, Identifiable {
     }
   }
   
-  class Album: NSObject, Decodable {
-    let name: String
-    let id: Int
+  class Album: NSObject, Decodable, AlbumProtocol {
+    var index: Int?
+    
+    typealias ArtistType = Artist
+    
+    var name: String
+    var id: Int
     var picUrl: URL?
     let des: String?
     let publishTime: Int
-    let artists: [Artist]?
+    var artists: [Artist]?
     let size: Int
     
     func formattedTime() -> String {
@@ -155,20 +166,25 @@ class Track: NSObject, Decodable, Identifiable {
       
       self.des = try container.decodeIfPresent(String.self, forKey: .des)
       self.publishTime = try container.decodeIfPresent(Int.self, forKey: .publishTime) ?? 0
-      self.artists = try container.decodeIfPresent([Artist].self, forKey: .artists)
+      self.artists = try container.decodeIfPresent([Artist].self, forKey: .artists) ?? []
       self.size = try container.decodeIfPresent(Int.self, forKey: .size) ?? 0
+      self.index = -1
     }
   }
   
-
-  class Artist: NSObject, Decodable {
-    let name: String
-    let id: Int
-    var picUrl: String?  // 640 x 520
-    let musicSize: Int?
-    let albumSize: Int?
-    let alias: [String]?
-    let followed: Bool?
+  
+  class Artist: NSObject, Decodable, ArtistProtocol {
+    var name: String
+    var id: Int
+    
+    var musicSize: Int?
+    
+    var albumSize: Int?
+    
+    var alias: [String]?
+    
+    var followed: Bool?
+    var picUrl: String?
   }
   
   enum CodingKeys: String, CodingKey {
@@ -182,38 +198,33 @@ class Track: NSObject, Decodable, Identifiable {
   required init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     let sortContainer = try decoder.container(keyedBy: SortCodingKeys.self)
-    let fullName = try container.decode(String.self, forKey: .name)
-    if fullName.contains("("), fullName.last == ")" {
-      name = fullName.subString(to: "1")
-      secondName = "(" + fullName.subString(from: "1", to: ")") + ")"
-    } else {
-      name = fullName
-      secondName = ""
-    }
-    self.id = try container.decode(Int.self, forKey: .id)
     
+    self.name = try container.decode(String.self, forKey: .name)
+    self.id = try container.decode(Int.self, forKey: .id)
     self.pop = try container.decodeIfPresent(Int.self, forKey: .pop) ?? 0
     self.privilege = try container.decodeIfPresent(Privilege.self, forKey: .privilege)
     
     self.artists = try container.decodeIfPresent([Artist].self, forKey: .artists) ?? sortContainer.decode([Artist].self, forKey: .artists)
     self.album = try container.decodeIfPresent(Album.self, forKey: .album) ?? sortContainer.decode(Album.self, forKey: .album)
     self.duration = try container.decodeIfPresent(Int.self, forKey: .duration) ?? sortContainer.decode(Int.self, forKey: .duration)
-    self.durationStr = Double(self.duration).duration2Date() 
+    self.durationStr = Double(self.duration).duration2Date()
+    self.platform = .netease
   }
+  
+  
 }
 
-extension Array where Element: Track {
-  func initIndexes() -> [Track] {
-    let tracks = self
-    tracks.enumerated().forEach {
-      tracks[$0.offset].index = $0.offset
+extension WYTrack {
+  func toTrack() -> Track {
+    let artists = self.artists.map { a in
+      Track.ArtistType(name: a.name, id: a.id, picUrl: a.picUrl ?? "")
     }
-    return tracks
+    let album = Track.AlbumType(name: self.album.name, id: self.album.id, picUrl: self.album.picUrl!, publishTime: self.album.publishTime, artists: artists, size: self.album.size)
+    return Track(name: self.name, id: self.id, platform: .netease, artists: artists, album: album, duration: self.duration)
   }
 }
 
-
-class Song: NSObject, Decodable {
+class WYSong: NSObject, Decodable {
   let id: Int
   let url: URL
   // 320kbp  =>  320,000
@@ -261,7 +272,7 @@ struct RecommendResource: Decodable {
 
 struct RecommendSongs: Decodable {
   let code: Int
-  let recommend: [Track]
+  let recommend: [WYTrack]
 }
 
 struct LyricResult: Decodable {
@@ -324,33 +335,33 @@ struct SearchSuggest: Decodable {
 
 
 struct AlbumResult: Decodable {
-  let songs: [Track]
+  let songs: [WYTrack]
   let code: Int
-  let album: Track.Album
+  let album: WYTrack.Album
 }
 
 struct ArtistAlbumsResult: Decodable {
   let code: Int
-  let artist: Track.Artist
-  let hotAlbums: [Track.Album]
+  let artist: WYTrack.Artist
+  let hotAlbums: [WYTrack.Album]
 }
 
 
 struct ArtistResult: Decodable {
   let code: Int
-  let artist: Track.Artist
-  let hotSongs: [Track]
+  let artist: WYTrack.Artist
+  let hotSongs: [WYTrack]
 }
 
 struct SearchResult: Decodable {
   let code: Int
   let result: Result
   
-  class Result: NSObject, Decodable {
-    let songs: [Track]
-    let albums: [Track.Album]
-    let artists: [Track.Artist]
-    let playlists: [Playlist]
+  class Result: Decodable, SearchResultProtocol {
+    var songs: [WYTrack]
+    let albums: [WYTrack.Album]
+    let artists: [WYTrack.Artist]
+    let playlists: [WYPlaylist]
     
     let songCount: Int
     let albumCount: Int
@@ -363,15 +374,22 @@ struct SearchResult: Decodable {
     
     required init(from decoder: Decoder) throws {
       let container = try decoder.container(keyedBy: CodingKeys.self)
-      songs = try container.decodeIfPresent([Track].self, forKey: .songs) ?? []
-      albums = try container.decodeIfPresent([Track.Album].self, forKey: .albums) ?? []
-      artists = try container.decodeIfPresent([Track.Artist].self, forKey: .artists) ?? []
-      playlists = try container.decodeIfPresent([Playlist].self, forKey: .playlists) ?? []
+      songs = try container.decodeIfPresent([WYTrack].self, forKey: .songs) ?? []
+      albums = try container.decodeIfPresent([WYTrack.Album].self, forKey: .albums) ?? []
+      artists = try container.decodeIfPresent([WYTrack.Artist].self, forKey: .artists) ?? []
+      playlists = try container.decodeIfPresent([WYPlaylist].self, forKey: .playlists) ?? []
       
       songCount = try container.decodeIfPresent(Int.self, forKey: .songCount) ?? 0
       albumCount = try container.decodeIfPresent(Int.self, forKey: .albumCount) ?? 0
       artistCount = try container.decodeIfPresent(Int.self, forKey: .artistCount) ?? 0
       playlistCount = try container.decodeIfPresent(Int.self, forKey: .playlistCount) ?? 0
+    }
+    
+    func toViewModel() -> PlatformSearchResult {
+      let songs = self.songs.map { WYTrack in
+        return WYTrack.toTrack()
+      }
+      return PlatformSearchResult(songs: songs)
     }
   }
 }
@@ -382,11 +400,3 @@ struct NUserProfile: Decodable {
   let avatarUrl: String
 }
 
-
-extension Array where Element: Track.Artist {
-    func artistsString() -> String {
-        return self.map {
-            $0.name
-            }.joined(separator: " / ")
-    }
-}

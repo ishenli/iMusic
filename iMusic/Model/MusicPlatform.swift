@@ -7,24 +7,41 @@
 
 import Foundation
 
-protocol AbstractMusicPlatform {
-  func fetchRecommend() async -> [Rank]
-  func fetchPlayList(_ id: Int) async -> Playlist?
-//  func fetchSong()
-  func search(_ keywords: String,
-              limit: Int,
-              page: Int,
-              type: SearchResultType) async -> SearchResult.Result?
+
+
+struct PlatformSearchResult: SearchResultProtocol {
+  var songs: [Track]
 }
 
-enum SearchResultType: Int {
-    case none, songs, albums, artists, playlists
+struct PlatformSearchPlayListResult {
+  var playList: [SearchPlayList]
+}
+
+protocol AbstractMusicPlatform {
+  func fetchRecommend() async -> [Rank]
+  
+  func fetchPlayList(_ id: Int) async -> Playlist?
+  
+  func search(keywords: String,
+              page: Int,
+              type: SearchType) async -> PlatformSearchResult?
+  
+  func songUrl(_ ids: [Int]) async -> [Song]
+  
+  
+  func searchPlayList(keywords: String, page: Int) async -> PlatformSearchPlayListResult?
+}
+
+
+enum SearchType: Int {
+  case none, songs, albums, artists, playlists
 }
 
 enum MusicPlatformEnum {
   case netease
   case kugou
   case qq
+  case kuwo
   case unknown
 }
 
@@ -38,7 +55,7 @@ struct MusicPlatformMeta {
 
 let MusicPlatformList: [MusicPlatformMeta]  = [
   .init(name: MusicPlatformEnum.netease, title: "网易", searchable: true, supportLogin: true, id: 1),
-  .init(name: MusicPlatformEnum.kugou, title: "酷狗", searchable: true, supportLogin: true, id: 2),
+  .init(name: MusicPlatformEnum.kuwo, title: "酷我", searchable: true, supportLogin: true, id: 2),
   .init(name: MusicPlatformEnum.qq, title: "QQ", searchable: true, supportLogin: true, id: 3),
 ]
 
@@ -51,19 +68,48 @@ func getPlatformById(id: Int) -> MusicPlatformMeta {
   }
 }
 
-func getPlatformInstance(id: Int) -> AbstractMusicPlatform {
-  let matchPlatform = getPlatformById(id: id)
-  switch matchPlatform.name {
-    case MusicPlatformEnum.netease:
+func getPlatformByName(name: MusicPlatformEnum) -> AbstractMusicPlatform {
+  switch name {
+  case MusicPlatformEnum.netease:
     return NetEaseMusic()
   case .kugou:
     print("kugou")
     return NetEaseMusic()
   case .qq:
     print("qq")
-    return NetEaseMusic()
+    return QQMusic()
   case .unknown:
     print("unknown")
     return NetEaseMusic()
+  case .kuwo:
+    print("kuwo")
+    return KWMusic()
   }
 }
+
+func getPlatformInstance(id: Int) -> AbstractMusicPlatform {
+  let matchPlatform = getPlatformById(id: id)
+  return getPlatformByName(name: matchPlatform.name)
+}
+
+
+class MusicPlatform {
+  func getSongsDetail(_ songs: [Track]) async -> [Song] {
+    var rt:[Song] = []
+    await songs.concurrentMap{ track in
+      let song = await self.getSongDetail(track)
+      rt.append(contentsOf: song)
+    }
+
+    return rt
+  }
+  
+  
+  func getSongDetail(_ song: Track) async -> [Song] {
+    let platform = getPlatformByName(name: song.platform)
+    
+    let songs = await platform.songUrl([song.id])
+    return songs
+  }
+}
+

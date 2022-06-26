@@ -78,7 +78,7 @@ struct SidePlayListTableView: View {
   }
   
   var body: some View {
-    TablerList(.init(tablePadding: EdgeInsets(top: 0, leading: -20, bottom: 0, trailing: 0)), row: row,
+    TablerList(.init(tablePadding: EdgeInsets(top: 0, leading: -20, bottom: 0, trailing: -20)), row: row,
                rowBackground: rowBackground,
                results: vm.playlist).clipped()
   }

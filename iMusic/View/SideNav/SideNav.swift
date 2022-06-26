@@ -107,7 +107,7 @@ struct CategoryView : View {
 
 
 struct UserSearchView: View {
-  @State private var username: String = ""
+  @State private var username: String = "周杰伦"
   @FocusState private var emailFieldIsFocused: Bool
   @Environment(\.StackNavigationPush) var StackNavigationPush
   

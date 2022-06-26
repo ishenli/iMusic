@@ -56,3 +56,74 @@ extension Encodable {
         return str
     }
 }
+
+
+extension Date {
+   /// 获取当前 秒级 时间戳 - 10位
+   var timeStamp : String {
+       let timeInterval: TimeInterval = self.timeIntervalSince1970
+       let timeStamp = Int(timeInterval)
+       return "\(timeStamp)"
+   }
+
+   /// 获取当前 毫秒级 时间戳 - 13位
+   var milliStamp : String {
+       let timeInterval: TimeInterval = self.timeIntervalSince1970
+       let millisecond = CLongLong(round(timeInterval*1000))
+       return "\(millisecond)"
+   }
+}
+
+
+extension String {
+  func subString(from startString: String, to endString: String) -> String {
+    var str = self
+    if let startIndex = self.range(of: startString)?.upperBound {
+      str.removeSubrange(str.startIndex ..< startIndex)
+      if let endIndex = str.range(of: endString)?.lowerBound {
+        str.removeSubrange(endIndex ..< str.endIndex)
+        return str
+      }
+    }
+    return ""
+  }
+  
+  func subString(from startString: String) -> String {
+    var str = self
+    if let startIndex = self.range(of: startString)?.upperBound {
+      str.removeSubrange(self.startIndex ..< startIndex)
+      return str
+    }
+    return ""
+  }
+  
+  func subString(to endString: String) -> String {
+    var str = self
+    if let endIndex = self.range(of: endString)?.lowerBound {
+      str.removeSubrange(endIndex ..< str.endIndex)
+      return str
+    }
+    return ""
+  }
+}
+
+
+extension String {
+    var https: String {
+        get {
+            if starts(with: "http://") {
+                return replacingOccurrences(of: "http://", with: "https://")
+            } else {
+                return self
+            }
+        }
+    }
+}
+
+extension URL {
+    var https: URL? {
+        get {
+            return URL(string: absoluteString.https)
+        }
+    }
+}

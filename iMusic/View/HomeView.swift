@@ -56,7 +56,7 @@ struct MainView: View {
         case CategoryKey.PlaySetting:
           Text("设置-2")
         case CategoryKey.PersonInfo:
-          Text("个人信息-2")
+          Pagination()
         default:
           Text("控制面板-默认兜底")
         }

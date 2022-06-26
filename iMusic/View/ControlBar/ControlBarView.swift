@@ -44,7 +44,7 @@ struct ControlBar: View {
             }
           }
           Spacer()
-        }.padding(.leading, 10).frame(width: 300)
+        }.padding(.leading, 10).frame(width: 350)
         Spacer()
         HStack(alignment: .center) {
           Group {

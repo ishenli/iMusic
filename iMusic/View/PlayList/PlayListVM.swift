@@ -85,8 +85,4 @@ class PlayListViewModel: ObservableObject {
     let tracks = all ? tracks:  [];
     PlayCore.shared.start(tracks)
   }
-  
-  func playOneSong(_ track: Track) -> Void {
-    
-  }
 }

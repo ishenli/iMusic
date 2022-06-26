@@ -9,16 +9,6 @@ import Foundation
 import Alamofire
 
 
-//
-//final class Rank {
-//  let title: String
-//  var isChecked: Bool
-//  init(title: String, isChecked: Bool) {
-//    self.title = title
-//    self.isChecked = isChecked
-//  }
-//}
-
 struct Rank : Hashable, Identifiable, Codable {
   let name, imageUrl: String
   let id, theme: Int
@@ -28,7 +18,6 @@ struct TabItems: Hashable, Identifiable {
   let tabName: String
   let id: Int
 }
-
 
 //MusicPlatformConfig[MusicPlatform.netease]!.title,
 //MusicPlatformConfig[MusicPlatform.kugou]!.title,

@@ -31,25 +31,30 @@ class SidePlayListViewModel: ObservableObject {
     
     // Playlist
     playlistObserver = PlayCore.shared.observe(\.playlist, options: [.initial, .new]) { [weak self] core, _ in
-        self?.playlist = core.playlist
+      self?.playlist = core.playlist
     }
     
     currentTrackObserver = PlayCore.shared.observe(\.currentTrack, options: [.new, .initial]) { (pc, _) in
-        
-        self.playlist.filter {
-            $0.isCurrentTrack
-        }.forEach {
-            $0.isCurrentTrack = false
-        }
-        
-        guard let c = pc.currentTrack else { return }
-        self.playlist.first {
-              $0.id == c.id
-            }?.isCurrentTrack = true
+      
+      self.playlist.filter {
+        $0.isCurrentTrack
+      }.forEach {
+        $0.isCurrentTrack = false
+      }
+      
+      guard let c = pc.currentTrack else { return }
+      self.playlist.first {
+        $0.id == c.id
+      }?.isCurrentTrack = true
     }
   }
   
   func empty() {
     PlayCore.shared.playlist.removeAll()
+  }
+  
+  
+  func playOneSong(_ track: Track) -> Void {
+    PlayCore.shared.start([track], id: track.id)
   }
 }

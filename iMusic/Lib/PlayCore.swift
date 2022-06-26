@@ -39,7 +39,7 @@ enum ShuffleMode: Int {
 class PlayCore: NSObject {
   static let shared = PlayCore();
   
-  let api = NetEaseMusic()
+  let api = MusicPlatform()
   
   private let playerQueue = DispatchQueue(label: "com.xjbeta.NeteaseMusic.AVPlayerItem")
   
@@ -307,12 +307,18 @@ class PlayCore: NSObject {
     
     // 每次保留4首歌曲
     var ids = [track.id]
+    var tracks = [track]
+
     if list.count >= 4 {
       let l = list[0..<4].map { $0.id }
+      let t = list[0..<4].map { $0 }
       ids.append(contentsOf: l)
+      tracks.append(contentsOf: t)
     } else {
       let l = list.map { $0.id }
+      let t = list.map { $0 }
       ids.append(contentsOf: l)
+      tracks.append(contentsOf: t)
     }
     
     ids = Array(Set(ids))
@@ -323,7 +329,7 @@ class PlayCore: NSObject {
       var preloadUrls = [URL]()
       
       
-      let res = await api.songUrl(ids, 9990000);
+      let res = await api.getSongsDetail(tracks);
       
       
       res.forEach { song in

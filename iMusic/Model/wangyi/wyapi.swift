@@ -30,6 +30,12 @@ enum RequestError: Error {
 }
 
 class NetEaseMusic : AbstractMusicPlatform {
+  func searchPlayList(keywords: String, page: Int) async -> PlatformSearchPlayListResult? {
+    return nil
+  }
+  
+  
+  
   let nmDeviceId: String
   let nmAppver: String
   let channel: NMChannel
@@ -119,6 +125,33 @@ class NetEaseMusic : AbstractMusicPlatform {
       }
     }
   
+  func apiRequest<T: Decodable>(
+    _ url: String,
+    _ params: [String: Any],
+    _ resultType: T.Type) async throws -> T {
+      
+      do {
+
+        let dataTask = nmSession.request(url, method: .post, parameters: params).serializingData()
+        let re = await dataTask.response
+        
+        guard var data = re.data else {
+          Log.error(RequestError.noData)
+          throw RequestError.noData
+        }
+        data = re.data!
+        
+        return try JSONDecoder().decode(resultType.self, from: data)
+        
+      } catch let error where error is ServerError {
+        Log.error(error)
+        throw RequestError.error(error)
+      } catch let error {
+        Log.error(error)
+        throw RequestError.error(error)
+      }
+    }
+  
   func fetchRecommend() async -> [Rank] {
     let rankList: [Rank] = [];
     do {
@@ -138,7 +171,7 @@ class NetEaseMusic : AbstractMusicPlatform {
   
   func fetchPlayList(_ id: Int) async -> Playlist? {
     struct Result: Decodable {
-      let playlist: Playlist
+      let playlist: WYPlaylist
       let privileges: [Track.Privilege]?
       let code: Int
     }
@@ -165,13 +198,17 @@ class NetEaseMusic : AbstractMusicPlatform {
       }
       
       
-      let rt:[[Track]] = await list.concurrentMap{ ids in
+      let rt:[[WYTrack]] = await list.concurrentMap{ ids in
         let tracker = await self.songDetail(ids);
         return tracker
       }
       
-      let tracks = rt.flatMap { $0 }
-      var pl = playlist
+      let tracks = rt.flatMap {
+        return $0.map { t in
+          t.toTrack()
+        }
+      }
+      var pl = playlist.toPlaylist(p1: playlist)
       pl.tracks = tracks
       return pl
     } catch {
@@ -180,16 +217,12 @@ class NetEaseMusic : AbstractMusicPlatform {
     }
   }
   
-  func songDetail(_ ids: [Int]) async -> [Track] {
+  func songDetail(_ ids: [Int]) async -> [WYTrack] {
     struct Result: Decodable {
-      let songs: [Track]
+      let songs: [WYTrack]
       let code: Int
-      let privileges: [Track.Privilege]
+      let privileges: [WYTrack.Privilege]
     }
-    
-    //    // 加载song.json的数据
-    //    let res: Result = load("wangyi/song.json");
-    
     
     let c = "[" + ids.map({ "{\"id\":\"\($0)\", \"v\":\"\(0)\"}" }).joined(separator: ",") + "]"
     
@@ -216,19 +249,18 @@ class NetEaseMusic : AbstractMusicPlatform {
   }
   
   
-  func songUrl(_ ids: [Int], _ br: Int) async -> [Song]  {
+  func songUrl(_ ids: [Int]) async -> [Song]  {
     struct Result: Decodable {
-      let data: [Song]
+      let data: [WYSong]
       let code: Int
     }
     
     let p: [String : Any] = [
       "ids": ids,
-      "br": br,
+      "br": 99999,
       "e_r": true
     ]
-    
-    
+
     
     do {
       let res = try await self.eapiRequest(
@@ -236,26 +268,24 @@ class NetEaseMusic : AbstractMusicPlatform {
         p,
         Result.self,
         shouldDeSerial: true)
+      let data = res.data.map { WYSong in
+        return Song(id: WYSong.id, url: WYSong.url, platform: .netease)
+      }
       
-      return res.data
+      return data
     } catch {
       print("Fetching songUrl failed with error \(error)")
     }
     return []
   }
-
   
   
-  
-  // 根据关键词进行搜索
-  func search(_ keywords: String,
-              limit: Int,
-              page: Int,
-              type: SearchResultType) async -> SearchResult.Result? {
+  func search(keywords: String, page: Int, type: SearchType) async -> PlatformSearchResult? {
+  // 参考listen1的接口实现
     var p: [String: Any] = [
       "s": keywords,
-      "limit": limit,
-      "offset": page * limit,
+      "limit": 20,
+      "offset": page * 20,
       "total": true
     ]
     
@@ -266,7 +296,7 @@ class NetEaseMusic : AbstractMusicPlatform {
     switch type {
     case .songs:
       p["type"] = 1
-      u = "https://music.163.com/eapi/cloudsearch/pc"
+      u = "https://music.163.com/api/search/pc"
     case .albums:
       p["type"] = 10
     case .artists:
@@ -278,14 +308,10 @@ class NetEaseMusic : AbstractMusicPlatform {
     }
     
     do {
-      let res = try await self.eapiRequest(u,p,SearchResult.self);
-//      res.result.songs.forEach {
-////        $0.from = (.searchResults, 0, "Search Result")
-//      }
-      
-      return res.result
+      let res = try await self.apiRequest(u,p,SearchResult.self);
+      return res.result.toViewModel()
     } catch {
-      print("Fetching songUrl failed with error \(error)")
+      print("Fetching search failed with error \(error)")
       return nil
     }
   }

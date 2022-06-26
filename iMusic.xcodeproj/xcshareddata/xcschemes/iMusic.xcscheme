@@ -32,9 +32,39 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C7DE7A7128598EE8004D6AF7"
+               BuildableName = "iMusicTests.xctest"
+               BlueprintName = "iMusicTests"
+               ReferencedContainer = "container:iMusic.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C7AFD6262866F9A30016C15C"
+               BuildableName = "testKWAPI_getToken.xctest"
+               BlueprintName = "testKWAPI_getToken"
+               ReferencedContainer = "container:iMusic.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
                BlueprintIdentifier = "C7727DF928559FF500ECB495"
                BuildableName = "GoTests.xctest"
                BlueprintName = "GoTests"
+               ReferencedContainer = "container:iMusic.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C7AFD6332866FF430016C15C"
+               BuildableName = "testKWAPI_search.xctest"
+               BlueprintName = "testKWAPI_search"
                ReferencedContainer = "container:iMusic.xcodeproj">
             </BuildableReference>
          </TestableReference>
