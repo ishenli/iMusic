@@ -74,9 +74,28 @@ struct DemoView: View {
   }
 }
 
+struct DemoToolBar: View {
+  var body: some View {
+    Text("Options")
+    .contextMenu {
+        Button {
+            print("Change country setting")
+        } label: {
+            Label("Choose Country", systemImage: "globe")
+        }
+
+        Button {
+            print("Enable geolocation")
+        } label: {
+            Label("Detect Location", systemImage: "location.circle")
+        }
+    }
+  }
+}
+
 struct Demo_Previews: PreviewProvider {
   static var previews: some View {
-    DemoView()
+    DemoToolBar()
   }
 }
 
@@ -84,13 +103,13 @@ struct Demo_Previews: PreviewProvider {
 
 struct PopoverDemoView: View {
   @State private var isVisible = false
-      var body: some View {
-          Button("Test") {
-              isVisible.toggle()
-          }
-          .background(NSPopoverHolderView(isVisible: $isVisible) {
-              Text("I'm in NSPopover")
-                  .padding()
-          })
-      }
+  var body: some View {
+    Button("Test") {
+      isVisible.toggle()
+    }
+    .background(NSPopoverHolderView(isVisible: $isVisible) {
+      Text("I'm in NSPopover")
+        .padding()
+    })
+  }
 }

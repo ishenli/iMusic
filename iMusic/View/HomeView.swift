@@ -62,7 +62,7 @@ struct MainView: View {
           }
           
         case CategoryKey.PersonInfo:
-          Pagination()
+          DemoToolBar()
         default:
           Text("控制面板-默认兜底")
         }

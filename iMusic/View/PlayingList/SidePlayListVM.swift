@@ -55,6 +55,14 @@ class SidePlayListViewModel: ObservableObject {
   
   
   func playOneSong(_ track: Track) -> Void {
-    PlayCore.shared.start([track], id: track.id)
+    PlayCore.shared.playNow([track])
+  }
+  
+  func addToPlayList(_ tracks: [Track]) {
+    PlayCore.shared.addToPlayList(tracks)
+  }
+  
+  func removeSong(_ tracks: [Track]) {
+    PlayCore.shared.removeSong(ids: tracks.map{$0.id})
   }
 }

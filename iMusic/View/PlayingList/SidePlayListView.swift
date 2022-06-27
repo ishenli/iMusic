@@ -72,6 +72,11 @@ struct SidePlayListTableView: View {
       Group {
         HStack {
           Text(fruit.name).padding(.leading, 10)
+              .contextMenu {
+                Button("从列表中删除", action: {
+                  vm.removeSong([fruit])
+                })
+              }
           if fruit.isCurrentTrack {
             Image(systemName: "play.square").foregroundColor(.red)
           }

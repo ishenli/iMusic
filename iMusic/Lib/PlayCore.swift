@@ -139,9 +139,6 @@ class PlayCore: NSObject {
   @objc dynamic var timeControlStatus: AVPlayer.TimeControlStatus = .waitingToPlayAtSpecifiedRate
   
   
-  
-  
-  
   override init() {
     player = AVPlayer()
     super.init()
@@ -198,14 +195,18 @@ class PlayCore: NSObject {
     }
   }
   
-  
-  func playNow(_ tracks: [Track]) {
+  func addToPlayList(_ tracks: [Track]) {
     if let currentTrack = currentTrack,
        let i = playlist.enumerated().filter({ $0.element == currentTrack }).first?.offset {
       playlist.insert(contentsOf: tracks, at: i + 1)
     } else {
       playlist.append(contentsOf: tracks)
     }
+  }
+  
+  
+  func playNow(_ tracks: [Track]) {
+    addToPlayList(tracks)
     if let t = tracks.first {
       play(t)
     }
@@ -235,11 +236,13 @@ class PlayCore: NSObject {
     
     updateInternalPlaylist()
     
+    Log.info(internalPlaylist)
+    
     var nextSongIndex = internalPlaylistIndex + 1
     
-    if internalPlaylist.count == nextSongIndex { // 最后一首歌
-      stop()
-      return
+    if internalPlaylist.count == nextSongIndex { // 最后一首歌, 切到第一首
+      nextSongIndex = 0
+      internalPlaylistIndex = 0
     }
     
     let id = internalPlaylist[nextSongIndex]
@@ -313,9 +316,9 @@ class PlayCore: NSObject {
     var ids = [track.id]
     var tracks = [track]
     
-    if list.count >= 4 {
-      let l = list[0..<4].map { $0.id }
-      let t = list[0..<4].map { $0 }
+    if list.count >= 3 {
+      let l = list[0..<3].map { $0.id }
+      let t = list[0..<3].map { $0 }
       ids.append(contentsOf: l)
       tracks.append(contentsOf: t)
     } else {
@@ -336,7 +339,7 @@ class PlayCore: NSObject {
       let res = await api.getSongsDetail(tracks);
       
       if res.count == 0 {
-//        AppViewModel.Shared.showToast(content: "该歌曲没有版权，请切换其他渠道")
+        //        AppViewModel.Shared.showToast(content: "该歌曲没有版权，请切换其他渠道")
         toastMessage = "该歌曲没有版权，请切换其他渠道"
         return
       }
@@ -361,7 +364,7 @@ class PlayCore: NSObject {
     }
   }
   
-  
+  // 会清空现有的播放列表，适合点击某个列表播放
   func start(_ playlist: [Track],
              id: Int = -1,
              enterFMMode: Bool = false) {
@@ -466,7 +469,7 @@ class PlayCore: NSObject {
   }
   
   
-  func updateInternalPlaylist() {
+  private func updateInternalPlaylist() {
     guard !fmMode else { return }
     guard playlist.count > 0 else {
       Log.error("Nothing playable.")
@@ -480,15 +483,15 @@ class PlayCore: NSObject {
     
     let idList = playlist.map {
       $0.id
-    }
+    }.filter { !internalPlaylist.contains($0)} // internalPlaylist没有的歌曲id
     
     switch (repeatMode, shuffleMode) {
-    case (.repeatPlayList, .noShuffle):
-      //      while internalPlaylist.count - internalPlaylistIndex < playingNextLimit { // 这里为什么要循环？
-//        internalPlaylist.append(contentsOf: idList)
-//      }
+    case (.repeatPlayList, .noShuffle): // 列表循环和不随机播放
+      while internalPlaylist.count < playlist.count && internalPlaylist.count - internalPlaylistIndex < playingNextLimit { // 这里为什么要循环？
+        internalPlaylist.append(contentsOf: idList)
+      }
       break
-    case (.repeatPlayList, .shuffleItems):
+    case (.repeatPlayList, .shuffleItems): // 列表循环和随机播放
       while internalPlaylist.count - internalPlaylistIndex < playingNextLimit {
         let list = idList + idList
         internalPlaylist.append(contentsOf: list.shuffled())
@@ -500,4 +503,14 @@ class PlayCore: NSObject {
     }
   }
   
+  
+  // 播放列表中删除歌曲
+  func removeSong(ids: [Int]) {
+    playlist = playlist.filter {
+      !ids.contains($0.id)
+    }
+    internalPlaylist = internalPlaylist.filter{
+      !ids.contains($0)
+    }
+  }
 }

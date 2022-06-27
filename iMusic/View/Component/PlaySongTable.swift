@@ -46,9 +46,16 @@ struct PlaySongTable: View {
             Image(systemName: "play.square").foregroundColor(.red).padding([.leading], 5)
           }
         }
-        Text(fruit.name).onTapGesture {
-          vm.playOneSong(fruit)
+        HStack {
+          Text(fruit.name).onTapGesture {
+            vm.playOneSong(fruit)
+          }.contextMenu {
+            Button("下一首播放", action: {
+              vm.addToPlayList([fruit])
+            })
+          }
         }
+
         Text(fruit.artists[0].name).foregroundColor( Color.init(hex: "666666"))
         Text(fruit.album.name).foregroundColor( Color.init(hex: "666666"))
         Text(fruit.durationStr).foregroundColor( Color.init(hex: "BBBBBB"))
