@@ -137,7 +137,7 @@ class Album: AlbumProtocol {
   
   var id: Int
   
-  var publishTime: Int?
+  var publishTime: String?
   
   var size: Int?
   
@@ -147,7 +147,7 @@ class Album: AlbumProtocol {
   
   typealias ArtistType = Artist
   
-  init(name:String, id: Int, picUrl: URL?, publishTime: Int?, artists: [Artist], size: Int?) {
+  init(name:String, id: Int, picUrl: URL?, publishTime: String?, artists: [Artist], size: Int?) {
     self.name = name;
     self.id = id
     self.picUrl = picUrl ?? URL(string: "https://y.qq.com/music/photo_new/T002R300x300M000004MkHVG16Bto6_2.jpg?max_age=2592000")

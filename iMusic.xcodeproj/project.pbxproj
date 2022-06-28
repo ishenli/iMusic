@@ -171,6 +171,7 @@
 		C7AFD63F286754E10016C15C /* PlayListTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListTable.swift; sourceTree = "<group>"; };
 		C7AFD6442867F2010016C15C /* AppViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppViewModel.swift; sourceTree = "<group>"; };
 		C7AFD6462867FB600016C15C /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		C7AFD64A286AD7950016C15C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C7B826E82842517900222DF8 /* PlayCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCore.swift; sourceTree = "<group>"; };
 		C7D0B5A8284F48FC0040DFB7 /* PlayListTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayListTableView.swift; sourceTree = "<group>"; };
 		C7D0B5AA2850D4020040DFB7 /* PlayCoreMediaKeysExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayCoreMediaKeysExtension.swift; sourceTree = "<group>"; };
@@ -321,6 +322,7 @@
 		C745458C28392F39001A638D = {
 			isa = PBXGroup;
 			children = (
+				C7AFD64A286AD7950016C15C /* README.md */,
 				C79B2D632841D84500884423 /* Packages */,
 				C745459728392F39001A638D /* iMusic */,
 				C7DE7A7328598EE8004D6AF7 /* iMusicTests */,

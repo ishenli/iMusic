@@ -13,7 +13,7 @@ struct PlayListTableView_Previews: PreviewProvider {
   static let vm: PlayListViewModel = PlayListViewModel()
   static var previews: some View {
     PlayListTableView().environmentObject(vm).task {
-      await vm.fetch(id: 3136952023)
+      await vm.fetch(id: 3136952023, platform: .netease)
     }
   }
 }

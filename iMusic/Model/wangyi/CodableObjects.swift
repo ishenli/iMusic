@@ -37,9 +37,15 @@ struct WYPlaylist: Decodable {
       return WYTrack.toTrack()
     })
     
-    return Playlist(subscribed: p1.subscribed, coverImgUrl: p1.coverImgUrl, playCount: p1.playCount, name: p1.name, trackCount: p1.trackCount, description: p1.description, tags: p1.tags, id: p1.id, tracks:tracks,
+    return Playlist(coverImgUrl: p1.coverImgUrl, playCount: p1.playCount, name: p1.name, trackCount: p1.trackCount, description: p1.description, tags: p1.tags, id: p1.id, tracks:tracks,
                     trackIds: p1.trackIds ?? [], creator: p1.creator, createTime: p1.createTime)
   }
+}
+
+func WYFormattedTime(_ publishTime: Int) -> String {
+  let formatter = DateFormatter()
+  formatter.dateFormat = "yyyy-MM-dd"
+  return formatter.string(from: .init(timeIntervalSince1970: TimeInterval(publishTime / 1000)))
 }
 
 class WYTrack: NSObject, Decodable, Identifiable, TrackProtocol {
@@ -140,15 +146,11 @@ class WYTrack: NSObject, Decodable, Identifiable, TrackProtocol {
     var id: Int
     var picUrl: URL?
     let des: String?
-    let publishTime: Int
+    let publishTime: String
     var artists: [Artist]?
     let size: Int
     
-    func formattedTime() -> String {
-      let formatter = DateFormatter()
-      formatter.dateFormat = "yyyy-MM-dd"
-      return formatter.string(from: .init(timeIntervalSince1970: .init(publishTime / 1000)))
-    }
+
     
     enum CodingKeys: String, CodingKey {
       case name, id, picUrl, des = "description", publishTime, artists, size
@@ -165,7 +167,8 @@ class WYTrack: NSObject, Decodable, Identifiable, TrackProtocol {
       }
       
       self.des = try container.decodeIfPresent(String.self, forKey: .des)
-      self.publishTime = try container.decodeIfPresent(Int.self, forKey: .publishTime) ?? 0
+      let publishTime = try container.decodeIfPresent(Int.self, forKey: .publishTime) ?? 0
+      self.publishTime = WYFormattedTime(publishTime)
       self.artists = try container.decodeIfPresent([Artist].self, forKey: .artists) ?? []
       self.size = try container.decodeIfPresent(Int.self, forKey: .size) ?? 0
       self.index = -1

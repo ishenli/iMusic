@@ -27,7 +27,7 @@ extension Double {
     formatter.unitsStyle = .positional
     formatter.allowedUnits = [.minute, .second]
     formatter.zeroFormattingBehavior = .pad
-
+    
     return formatter.string(from: TimeInterval(self)) ?? "00:00"
   }
   
@@ -46,30 +46,30 @@ extension Double {
 
 
 extension Encodable {
-    func jsonString() -> String {
-        guard let data = try? JSONEncoder().encode(self),
-            let str = String(data: data, encoding: .utf8) else {
-                return ""
-        }
-        return str
+  func jsonString() -> String {
+    guard let data = try? JSONEncoder().encode(self),
+          let str = String(data: data, encoding: .utf8) else {
+      return ""
     }
+    return str
+  }
 }
 
 
 extension Date {
-   /// 获取当前 秒级 时间戳 - 10位
-   var timeStamp : String {
-       let timeInterval: TimeInterval = self.timeIntervalSince1970
-       let timeStamp = Int(timeInterval)
-       return "\(timeStamp)"
-   }
-
-   /// 获取当前 毫秒级 时间戳 - 13位
-   var milliStamp : String {
-       let timeInterval: TimeInterval = self.timeIntervalSince1970
-       let millisecond = CLongLong(round(timeInterval*1000))
-       return "\(millisecond)"
-   }
+  /// 获取当前 秒级 时间戳 - 10位
+  var timeStamp : String {
+    let timeInterval: TimeInterval = self.timeIntervalSince1970
+    let timeStamp = Int(timeInterval)
+    return "\(timeStamp)"
+  }
+  
+  /// 获取当前 毫秒级 时间戳 - 13位
+  var milliStamp : String {
+    let timeInterval: TimeInterval = self.timeIntervalSince1970
+    let millisecond = CLongLong(round(timeInterval*1000))
+    return "\(millisecond)"
+  }
 }
 
 
@@ -107,21 +107,21 @@ extension String {
 
 
 extension String {
-    var https: String {
-        get {
-            if starts(with: "http://") {
-                return replacingOccurrences(of: "http://", with: "https://")
-            } else {
-                return self
-            }
-        }
+  var https: String {
+    get {
+      if starts(with: "http://") {
+        return replacingOccurrences(of: "http://", with: "https://")
+      } else {
+        return self
+      }
     }
+  }
 }
 
 extension URL {
-    var https: URL? {
-        get {
-            return URL(string: absoluteString.https)
-        }
+  var https: URL? {
+    get {
+      return URL(string: absoluteString.https)
     }
+  }
 }

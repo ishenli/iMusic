@@ -135,8 +135,7 @@ class SearchViewModel: ObservableObject {
   
   
   func searchSongsByKeyword(page: Int) async {
-    let PlatformIns = getPlatformInstance(id: self.platformSelected)
-    let data = await PlatformIns.search(keywords: self.keyword, page: page, type: self.searchType);
+    let data = await MusicPlatform.Shared.search(keyword: self.keyword, id: self.platformSelected, page: page, searchType: self.searchType)
     isLoading = false
     if data?.songs != nil {
       data!.songs.initIndexes()

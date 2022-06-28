@@ -49,7 +49,7 @@ struct RankPanelView: View {
           LazyVGrid(columns: gridItemLayout, spacing: 0) {
             ForEach(vm.ranks) { rank in
               VStack(alignment: .leading) {
-                StackNavigationLink(destination: PlayListView(id: rank.id)) {
+                StackNavigationLink(destination: PlayListView(query: PlayListViewQuery(id: rank.id, platform: .netease))) {
                   AsyncImage(url: URL(string: rank.imageUrl)) { image in
                     image.resizable().aspectRatio(contentMode: .fill)
                       .frame(width: 120, height: 120)

@@ -66,8 +66,36 @@ class KWMusic : AbstractMusicPlatform {
     return rankList
   }
   
-  func fetchPlayList(_ id: Int) async -> Playlist? {
-    return nil
+  func fetchPlayList(_ pid: Int) async -> Playlist? {
+    let u = "https://www.kuwo.cn/api/www/playlist/playListInfo"
+    
+    var p: [String: Any] = [
+      "_": Date().milliStamp
+    ]
+    p["pid"] = pid
+    p["rn" ] = "100"
+    p["pn"] = "1"
+    
+    do {
+      let res = try await self.apiRequest(u, p, KWPlayListJSON.self);
+      let data = res.data
+      let tracks = data.musicList.map{ kw -> Track in
+        let art = Artist(name: kw.artist, id: kw.artistid, picUrl: kw.albumpic)
+
+        let Album = Album(name: kw.album, id: kw.albumid, picUrl: URL(string: kw.albumpic), publishTime: kw.releaseDate, artists: [art], size: 10)
+        return Track(name: kw.name, id: kw.rid, platform: .kuwo, artists: [art], album:Album, duration: kw.duration * 1000)
+      }
+      
+      let c = Creator(nickname: data.uname, userId: -1, avatarUrl: URL(string: data.uPic))
+      
+      let tags = data.tag.components(separatedBy: ",")
+      
+      return Playlist(coverImgUrl: URL(string: data.img500)!, playCount: data.listencnt, name: data.name, trackCount: data.total, description: data.info, tags: tags , id: data.id, tracks: tracks, trackIds: [], creator: c, createTime: -1, createTimeStr: "")
+      
+    } catch {
+      print("Fetching search failed with error \(error)")
+      return nil
+    }
   }
   
   
@@ -84,7 +112,7 @@ class KWMusic : AbstractMusicPlatform {
     do {
       let res = try await self.apiRequest(u, p, KWSearchPlayListJSON.self);
       let list = res.data.list.map { kw in
-        return SearchPlayList(id: Int(kw.id)!, picUrl: URL(string: kw.img)!, playCount: Int(kw.listencnt)!, name: kw.name, Creator: Creator(nickname: kw.uname, userId: 0, avatarUrl: URL(string: AVATAR_DEFAULT)), trackCount: Int(kw.total)!, index: -1)
+        return SearchPlayList(id: Int(kw.id)!, picUrl: URL(string: kw.img)!, playCount: Int(kw.listencnt)!, name: kw.name, Creator: Creator(nickname: kw.uname, userId: 0, avatarUrl: URL(string: AVATAR_DEFAULT)), trackCount: Int(kw.total)!, index: -1, platform: .kuwo)
       }
       
       return PlatformSearchPlayListResult(playList: list)

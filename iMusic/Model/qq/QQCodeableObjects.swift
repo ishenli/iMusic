@@ -69,7 +69,7 @@ class QQTrack: Decodable, TrackProtocol {
     let albumname = try container.decode(String.self, forKey: .albumname)
     let albumid = try container.decode(Int.self, forKey: .albumid)
     let pubtime = try container.decode(Int.self, forKey: .pubtime)
-    self.album = Album(name: albumname, id: albumid, publishTime: pubtime)
+    self.album = Album(name: albumname, id: albumid, publishTime: String(pubtime))
     self.duration = try container.decodeIfPresent(Int.self, forKey: .nt)!
     self.durationStr = Double(self.duration).duration2Date()
     self.index = -1
@@ -123,7 +123,7 @@ class QQTrack: Decodable, TrackProtocol {
     
     var id: Int
     var size: Int?
-    var publishTime: Int?
+    var publishTime: String?
     var picUrl: URL?
   }
 }

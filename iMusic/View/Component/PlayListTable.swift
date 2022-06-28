@@ -40,14 +40,16 @@ struct PlayListTable: View {
       Group {
         Text("")
         HStack {
-          AsyncImage(url: fruit.picUrl) { image in
-            image.resizable().aspectRatio(contentMode: .fill)
-              .frame(width: 60, height: 60)
-              .clipShape(RoundedRectangle(cornerRadius: 5))
-          } placeholder: {
-            ProgressView().frame(width: 60, height: 60)
+          StackNavigationLink(destination: PlayListView(query: PlayListViewQuery(id: fruit.id, platform: fruit.platform) )) {
+            AsyncImage(url: fruit.picUrl) { image in
+              image.resizable().aspectRatio(contentMode: .fill)
+                .frame(width: 60, height: 60)
+                .clipShape(RoundedRectangle(cornerRadius: 5))
+            } placeholder: {
+              ProgressView().frame(width: 60, height: 60)
+            }
+            Text(fruit.name)
           }
-          Text(fruit.name)
         }
         Text(fruit.Creator.nickname).foregroundColor( Color.init(hex: "666666"))
         Text("\(fruit.trackCount)").foregroundColor( Color.init(hex: "666666"))
@@ -86,6 +88,6 @@ struct PlayListTable: View {
 
 struct Table_Previews: PreviewProvider {
   static var previews: some View {
-    PlayListTable( playList: [SearchPlayList(id: 0, picUrl: URL(string: "http://img1.kwcdn.kuwo.cn/star/userpl2015/81/23/1568684821020_182253281_700.jpg")!, playCount: 10, name: "终于等到周杰伦，说好不哭你今天哭了吗？", Creator: Creator(nickname: "皓默", userId: 99, avatarUrl: URL(string: AVATAR_DEFAULT)!), trackCount: 1000, index: 1),SearchPlayList(id: 1, picUrl: URL(string: "http://img1.kwcdn.kuwo.cn/star/userpl2015/81/23/1568684821020_182253281_700.jpg")!, playCount: 10, name: "终于等到周杰伦，说好不哭你今天哭了吗？", Creator: Creator(nickname: "皓默", userId: 99, avatarUrl: URL(string: AVATAR_DEFAULT)!), trackCount: 1000, index: 1)])
+    PlayListTable( playList: [SearchPlayList(id: 0, picUrl: URL(string: "http://img1.kwcdn.kuwo.cn/star/userpl2015/81/23/1568684821020_182253281_700.jpg")!, playCount: 10, name: "终于等到周杰伦，说好不哭你今天哭了吗？", Creator: Creator(nickname: "皓默", userId: 99, avatarUrl: URL(string: AVATAR_DEFAULT)!), trackCount: 1000, index: 1, platform: .kuwo),SearchPlayList(id: 1, picUrl: URL(string: "http://img1.kwcdn.kuwo.cn/star/userpl2015/81/23/1568684821020_182253281_700.jpg")!, playCount: 10, name: "终于等到周杰伦，说好不哭你今天哭了吗？", Creator: Creator(nickname: "皓默", userId: 99, avatarUrl: URL(string: AVATAR_DEFAULT)!), trackCount: 1000, index: 1, platform: .kuwo)])
   }
 }

@@ -30,10 +30,11 @@ struct SearchPlayList: Identifiable {
   let Creator: Creator
   let trackCount: Int // 歌曲数
   var index: Int
+  let platform: MusicPlatformEnum
 }
 
 struct Playlist {
-  let subscribed: Bool
+//  let subscribed: Bool
   let coverImgUrl: URL
   let playCount: Int
   var name: String

@@ -73,16 +73,13 @@ func getPlatformByName(name: MusicPlatformEnum) -> AbstractMusicPlatform {
   case MusicPlatformEnum.netease:
     return NetEaseMusic()
   case .kugou:
-    print("kugou")
     return NetEaseMusic()
   case .qq:
-    print("qq")
     return QQMusic()
   case .unknown:
     print("unknown")
     return NetEaseMusic()
   case .kuwo:
-    print("kuwo")
     return KWMusic()
   }
 }
@@ -94,6 +91,8 @@ func getPlatformInstance(id: Int) -> AbstractMusicPlatform {
 
 
 class MusicPlatform {
+  static let Shared = MusicPlatform()
+  
   func getSongsDetail(_ songs: [Track]) async -> [Song] {
     var rt:[Song] = []
     await songs.concurrentMap{ track in
@@ -110,6 +109,19 @@ class MusicPlatform {
     
     let songs = await platform.songUrl([song.id])
     return songs
+  }
+  
+  
+  func fetchPlayList(playListId: Int, paltform: MusicPlatformEnum) async -> Playlist? {
+    let PlatformIns = getPlatformByName(name: paltform)
+    return await PlatformIns.fetchPlayList(playListId)
+  }
+  
+
+  func search(keyword: String, id: Int, page: Int, searchType: SearchType) async -> PlatformSearchResult? {
+    let PlatformIns = getPlatformInstance(id: id)
+    let data = await PlatformIns.search(keywords: keyword, page: page, type: searchType);
+    return data
   }
 }
 

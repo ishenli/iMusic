@@ -236,11 +236,11 @@ class PlayCore: NSObject {
     
     updateInternalPlaylist()
     
-    Log.info(internalPlaylist)
+//    Log.info(internalPlaylist)
     
     var nextSongIndex = internalPlaylistIndex + 1
     
-    if internalPlaylist.count == nextSongIndex { // 最后一首歌, 切到第一首
+    if internalPlaylist.count <= nextSongIndex { // 最后一首歌, 切到第一首
       nextSongIndex = 0
       internalPlaylistIndex = 0
     }

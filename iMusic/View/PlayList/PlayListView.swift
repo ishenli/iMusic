@@ -7,10 +7,16 @@
 
 import SwiftUI
 
+struct PlayListViewQuery {
+  var id: Int
+  var platform: MusicPlatformEnum
+}
+
 struct PlayListView: View {
   @StateObject var vm = PlayListViewModel.Shared
   
-  var id: Int
+  var query: PlayListViewQuery
+
   var body: some View {
     ZStack {
       VStack(spacing: 0) {
@@ -27,7 +33,7 @@ struct PlayListView: View {
         Spacer()
       }.frame(minHeight: 560).background(.white)
       .task {
-        await vm.fetch(id: id)
+        await vm.fetch(id: query.id, platform: query.platform)
       }
       SidePlayList()
     }
@@ -141,6 +147,6 @@ struct PlayListHeaderView: View {
 struct PlayListView_Previews: PreviewProvider {
 //  static let vm: PlayListViewModel = PlayListViewModel()
   static var previews: some View {
-    PlayListView(id: 3136952023).frame(width: 600, height: 600)
+    PlayListView(query: PlayListViewQuery(id: 3136952023, platform: .netease)).frame(width: 600, height: 600)
   }
 }

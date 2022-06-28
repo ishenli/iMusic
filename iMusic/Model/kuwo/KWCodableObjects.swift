@@ -50,6 +50,38 @@ struct KWSearchPlayListJSON: Decodable {
 }
 
 
+struct KWPlayListJSON: Decodable {
+  let code: Int
+  let data: Data
+  
+  struct Data: Decodable {
+    let id: Int
+    let uPic: String
+    let img500: String
+    let listencnt: Int
+    let total: Int
+    let name: String
+    let tag: String
+    let uname: String
+    let info: String
+    let musicList: [KWPlayList]
+  }
+  
+  struct KWPlayList: Decodable {
+    let pic: String
+    let duration: Int
+    let name: String
+    let album: String
+    let albumid: Int
+    let albumpic: String
+    let releaseDate: String
+    let rid: Int
+    let artistid: Int
+    let artist: String
+  }
+}
+
+
 
 class KWTrack: Decodable, TrackProtocol {
   var platform: MusicPlatformEnum
@@ -91,7 +123,7 @@ class KWTrack: Decodable, TrackProtocol {
     let albumid = try container.decode(String.self, forKey: .albumid)
     let pic = try container.decode(String.self, forKey: .pic)
     
-    self.album = Album(name: albumname, id: Int(albumid)!, publishTime: 0, picUrl: URL(string: pic))
+    self.album = Album(name: albumname, id: Int(albumid)!, publishTime: "", picUrl: URL(string: pic))
 
     self.duration = try container.decodeIfPresent(Int.self, forKey: .duration)!
     self.duration = self.duration * 1000 // 时长单位是秒，统一成毫秒
@@ -139,7 +171,7 @@ class KWTrack: Decodable, TrackProtocol {
     
     var id: Int
     var size: Int?
-    var publishTime: Int?
+    var publishTime: String?
     var picUrl: URL?
   }
 }

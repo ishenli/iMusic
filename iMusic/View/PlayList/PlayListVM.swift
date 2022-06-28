@@ -58,11 +58,11 @@ class PlayListViewModel: ObservableObject {
   
   
   @MainActor
-  func fetch(id: Int) async -> Void {
+  func fetch(id: Int, platform: MusicPlatformEnum) async -> Void {
           
     self.isLoading = true
     
-    var data = await NetEaseMusic().fetchPlayList(id);
+    var data = await MusicPlatform.Shared.fetchPlayList(playListId: id, paltform: platform);
 
     if ((data?.createTime) != nil) {
       let df = DateFormatter()
