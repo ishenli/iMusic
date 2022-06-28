@@ -2,7 +2,7 @@
 
 业余时间做的一款方便自己的听歌的软件，支持 Mac OS X
 
-![image-20220628143430257](https://lark-assets-prod-aliyun.oss-accelerate.aliyuncs.com/lark/0/2022/png/108/1656398461167-c234adc8-f0f9-4b42-9e75-a6827df93a85.png?OSSAccessKeyId=LTAI4GGhPJmQ4HWCmhDAn4F5&Expires=1656398538&Signature=LAdq72LnaTWJW2lpScGfqyp0X04%3D&x-oss-process=image%2Fresize%2Cw_1500%2Climit_0&response-content-disposition=inline)
+![image-20220628143430257](https://code.alipay.com/fi/m-jiebei/uploads/92ccf4d97293457d9c3430ebe0b5c1cd/image.png)
 
 ### 项目进展
 
@@ -19,6 +19,7 @@
 
 + Swift 5.X
 + SwiftUI 3.0
++ Combine
 
 ### 三方依赖
 
