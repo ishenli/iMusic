@@ -2,7 +2,7 @@
 
 业余时间做的一款方便自己的听歌的软件，支持 Mac OS X
 
-![image-20220628143430257](https://code.alipay.com/fi/m-jiebei/uploads/92ccf4d97293457d9c3430ebe0b5c1cd/image.png)
+<img src="https://code.alipay.com/fi/m-jiebei/uploads/92ccf4d97293457d9c3430ebe0b5c1cd/image.png" width=400 />
 
 ### 项目进展
 

@@ -38,21 +38,14 @@ class Track: NSObject, Identifiable, TrackProtocol {
   dynamic var isCurrentTrack = false
   dynamic var isPlaying = false
   
-  var playable: Bool {
-    get {
-      if let p = privilege {
-        return p.status == .playable
-      }
-      return true
-    }
-  }
+  var playable: Bool
   
   lazy var artistsString: String = {
       return artists.artistsString()
   }()
   
   
-  init(name:String, id: Int, platform:MusicPlatformEnum, artists: [Artist], album: Album, duration: Int) {
+  init(name:String, id: Int, platform:MusicPlatformEnum, artists: [Artist], album: Album, duration: Int, playable: Bool) {
     self.name = name;
     self.id = id
     self.platform = platform
@@ -61,6 +54,7 @@ class Track: NSObject, Identifiable, TrackProtocol {
     self.duration = duration
     self.durationStr = Double(self.duration).duration2Date()
     self.index = -1
+    self.playable = playable
   }
   
   struct Privilege: Decodable {

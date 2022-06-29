@@ -83,7 +83,7 @@ class KWMusic : AbstractMusicPlatform {
         let art = Artist(name: kw.artist, id: kw.artistid, picUrl: kw.albumpic)
 
         let Album = Album(name: kw.album, id: kw.albumid, picUrl: URL(string: kw.albumpic), publishTime: kw.releaseDate, artists: [art], size: 10)
-        return Track(name: kw.name, id: kw.rid, platform: .kuwo, artists: [art], album:Album, duration: kw.duration * 1000)
+        return Track(name: kw.name, id: kw.rid, platform: .kuwo, artists: [art], album:Album, duration: kw.duration * 1000, playable: true)
       }
       
       let c = Creator(nickname: data.uname, userId: -1, avatarUrl: URL(string: data.uPic))

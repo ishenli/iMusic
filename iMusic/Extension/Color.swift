@@ -38,14 +38,17 @@ extension Color {
     return Color.init(hex: "000000")
   }
   
+  /// 666666
   static var gray1: Color {
     return Color.init(hex: "666666")
   }
   
+  /// FAFAFA
   static var gray2: Color {
     return Color.init(hex: "FAFAFA")
   }
   
+  /// BBBBBB
   static var gray3: Color {
     return Color.init(hex: "BBBBBB")
   }
@@ -66,5 +69,9 @@ extension Color {
   
   static var blue6: Color {
     return Color.init(hex: "1890FF") // 按钮
+  }
+  
+  static var primary: Color {
+    return Color.blue
   }
 }

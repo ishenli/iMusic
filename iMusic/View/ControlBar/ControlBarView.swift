@@ -15,7 +15,7 @@ struct ControlBar: View {
   
   var body: some View {
     VStack(spacing: 5){
-      Slider(value: $vm.durationSlider.doubleValue, in: 0...vm.durationSlider.maxValue, onEditingChanged: vm.changePlaySlider).accentColor(.red).disabled(vm.durationSlider.maxValue == 0).frame(height: 10)
+      Slider(value: $vm.durationSlider.doubleValue, in: 0...vm.durationSlider.maxValue, onEditingChanged: vm.changePlaySlider).accentColor(Color.primary).disabled(vm.durationSlider.maxValue == 0).frame(height: 10)
       HStack(alignment: .center, spacing: 0) {
         HStack(alignment: .top) {
           if vm.trackPicButton != "" {
@@ -90,7 +90,7 @@ struct ControlBar: View {
                 NSCursor.pop()
               }
             }
-          }.foregroundColor(.red) .font(.system(size: 20))
+          }.foregroundColor(Color.primary) .font(.system(size: 20))
         }.frame(width: 200)
         Spacer()
         HStack(alignment: .bottom, spacing: 20) {
@@ -108,7 +108,7 @@ struct ControlBar: View {
             })
             .popover(isPresented: $showVolumePanel) {
               VStack {
-                Slider(value: $vm.volumeSlider.floatValue, in: 0...1, onEditingChanged: vm.changeVolume).accentColor(.red).frame(height: 10)
+                Slider(value: $vm.volumeSlider.floatValue, in: 0...1, onEditingChanged: vm.changeVolume).accentColor(Color.primary).frame(height: 10)
                   .padding(10)
               }.frame(width: 150)
             }

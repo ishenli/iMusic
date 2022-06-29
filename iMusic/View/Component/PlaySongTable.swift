@@ -43,22 +43,26 @@ struct PlaySongTable: View {
         HStack {
 //          Text("\(fruit.index + 1)").padding(.leading, 10).foregroundColor( Color.init(hex: "BBBBBB"))
           if fruit.isCurrentTrack {
-            Image(systemName: "play.square").foregroundColor(.red).padding([.leading], 5)
+            Image(systemName: "play.square").foregroundColor(Color.primary).padding([.leading], 5)
           }
         }
         HStack {
-          Text(fruit.name).onTapGesture {
-            vm.playOneSong(fruit)
+          Text(fruit.name)
+            .foregroundColor(fruit.playable ? Color.gray1 : Color.gray3)
+          .onTapGesture {
+            if (fruit.playable) {
+              vm.playOneSong(fruit)
+            }
           }.contextMenu {
             Button("下一首播放", action: {
               vm.addToPlayList([fruit])
-            })
+            }).disabled(!fruit.playable)
           }
         }
 
-        Text(fruit.artists[0].name).foregroundColor( Color.init(hex: "666666"))
-        Text(fruit.album.name).foregroundColor( Color.init(hex: "666666"))
-        Text(fruit.durationStr).foregroundColor( Color.init(hex: "BBBBBB"))
+        Text(fruit.artists[0].name).foregroundColor( Color.gray1)
+        Text(fruit.album.name).foregroundColor( Color.gray1)
+        Text(fruit.durationStr).foregroundColor( Color.gray3)
       }.frame(height: 33)
     }
   }

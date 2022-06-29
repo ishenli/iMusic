@@ -34,6 +34,8 @@ struct QQSearchResultJSON: Decodable {
 
 
 class QQTrack: Decodable, TrackProtocol {
+  var playable: Bool
+  
   var platform: MusicPlatformEnum
   
   var album: Album
@@ -74,6 +76,7 @@ class QQTrack: Decodable, TrackProtocol {
     self.durationStr = Double(self.duration).duration2Date()
     self.index = -1
     self.platform = .qq
+    self.playable = true
   }
   
   func toTrack() -> Track {
@@ -82,7 +85,7 @@ class QQTrack: Decodable, TrackProtocol {
     }
     let album = Track.AlbumType(name: self.album.name, id: self.album.id, picUrl: self.album.picUrl,
                                 publishTime: self.album.publishTime, artists: artists, size: self.album.size)
-    return Track(name: self.name, id: self.id, platform: .qq, artists: artists, album: album, duration: self.duration)
+    return Track(name: self.name, id: self.id, platform: .qq, artists: artists, album: album, duration: self.duration, playable: self.playable)
   }
   
   class Artist: ArtistProtocol, Decodable {

@@ -45,7 +45,7 @@ struct SearchResultView: View {
                   Text(tabItem.tabName)
                     .padding(.horizontal, 10)
                     .padding(.vertical, 4)
-                    .foregroundColor(vm.searchType.rawValue == tabItem.id ? Color.black : Color.gray)
+                    .foregroundColor(vm.searchType == tabItem.searchType ? Color.black : Color.gray)
                     .onTapGesture {
                       vm.searchTypeTabClick(type: tabItem.searchType)
                     }
@@ -79,7 +79,7 @@ struct SearchResultView: View {
       .frame( minWidth: 500,
               minHeight: 600)
       .task {
-        await vm.fetch(keyword: keyword)
+        await vm.fetch(keyword: keyword, type: vm.searchType, page: vm.page)
       }
       
       SidePlayList()

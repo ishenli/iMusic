@@ -51,13 +51,13 @@ struct LandmarkCommands: Commands {
     CommandMenu("Controls") {
       Button("Play") {
         PlayCore.shared.togglePlayPause()
-      }
+      }.keyboardShortcut(.space, modifiers: [.command])
       Button("Next") {
         PlayCore.shared.nextSong()
-      }
+      }.keyboardShortcut(.rightArrow, modifiers: [.command])
       Button("Previous") {
         PlayCore.shared.previousSong()
-      }
+      }.keyboardShortcut(.leftArrow, modifiers: [.command])
       Divider()
       Picker(selection: $filter) {
         Text("Off").tag(Preferences.RepeatMode.noRepeat)

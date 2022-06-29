@@ -84,6 +84,8 @@ struct KWPlayListJSON: Decodable {
 
 
 class KWTrack: Decodable, TrackProtocol {
+  var playable: Bool
+  
   var platform: MusicPlatformEnum
   
   var album: Album
@@ -130,6 +132,7 @@ class KWTrack: Decodable, TrackProtocol {
     
     self.index = -1
     self.platform = .kuwo
+    self.playable = true
   }
   
   func toTrack() -> Track {
@@ -138,7 +141,7 @@ class KWTrack: Decodable, TrackProtocol {
     }
     let album = Track.AlbumType(name: self.album.name, id: self.album.id, picUrl: self.album.picUrl,
                                 publishTime: self.album.publishTime, artists: artists, size: self.album.size)
-    return Track(name: self.name, id: self.id, platform: self.platform, artists: artists, album: album, duration: self.duration)
+    return Track(name: self.name, id: self.id, platform: self.platform, artists: artists, album: album, duration: self.duration, playable: self.playable)
   }
   
   class Artist: ArtistProtocol {

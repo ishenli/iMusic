@@ -67,8 +67,8 @@ struct PlayListHeaderView: View {
       VStack(alignment: .leading) {
         HStack(alignment: .top,spacing: 10) {
           Text(" 歌单 ")
-            .border(.red, width: 1)
-            .foregroundColor(.red)
+            .border(Color.primary, width: 1)
+            .foregroundColor(Color.primary)
             .cornerRadius(3)
             .frame(height: 28)
             .offset(x: 0, y: 4)
@@ -90,9 +90,12 @@ struct PlayListHeaderView: View {
             .font(.system(size: 14))
             .foregroundColor(Color.blue)
           
-          Text("\(vm.playList!.createTimeStr!) 创建")
-            .font(.system(size: 14))
-            .foregroundColor(Color.gray)
+          if vm.playList!.createTime != -1 {
+            Text("\(vm.playList!.createTimeStr!) 创建")
+              .font(.system(size: 14))
+              .foregroundColor(Color.gray)
+          }
+         
           Spacer()
         }.padding(.vertical, 10)
         HStack {
@@ -100,7 +103,7 @@ struct PlayListHeaderView: View {
             Button(action: vm.playAll) {
               Label("播放全部", systemImage: "folder.badge.plus")
                 .modifier(ButtonStyleModifider())
-                .background(.red)
+                .background(Color.primary)
                 .cornerRadius(10)
             }
 //            Button(action: vm.playAll) {

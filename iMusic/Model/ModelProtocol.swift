@@ -46,6 +46,7 @@ protocol TrackProtocol {
   var album: AlbumType { get set }
   var duration: Int { get set }
   var platform: MusicPlatformEnum { get }
+  var playable: Bool { get }
 //  var song: SongProtocol? { get set }
 }
 

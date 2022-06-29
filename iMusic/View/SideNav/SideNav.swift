@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct CategoryItem: Hashable {
   let key: CategoryKey
@@ -71,7 +72,7 @@ struct SideNav: View {
 struct NavigationLinkStyle: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
-      .background(.red)
+      .background(Color.primary)
   }
 }
 
@@ -90,7 +91,7 @@ struct CategoryView : View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width:14, height: 14)
-                .foregroundColor(Color.red)
+                .foregroundColor(Color.primary)
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
               Text(option.title)
               Spacer()

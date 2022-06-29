@@ -18,8 +18,8 @@ struct SearchTypeTabItems: Hashable, Identifiable {
 class SearchViewModel: ObservableObject {
   static let Shared: SearchViewModel = SearchViewModel()
   
-  private var keyword: String = ""
-  private var page: Int = 0
+  public var keyword: String = ""
+  public var page: Int = 0
 
   @Published var searchType: SearchType = SearchType.songs
   @Published var isLoading = true
@@ -27,7 +27,8 @@ class SearchViewModel: ObservableObject {
   @Published var searchPlayList = [SearchPlayList]()
   
   @Published var platformSelected: Int = MusicPlatformList[0].id
-  @Published var platformTabs:[TabItems] = MusicPlatformList.map { MusicPlatformMeta in
+  
+  var platformTabs:[TabItems] = MusicPlatformList.map { MusicPlatformMeta in
     return TabItems.init(tabName: MusicPlatformMeta.title, id: MusicPlatformMeta.id)
   }
   

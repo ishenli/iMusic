@@ -61,6 +61,7 @@
 		C7AFD6432867EA840016C15C /* ToastUI in Frameworks */ = {isa = PBXBuildFile; productRef = C7AFD6422867EA840016C15C /* ToastUI */; };
 		C7AFD6452867F2010016C15C /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD6442867F2010016C15C /* AppViewModel.swift */; };
 		C7AFD6472867FB600016C15C /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD6462867FB600016C15C /* MessageView.swift */; };
+		C7AFD64D286BEBBB0016C15C /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = C7AFD64C286BEBBB0016C15C /* Introspect */; };
 		C7B826E92842517900222DF8 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B826E82842517900222DF8 /* PlayCore.swift */; };
 		C7D0B59A284F23E40040DFB7 /* StackNavigationView in Frameworks */ = {isa = PBXBuildFile; productRef = C7D0B599284F23E40040DFB7 /* StackNavigationView */; };
 		C7D0B5A9284F48FC0040DFB7 /* PlayListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0B5A8284F48FC0040DFB7 /* PlayListTableView.swift */; };
@@ -196,6 +197,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C7727DEC28544DF700ECB495 /* Tabler in Frameworks */,
+				C7AFD64D286BEBBB0016C15C /* Introspect in Frameworks */,
 				C7D0B59A284F23E40040DFB7 /* StackNavigationView in Frameworks */,
 				C7D1C6C728432A3200A0C01C /* CocoaLumberjack in Frameworks */,
 				C73CD2D7283A773C00FC0BD8 /* Alamofire in Frameworks */,
@@ -573,6 +575,7 @@
 				C7492EC728531EAD004501D0 /* SDWebImage */,
 				C7727DEB28544DF700ECB495 /* Tabler */,
 				C7AFD6422867EA840016C15C /* ToastUI */,
+				C7AFD64C286BEBBB0016C15C /* Introspect */,
 			);
 			productName = iMusic;
 			productReference = C745459528392F39001A638D /* iMusic.app */;
@@ -701,6 +704,7 @@
 				C7492EC628531EAD004501D0 /* XCRemoteSwiftPackageReference "SDWebImage" */,
 				C7727DEA28544DF700ECB495 /* XCRemoteSwiftPackageReference "SwiftTabler" */,
 				C7AFD6412867EA840016C15C /* XCRemoteSwiftPackageReference "ToastUI" */,
+				C7AFD64B286BEBBB0016C15C /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = C745459628392F39001A638D /* Products */;
 			projectDirPath = "";
@@ -1277,6 +1281,14 @@
 				minimumVersion = 3.0.0;
 			};
 		};
+		C7AFD64B286BEBBB0016C15C /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.4;
+			};
+		};
 		C7D0B598284F23E40040DFB7 /* XCRemoteSwiftPackageReference "StackNavigationView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lbrndnr/StackNavigationView";
@@ -1344,6 +1356,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C7AFD6412867EA840016C15C /* XCRemoteSwiftPackageReference "ToastUI" */;
 			productName = ToastUI;
+		};
+		C7AFD64C286BEBBB0016C15C /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7AFD64B286BEBBB0016C15C /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		C7D0B599284F23E40040DFB7 /* StackNavigationView */ = {
 			isa = XCSwiftPackageProductDependency;

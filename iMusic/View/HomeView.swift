@@ -30,7 +30,7 @@ struct MyTextFieldStyle: TextFieldStyle {
       .padding(30)
       .background(
         RoundedRectangle(cornerRadius: 20, style: .continuous)
-          .stroke(Color.red, lineWidth: 3)
+          .stroke(Color.primary, lineWidth: 3)
       ).padding()
   }
 }

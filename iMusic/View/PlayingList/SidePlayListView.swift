@@ -78,7 +78,7 @@ struct SidePlayListTableView: View {
                 })
               }
           if fruit.isCurrentTrack {
-            Image(systemName: "play.square").foregroundColor(.red)
+            Image(systemName: "play.square").foregroundColor(Color.primary)
           }
         }
         Text(fruit.artists[0].name).foregroundColor( Color.gray1)

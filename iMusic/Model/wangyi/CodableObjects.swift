@@ -223,7 +223,7 @@ extension WYTrack {
       Track.ArtistType(name: a.name, id: a.id, picUrl: a.picUrl ?? "")
     }
     let album = Track.AlbumType(name: self.album.name, id: self.album.id, picUrl: self.album.picUrl!, publishTime: self.album.publishTime, artists: artists, size: self.album.size)
-    return Track(name: self.name, id: self.id, platform: .netease, artists: artists, album: album, duration: self.duration)
+    return Track(name: self.name, id: self.id, platform: .netease, artists: artists, album: album, duration: self.duration, playable: self.playable)
   }
 }
 
