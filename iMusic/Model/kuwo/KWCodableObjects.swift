@@ -178,3 +178,22 @@ class KWTrack: Decodable, TrackProtocol {
     var picUrl: URL?
   }
 }
+
+
+struct KWRecommendResource: Decodable {
+  let code: Int
+  let data: Data
+  
+  struct Data: Decodable {
+    let data: [KWRecommendItem]
+  }
+  
+  struct KWRecommendItem: Decodable {
+    let img: String
+    let total: String
+    let uname: String
+    let name: String
+    let listencnt: String
+    let id: String
+  }
+}

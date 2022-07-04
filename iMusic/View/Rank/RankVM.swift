@@ -16,12 +16,9 @@ struct Rank : Hashable, Identifiable, Codable {
 
 struct TabItems: Hashable, Identifiable {
   let tabName: String
+  let tag: MusicPlatformEnum
   let id: Int
 }
-
-//MusicPlatformConfig[MusicPlatform.netease]!.title,
-//MusicPlatformConfig[MusicPlatform.kugou]!.title,
-//MusicPlatformConfig[MusicPlatform.qq]!.title,
 
 class RankViewModel: ObservableObject {
   static let Shared: RankViewModel = RankViewModel()
@@ -29,34 +26,28 @@ class RankViewModel: ObservableObject {
   @Published var isLoading = true
   @Published var ranks = [Rank]()
   
-  @Published var tabSelect: Int = MusicPlatformList[0].id
+  @Published var tabSelect: MusicPlatformEnum = .netease
+
   @Published var tabItems:[TabItems] = MusicPlatformList.map { MusicPlatformMeta in
-    return TabItems.init(tabName: MusicPlatformMeta.title, id: MusicPlatformMeta.id)
+    return TabItems.init(tabName: MusicPlatformMeta.title, tag: MusicPlatformMeta.name, id: MusicPlatformMeta.id)
   }
 
   @MainActor
   func fetch() async {
-//    var rankList: [Rank] = [];
-//    let data = await Kugou().fetchRecommand();
-//
-//    isLoading = false;
-//    self.ranks = data;
-//    debugPrint("isLoading", data)
-    await self.loadPlatformPlayLists(id: tabSelect)
+    await self.loadPlatformPlayLists(platformId: tabSelect)
   }
   
   
-  func tabClick(id: Int) -> Void {
+  func platformTabClick(id: MusicPlatformEnum) -> Void {
     tabSelect = id;
     Task {
-      await self.loadPlatformPlayLists(id: id)
+      await self.loadPlatformPlayLists(platformId: id)
     }
   }
   
   @MainActor
-  func loadPlatformPlayLists(id: Int) async {
-    let PlatformIns = getPlatformInstance(id: id)
-    let data = await PlatformIns.fetchRecommend();
+  func loadPlatformPlayLists(platformId: MusicPlatformEnum) async {
+    let data = await MusicPlatform.Shared.fetchRecommend(platformId: platformId, page: 1)
     isLoading = false
     ranks = data;
   }

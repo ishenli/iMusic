@@ -104,7 +104,7 @@ struct PlayListHeaderView: View {
               Label("播放全部", systemImage: "folder.badge.plus")
                 .modifier(ButtonStyleModifider())
                 .background(Color.primary)
-                .cornerRadius(10)
+                .cornerRadius(4)
             }
 //            Button(action: vm.playAll) {
 //              Label("下载全部", systemImage: "square.and.arrow.down")

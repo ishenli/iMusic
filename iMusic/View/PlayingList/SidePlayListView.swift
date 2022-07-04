@@ -11,16 +11,8 @@ import Tabler
 struct SidePlayList: View {
   @StateObject var vm = SidePlayListViewModel.Shared
   @StateObject var vm2: AppViewModel = AppViewModel.Shared
+  
   var body: some View {
-//    // notice
-//    Text("").toast(isPresented: $vm2.globalToastShow, dismissAfter: 2.0) {
-//      print("Toast globalShowToast")
-//    } content: {
-//      VStack {
-//        MessageView(text: vm2.globalToastText)
-//      }
-//    }.toastDimmedBackground(false)
-
     if vm.isVisible {
       HStack(alignment: .bottom, spacing: 0) {
         Spacer()
@@ -44,7 +36,7 @@ struct SidePlayList: View {
                   Text("你还没有添加任何歌曲！").foregroundColor(Color.gray1).padding(.top, 40)
                 }
               } else {
-                SidePlayListTableView().environmentObject(vm)
+                SidePlayListTableView(playlist: $vm.playlist).environmentObject(vm)
               }
               Spacer()
             }.padding(10)
@@ -58,16 +50,17 @@ struct SidePlayList: View {
 
 struct SidePlayListTableView: View {
   @EnvironmentObject var vm : SidePlayListViewModel
+  @Binding var playlist: [Track]
   
-  private var gridItems: [GridItem] = [
+  var gridItems: [GridItem] = [
     GridItem(.flexible(minimum: 60), alignment: .leading),
     GridItem(.fixed(120), alignment: .leading),
     GridItem(.fixed(70), alignment: .leading),
   ]
   
-  private typealias Context = TablerContext<Track>
+  typealias Context = TablerContext<Track>
   
-  private func row(fruit: Track) -> some View {
+  func row(fruit: Track) -> some View {
     LazyVGrid(columns: gridItems, alignment: .leading) {
       Group {
         HStack {
@@ -87,7 +80,7 @@ struct SidePlayListTableView: View {
     }.listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 0)) // 影响文字
   }
   
-  private func rowBackground(fruit: Track) -> some View {
+  func rowBackground(fruit: Track) -> some View {
     Rectangle()
       .fill(fruit.index % 2 == 0 ? Color.gray2 : Color.white)
   }
@@ -95,7 +88,7 @@ struct SidePlayListTableView: View {
   var body: some View {
     TablerList(.init(tablePadding: EdgeInsets(top: 0, leading: -20, bottom: 0, trailing: -20)), row: row,
                rowBackground: rowBackground,
-               results: vm.playlist).clipped()
+               results: playlist).clipped()
   }
 }
 

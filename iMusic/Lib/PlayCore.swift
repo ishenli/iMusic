@@ -513,4 +513,8 @@ class PlayCore: NSObject {
       !ids.contains($0)
     }
   }
+  
+  func updateRepeatShuffleMode() {
+      initInternalPlaylist(currentTrack?.id ?? -1)
+  }
 }

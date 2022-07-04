@@ -48,17 +48,25 @@ class KWMusic : AbstractMusicPlatform {
       }
     }
   
-  func fetchRecommend() async -> [Rank] {
+  func fetchRecommend(page: Int) async -> [Rank] {
     let rankList: [Rank] = [];
+    var p: [String: Any] = [
+      "_": Date().milliStamp
+    ]
+    p["rn" ] = "25"
+    p["pn"] = page
+    p["order"] = "hot"
+    p["httpsStatus"] = 1
+  
     do {
-      let data = try await self.apiRequest(
-        "https://music.163.com/eapi/v1/discovery/recommend/resource",
-        [:],
-        .post,
-        RecommendResource.self)
+      let res = try await self.apiRequest(
+        "https://www.kuwo.cn/api/pc/classify/playlist/getRcmPlayList",
+        p,
+        .get,
+        KWRecommendResource.self)
       
-      return data.recommend.map {
-        Rank.init(name: $0.name, imageUrl: $0.picUrl.absoluteString, id: $0.id, theme: 0)
+      return res.data.data.map { item in
+        return Rank(name: item.name, imageUrl: item.img, id: Int(item.id)!, theme: -1)
       }
     } catch {
       print("Fetching fetchRecommend failed with error \(error)")

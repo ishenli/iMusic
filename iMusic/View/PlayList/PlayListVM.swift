@@ -64,7 +64,7 @@ class PlayListViewModel: ObservableObject {
     
     var data = await MusicPlatform.Shared.fetchPlayList(playListId: id, paltform: platform);
 
-    if ((data?.createTime) != -1) {
+    if (data?.createTime != -1 && data?.createTime != nil) {
       let df = DateFormatter()
       df.dateFormat = "yyyy-MM-dd"
       let interval:TimeInterval = TimeInterval.init(Double(data!.createTime) / 1000) // 是毫秒

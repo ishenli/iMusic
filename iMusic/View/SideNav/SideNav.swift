@@ -51,7 +51,7 @@ struct SideNav: View {
     VStack {
       Spacer()
         .frame(height: 14)
-      UserSearchView()
+      SearchInputView()
       VStack(
         alignment: .leading
       ) {
@@ -91,45 +91,16 @@ struct CategoryView : View {
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width:14, height: 14)
-                .foregroundColor(Color.primary)
+//                .foregroundColor(option.key == selection ? Color.white: Color.primary)
                 .padding(EdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 0))
               Text(option.title)
               Spacer()
             }
+//            .foregroundColor(option.key == selection ? Color.white: Color.black)
             .frame(width:180, height: 30)
-//            .contentShape(Rectangle())
-//            .background(option.key == selection ? .init(hex:"C7C5CA"): Color.gray.opacity(0))
-            
           }
         }
       }.listStyle(SidebarListStyle())
-  }
-}
-
-
-struct UserSearchView: View {
-  @State private var username: String = "周杰伦"
-  @FocusState private var emailFieldIsFocused: Bool
-  @Environment(\.StackNavigationPush) var StackNavigationPush
-  
-  var body: some View {
-    HStack {
-      Image(systemName: "magnifyingglass")
-      TextField(
-        "Search",
-        text: $username
-      )
-      //      .focused($emailFieldIsFocused)
-      .onSubmit {
-        StackNavigationPush(AnyView(SearchResultView(keyword: username)), nil)
-      }
-      .frame(height: 28)
-      .textFieldStyle(PlainTextFieldStyle())
-    }
-    .padding([.horizontal], 8)
-    .background(Color.init(hex:"C7C5CA"))
-    .cornerRadius(4)
-    .padding([.horizontal], 10)
   }
 }
 

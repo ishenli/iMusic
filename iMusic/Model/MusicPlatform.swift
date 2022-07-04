@@ -18,7 +18,6 @@ struct PlatformSearchPlayListResult {
 }
 
 protocol AbstractMusicPlatform {
-  func fetchRecommend() async -> [Rank]
   
   func fetchPlayList(_ id: Int) async -> Playlist?
   
@@ -30,6 +29,9 @@ protocol AbstractMusicPlatform {
   
   
   func searchPlayList(keywords: String, page: Int) async -> PlatformSearchPlayListResult?
+  
+  func fetchRecommend(page: Int) async -> [Rank]
+
 }
 
 
@@ -121,6 +123,12 @@ class MusicPlatform {
   func search(keyword: String, id: Int, page: Int, searchType: SearchType) async -> PlatformSearchResult? {
     let PlatformIns = getPlatformInstance(id: id)
     let data = await PlatformIns.search(keywords: keyword, page: page, type: searchType);
+    return data
+  }
+  
+  func fetchRecommend(platformId: MusicPlatformEnum, page: Int) async -> [Rank] {
+    let PlatformIns = getPlatformByName(name: platformId)
+    let data = await PlatformIns.fetchRecommend(page: page)
     return data
   }
 }

@@ -17,9 +17,9 @@ struct PlaySongTable: View {
   
   var gridItems: [GridItem] = [
     GridItem(.fixed(15), alignment: .leading),
-    GridItem(.flexible(minimum: 35), alignment: .leading),
-    GridItem(.fixed(100), alignment: .leading),
-    GridItem(.fixed(250), alignment: .leading),
+    GridItem(.flexible(minimum: 100), alignment: .leading),
+    GridItem(.fixed(200), alignment: .leading),
+    GridItem(.fixed(200), alignment: .leading),
     GridItem(.fixed(80), alignment: .leading),
   ]
   

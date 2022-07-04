@@ -45,12 +45,13 @@
 		C7727E1028562DCA00ECB495 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727E0F28562DCA00ECB495 /* Link.swift */; };
 		C7727E132856CDE900ECB495 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727E122856CDE800ECB495 /* SearchResultView.swift */; };
 		C7727E152856CFA000ECB495 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727E142856CFA000ECB495 /* SearchVM.swift */; };
+		C793CF072872796E00EDC56E /* SearchInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793CF062872796E00EDC56E /* SearchInputView.swift */; };
 		C7AFD611285D56030016C15C /* qqapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD610285D56030016C15C /* qqapi.swift */; };
 		C7AFD613285D5B1E0016C15C /* QQCodeableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD612285D5B1E0016C15C /* QQCodeableObjects.swift */; };
 		C7AFD615285D88BC0016C15C /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD614285D88BC0016C15C /* ModelProtocol.swift */; };
 		C7AFD6172865BF3A0016C15C /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD6162865BF3A0016C15C /* Track.swift */; };
 		C7AFD6192865CCCC0016C15C /* Playlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD6182865CCCC0016C15C /* Playlist.swift */; };
-		C7AFD61C28669AD80016C15C /* kwqpi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD61B28669AD80016C15C /* kwqpi.swift */; };
+		C7AFD61C28669AD80016C15C /* kwapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD61B28669AD80016C15C /* kwapi.swift */; };
 		C7AFD61E28669C730016C15C /* apiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD61D28669C730016C15C /* apiTests.swift */; };
 		C7AFD6202866D8C20016C15C /* KWCodableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD61F2866D8C20016C15C /* KWCodableObjects.swift */; };
 		C7AFD6222866F3E20016C15C /* Cookie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD6212866F3E20016C15C /* Cookie.swift */; };
@@ -62,6 +63,7 @@
 		C7AFD6452867F2010016C15C /* AppViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD6442867F2010016C15C /* AppViewModel.swift */; };
 		C7AFD6472867FB600016C15C /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD6462867FB600016C15C /* MessageView.swift */; };
 		C7AFD64D286BEBBB0016C15C /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = C7AFD64C286BEBBB0016C15C /* Introspect */; };
+		C7AFD650286C781D0016C15C /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = C7AFD64F286C781D0016C15C /* SwiftUIX */; };
 		C7B826E92842517900222DF8 /* PlayCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7B826E82842517900222DF8 /* PlayCore.swift */; };
 		C7D0B59A284F23E40040DFB7 /* StackNavigationView in Frameworks */ = {isa = PBXBuildFile; productRef = C7D0B599284F23E40040DFB7 /* StackNavigationView */; };
 		C7D0B5A9284F48FC0040DFB7 /* PlayListTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7D0B5A8284F48FC0040DFB7 /* PlayListTableView.swift */; };
@@ -155,12 +157,13 @@
 		C7727E0F28562DCA00ECB495 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		C7727E122856CDE800ECB495 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		C7727E142856CFA000ECB495 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
+		C793CF062872796E00EDC56E /* SearchInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInputView.swift; sourceTree = "<group>"; };
 		C7AFD610285D56030016C15C /* qqapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qqapi.swift; sourceTree = "<group>"; };
 		C7AFD612285D5B1E0016C15C /* QQCodeableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQCodeableObjects.swift; sourceTree = "<group>"; };
 		C7AFD614285D88BC0016C15C /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
 		C7AFD6162865BF3A0016C15C /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		C7AFD6182865CCCC0016C15C /* Playlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlist.swift; sourceTree = "<group>"; };
-		C7AFD61B28669AD80016C15C /* kwqpi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kwqpi.swift; sourceTree = "<group>"; };
+		C7AFD61B28669AD80016C15C /* kwapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = kwapi.swift; sourceTree = "<group>"; };
 		C7AFD61D28669C730016C15C /* apiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = apiTests.swift; sourceTree = "<group>"; };
 		C7AFD61F2866D8C20016C15C /* KWCodableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KWCodableObjects.swift; sourceTree = "<group>"; };
 		C7AFD6212866F3E20016C15C /* Cookie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cookie.swift; sourceTree = "<group>"; };
@@ -207,6 +210,7 @@
 				C7D1C6DF284373B800A0C01C /* CryptoSwift in Frameworks */,
 				C7D0B5B12850D7BE0040DFB7 /* GSPlayer in Frameworks */,
 				C7AFD6432867EA840016C15C /* ToastUI in Frameworks */,
+				C7AFD650286C781D0016C15C /* SwiftUIX in Frameworks */,
 				C72BFF4B28426D0300974067 /* PromiseKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -428,6 +432,7 @@
 			children = (
 				C7727E122856CDE800ECB495 /* SearchResultView.swift */,
 				C7727E142856CFA000ECB495 /* SearchVM.swift */,
+				C793CF062872796E00EDC56E /* SearchInputView.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -451,7 +456,7 @@
 		C7AFD61A28669AB30016C15C /* kuwo */ = {
 			isa = PBXGroup;
 			children = (
-				C7AFD61B28669AD80016C15C /* kwqpi.swift */,
+				C7AFD61B28669AD80016C15C /* kwapi.swift */,
 				C7AFD61F2866D8C20016C15C /* KWCodableObjects.swift */,
 			);
 			path = kuwo;
@@ -576,6 +581,7 @@
 				C7727DEB28544DF700ECB495 /* Tabler */,
 				C7AFD6422867EA840016C15C /* ToastUI */,
 				C7AFD64C286BEBBB0016C15C /* Introspect */,
+				C7AFD64F286C781D0016C15C /* SwiftUIX */,
 			);
 			productName = iMusic;
 			productReference = C745459528392F39001A638D /* iMusic.app */;
@@ -705,6 +711,7 @@
 				C7727DEA28544DF700ECB495 /* XCRemoteSwiftPackageReference "SwiftTabler" */,
 				C7AFD6412867EA840016C15C /* XCRemoteSwiftPackageReference "ToastUI" */,
 				C7AFD64B286BEBBB0016C15C /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				C7AFD64E286C781D0016C15C /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = C745459628392F39001A638D /* Products */;
 			projectDirPath = "";
@@ -772,7 +779,7 @@
 				C73CD2DB283A788F00FC0BD8 /* RankView.swift in Sources */,
 				C7727E132856CDE900ECB495 /* SearchResultView.swift in Sources */,
 				C7727E0C28562D8B00ECB495 /* CurrrentView.swift in Sources */,
-				C7AFD61C28669AD80016C15C /* kwqpi.swift in Sources */,
+				C7AFD61C28669AD80016C15C /* kwapi.swift in Sources */,
 				C73BA8832859D2EB00A6A805 /* PlaySongTable.swift in Sources */,
 				C7AFD6472867FB600016C15C /* MessageView.swift in Sources */,
 				C73CD2E0283B33F600FC0BD8 /* kgapi.swift in Sources */,
@@ -807,6 +814,7 @@
 				C740D76E2841286D00B03264 /* ControlBarView.swift in Sources */,
 				C7D1C6CF28432E1800A0C01C /* ModelData.swift in Sources */,
 				C7727E052855D0E900ECB495 /* Settings.swift in Sources */,
+				C793CF072872796E00EDC56E /* SearchInputView.swift in Sources */,
 				C7AFD6452867F2010016C15C /* AppViewModel.swift in Sources */,
 				C72719D128489EB400A08A88 /* Base.swift in Sources */,
 				C7727E072855D15600ECB495 /* Commands.swift in Sources */,
@@ -1289,6 +1297,14 @@
 				minimumVersion = 0.1.4;
 			};
 		};
+		C7AFD64E286C781D0016C15C /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.2;
+			};
+		};
 		C7D0B598284F23E40040DFB7 /* XCRemoteSwiftPackageReference "StackNavigationView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/lbrndnr/StackNavigationView";
@@ -1361,6 +1377,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C7AFD64B286BEBBB0016C15C /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		C7AFD64F286C781D0016C15C /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C7AFD64E286C781D0016C15C /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 		C7D0B599284F23E40040DFB7 /* StackNavigationView */ = {
 			isa = XCSwiftPackageProductDependency;

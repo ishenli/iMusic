@@ -82,7 +82,7 @@ class Preferences: NSObject {
     }
   }
   
-  // 美剧
+  // 播放列表
   var repeatMode: RepeatMode {
     get {
       guard let i = defaults(.repeatMode) as? Int,

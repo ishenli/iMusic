@@ -49,34 +49,35 @@ struct LandmarkCommands: Commands {
   var body: some Commands {
     SidebarCommands()
     CommandMenu("Controls") {
-      Button("Play") {
+      Button("播放/暂停") {
         PlayCore.shared.togglePlayPause()
       }.keyboardShortcut(.space, modifiers: [.command])
-      Button("Next") {
+      Button("下一首") {
         PlayCore.shared.nextSong()
       }.keyboardShortcut(.rightArrow, modifiers: [.command])
-      Button("Previous") {
+      Button("上一首") {
         PlayCore.shared.previousSong()
       }.keyboardShortcut(.leftArrow, modifiers: [.command])
       Divider()
       Picker(selection: $filter) {
-        Text("Off").tag(Preferences.RepeatMode.noRepeat)
-        Text("One").tag(Preferences.RepeatMode.repeatItem)
-        Text("All").tag(Preferences.RepeatMode.repeatPlayList)
+        Text("不循环").tag(Preferences.RepeatMode.noRepeat)
+        Text("单曲循环").tag(Preferences.RepeatMode.repeatItem)
+        Text("列表循环").tag(Preferences.RepeatMode.repeatPlayList)
       } label: {
-        Text("Repeat")
+        Text("循环模式")
       }
       .onReceive(Just(filter)) {
         if(Preferences.shared.repeatMode != $0) {
           Preferences.shared.repeatMode = $0
+          ControlBarViewModel.shared.initRepeatButton()
         }
       }
-      Divider()
-      Button("\(selectedLandmark?.isFavorite == true ? "Remove" : "Mark") as Favorite") {
-        selectedLandmark?.isFavorite.toggle()
-      }
-      .keyboardShortcut("f", modifiers: [.shift, .option])
-      .disabled(selectedLandmark == nil)
+//      Divider()
+//      Button("\(selectedLandmark?.isFavorite == true ? "Remove" : "Mark") as Favorite") {
+//        selectedLandmark?.isFavorite.toggle()
+//      }
+//      .keyboardShortcut("f", modifiers: [.shift, .option])
+//      .disabled(selectedLandmark == nil)
     }
   }
 }

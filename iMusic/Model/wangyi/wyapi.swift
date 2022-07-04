@@ -30,6 +30,7 @@ enum RequestError: Error {
 }
 
 class NetEaseMusic : AbstractMusicPlatform {
+  
   func searchPlayList(keywords: String, page: Int) async -> PlatformSearchPlayListResult? {
     return nil
   }
@@ -154,7 +155,7 @@ class NetEaseMusic : AbstractMusicPlatform {
       }
     }
   
-  func fetchRecommend() async -> [Rank] {
+  func fetchRecommend(page: Int) async -> [Rank] {
     let rankList: [Rank] = [];
     do {
       let data = try await self.eapiRequest(

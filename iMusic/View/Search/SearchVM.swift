@@ -29,7 +29,7 @@ class SearchViewModel: ObservableObject {
   @Published var platformSelected: Int = MusicPlatformList[0].id
   
   var platformTabs:[TabItems] = MusicPlatformList.map { MusicPlatformMeta in
-    return TabItems.init(tabName: MusicPlatformMeta.title, id: MusicPlatformMeta.id)
+    return TabItems.init(tabName: MusicPlatformMeta.title, tag: MusicPlatformMeta.name, id: MusicPlatformMeta.id)
   }
   
   

@@ -69,16 +69,35 @@ class ControlBarViewModel: ObservableObject {
   var fmModeObserver: NSKeyValueObservation?
   var volumeChangedNotification: NSObjectProtocol?
   
+  
+  // 循环模式
+  @Published var repeatModeImage: String = ""
+  
+  private var repeatModeImageUrl: String {
+    get {
+      let repeatMode = Preferences.shared.repeatMode;
+      switch repeatMode {
+      case .noRepeat:
+        return "shuffle"
+      case .repeatPlayList:
+        return "repeat"
+      case .repeatItem:
+        return "repeat.1"
+      }
+      return "shuffle"
+    }
+  }
+  
   init() {
     let pc = PlayCore.shared
     
-
+    
     playProgressObserver = pc.observe(\.playProgress, options: [.initial, .new]) { [weak self] pc, _ in
       
       guard self?.durationSlider != nil, self?.durationTextField != nil else {
         return;
       }
-
+      
       let player = pc.player
       guard player.currentItem != nil else {
         self?.durationSlider.maxValue = 0
@@ -97,7 +116,7 @@ class ControlBarViewModel: ObservableObject {
       self?.durationSlider.doubleValue = cd
       self?.durationSlider.cachedDoubleValue = player.currentBufferDuration
       
-//      print("cd:\(cd), td:\(td)")
+      //      print("cd:\(cd), td:\(td)")
       self?.durationTextField.text = "\(cd.durationFormatter()) / \(td.durationFormatter())"
     }
     
@@ -112,6 +131,8 @@ class ControlBarViewModel: ObservableObject {
     }
     
     // 各种初始化
+    initRepeatButton();
+    
     
     // 音量按钮
     initVolumeButton()
@@ -176,10 +197,10 @@ class ControlBarViewModel: ObservableObject {
       print("nextButton")
       pc.nextSong()
     case .muteButton:
-        let mute = !player.isMuted
-        player.isMuted = mute
-        preferences.mute = mute
-        initVolumeButton()
+      let mute = !player.isMuted
+      player.isMuted = mute
+      preferences.mute = mute
+      initVolumeButton()
     default:
       print("done")
     }
@@ -201,30 +222,49 @@ class ControlBarViewModel: ObservableObject {
     let mute = pref.mute
     pc.player.isMuted = mute
     
-//    print("volumie:\(volume)")
+    //    print("volumie:\(volume)")
     
     var imageName = ""
     var color = Color.black
     if mute {
-        imageName = "speaker.slash"
-        color = .gray
+      imageName = "speaker.slash"
+      color = .gray
     } else {
-        switch volume {
-        case 0:
-            imageName = "speaker"
-            color = .gray
-        case 0..<1/3:
-            imageName = "speaker.wave.1"
-        case 1/3..<2/3:
-            imageName = "speaker.wave.2"
-        case 2/3...1:
-            imageName = "speaker.wave.3"
-        default:
-            imageName = "speaker"
-        }
+      switch volume {
+      case 0:
+        imageName = "speaker"
+        color = .gray
+      case 0..<1/3:
+        imageName = "speaker.wave.1"
+      case 1/3..<2/3:
+        imageName = "speaker.wave.2"
+      case 2/3...1:
+        imageName = "speaker.wave.3"
+      default:
+        imageName = "speaker"
+      }
     }
     imageName += ".Regular-M"
     muteButton.image = imageName
     muteButton.contentTintColor = color
+  }
+  
+  func initRepeatButton() {
+    self.repeatModeImage = repeatModeImageUrl
+  }
+  
+  func switchRepeatMode() {
+    let preferences = Preferences.shared
+    let repeatMode = preferences.repeatMode;
+    switch repeatMode {
+      case .noRepeat:
+        preferences.repeatMode = .repeatPlayList
+      case .repeatPlayList:
+        preferences.repeatMode = .repeatItem
+      case .repeatItem:
+        preferences.repeatMode = .noRepeat
+    }
+    
+    initRepeatButton()
   }
 }

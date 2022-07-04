@@ -11,8 +11,6 @@ struct ControlBar: View {
   @ObservedObject var vm = ControlBarViewModel.shared
   @State private var showVolumePanel: Bool = false
   
-  var imageUrl: String
-  
   var body: some View {
     VStack(spacing: 5){
       Slider(value: $vm.durationSlider.doubleValue, in: 0...vm.durationSlider.maxValue, onEditingChanged: vm.changePlaySlider).accentColor(Color.primary).disabled(vm.durationSlider.maxValue == 0).frame(height: 10)
@@ -96,9 +94,12 @@ struct ControlBar: View {
         HStack(alignment: .bottom, spacing: 20) {
           Spacer()
           Group {
+            // 歌词
             Image(systemName: "newspaper").onTapGesture {
               SidePlayListViewModel.Shared.isVisible.toggle()
             }.font(.system(size: 16))
+            
+            // 音量
             Image(systemName: "speaker").foregroundColor(vm.muteButton.contentTintColor).onTapGesture {
               vm.controlAction(sender: .muteButton)
             }.onHover(perform: { hovering in
@@ -112,11 +113,17 @@ struct ControlBar: View {
                   .padding(10)
               }.frame(width: 150)
             }
+            // 循环模式
+            Image(systemName: vm.repeatModeImage).onTapGesture {
+              vm.switchRepeatMode()
+            }.help("SwiftUI.LocalizedStringKey")
+
+            // 播放列表
             Image(systemName: "list.triangle").onTapGesture {
               SidePlayListViewModel.Shared.isVisible.toggle()
             }
           }.font(.system(size: 18))
-   
+          
         }.frame(width:280).padding(.trailing, 20)
       }
     }
@@ -130,7 +137,7 @@ struct ControlBar: View {
 struct ControlBar_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      ControlBar(imageUrl: "http://imge.kugou.com/v2/mobile_class_banner/6f96931ffde89cd1860cd2f9af1b39f2.jpg")
+      ControlBar()
     }.frame(width: 750)
     
   }

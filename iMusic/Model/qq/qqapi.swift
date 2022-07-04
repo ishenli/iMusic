@@ -10,6 +10,7 @@ import Alamofire
 
 class QQMusic : AbstractMusicPlatform {
 
+
   
   
   let nmSession: Session
@@ -134,6 +135,10 @@ class QQMusic : AbstractMusicPlatform {
     }
   }
 
+  
+  func fetchRecommend(page: Int) async -> [Rank] {
+    return []
+  }
 
   
 //  func songUrl() -> [Song] {

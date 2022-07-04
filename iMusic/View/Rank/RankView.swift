@@ -12,8 +12,7 @@ struct RankView: View {
   @StateObject var vm = RankViewModel.Shared
   var body: some View {
     GeometryReader { geo in
-      Text("w: \(geo.size.width, specifier: "%.1f")  h: \(geo.size.height, specifier: "%.1f")")
-      
+//      Text("w: \(geo.size.width, specifier: "%.1f")  h: \(geo.size.height, specifier: "%.1f")") 
       RankPanelView().task {
         await vm.fetch()
       }.environmentObject(vm)
@@ -35,9 +34,9 @@ struct RankPanelView: View {
               Text(tabItem.tabName)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 4)
-                .foregroundColor(vm.tabSelect == tabItem.id ? Color.black : Color.gray)
+                .foregroundColor(vm.tabSelect == tabItem.tag ? Color.black : Color.gray)
                 .onTapGesture {
-                  vm.tabClick(id: tabItem.id)
+                  vm.platformTabClick(id: tabItem.tag)
                 }
             }
           }.font(.system(size: 14))
@@ -49,7 +48,7 @@ struct RankPanelView: View {
           LazyVGrid(columns: gridItemLayout, spacing: 0) {
             ForEach(vm.ranks) { rank in
               VStack(alignment: .leading) {
-                StackNavigationLink(destination: PlayListView(query: PlayListViewQuery(id: rank.id, platform: .netease))) {
+                StackNavigationLink(destination: PlayListView(query: PlayListViewQuery(id: rank.id, platform: vm.tabSelect))) {
                   AsyncImage(url: URL(string: rank.imageUrl)) { image in
                     image.resizable().aspectRatio(contentMode: .fill)
                       .frame(width: 120, height: 120)

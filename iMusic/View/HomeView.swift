@@ -12,14 +12,17 @@ struct HomeView: View {
   @State private var selection: CategoryKey? = CategoryKey.Rank
 
   var body: some View {
-    StackNavigationView(selection: $selection) {
-      SideNav(
-        selection: $selection
-      )
-      Text("右侧区域")
+    VStack(spacing: 0) {
+      StackNavigationView(selection: $selection) {
+        SideNav(
+          selection: $selection
+        )
+        Text("右侧区域")
+      }
+      .frame(minWidth: 800, minHeight: 600)
+      ControlBar()
     }
-    .frame(minWidth: 800, minHeight: 600)
-    ControlBar(imageUrl: "http://imge.kugou.com/v2/mobile_class_banner/6f96931ffde89cd1860cd2f9af1b39f2.jpg")
+
   }
 }
 
