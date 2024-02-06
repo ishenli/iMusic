@@ -50,6 +50,15 @@ struct Playlist {
 }
 
 
+struct CategoryFilter {
+  var categoryGroupName: String
+  var filters: [filterItem]
+  struct filterItem {
+    var id: Int
+    var name: String
+  }
+}
+
 extension Array where Element == SearchPlayList {
   func initIndexes() -> [SearchPlayList] {
     var tracks = self

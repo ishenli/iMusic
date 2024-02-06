@@ -9,8 +9,8 @@ import Cocoa
 import Alamofire
 
 class QQMusic : AbstractMusicPlatform {
-
-
+  
+  
   
   
   let nmSession: Session
@@ -29,8 +29,8 @@ class QQMusic : AbstractMusicPlatform {
     _ resultType: T.Type) async throws -> T {
       
       do {
-
-        let dataTask = nmSession.request(url, method: m, parameters: params).serializingData()
+        
+        let dataTask = nmSession.request(url, method: m, parameters: params, headers: ["Referer": "http://y.qq.com/"]).serializingData()
         let re = await dataTask.response
         
         guard var data = re.data else {
@@ -80,7 +80,7 @@ class QQMusic : AbstractMusicPlatform {
   
   // 搜索
   func search(keywords: String, page: Int, type: SearchType) async -> PlatformSearchResult? {
-
+    
     var p: [String: Any] = [
       "total": true
     ]
@@ -130,39 +130,78 @@ class QQMusic : AbstractMusicPlatform {
         return QQTrack.toTrack()
       }))
     } catch {
-      print("Fetching search failed with error \(error)")
+      Log.error("Fetching search failed with error \(error)")
       return nil
     }
   }
-
+  
   
   func fetchRecommend(page: Int) async -> [Rank] {
     return []
   }
-
   
-//  func songUrl() -> [Song] {
-//    struct Result: Decodable {
-//      let data: [Song]
-//      let code: Int
-//    }
-//
-//    do {
-//      let res = try await self.eapiRequest(
-//        "https://music.163.com/eapi/song/enhance/player/url",
-//        p,
-//        Result.self,
-//        shouldDeSerial: true)
-//
-//      return res.data
-//    } catch {
-//      print("Fetching songUrl failed with error \(error)")
-//    }
   
-//  }
+  //  func songUrl() -> [Song] {
+  //    struct Result: Decodable {
+  //      let data: [Song]
+  //      let code: Int
+  //    }
+  //
+  //    do {
+  //      let res = try await self.eapiRequest(
+  //        "https://music.163.com/eapi/song/enhance/player/url",
+  //        p,
+  //        Result.self,
+  //        shouldDeSerial: true)
+  //
+  //      return res.data
+  //    } catch {
+  //      print("Fetching songUrl failed with error \(error)")
+  //    }
+  
+  //  }
   
   func songUrl(_ ids: [Int]) async -> [Song] {
     return []
   }
-
+  
+  func fetchCategoryFilter() async -> [CategoryFilter] {
+    var p: [String: Any] = [
+      "picmid": "1",
+      "rnd": "\(randomInt(8))",
+      "g_tk":"732560869",
+      "loginUin":"0",
+      "hostUin":"0",
+      "notice":"0",
+      "format":"json",
+      "inCharset":"utf8",
+      "outCharset":"utf-8",
+      "platform":"yqq.json",
+      "needNewCode": "0"
+    ]
+    var all: [CategoryFilter] = []
+    do {
+      let res = try await self.apiRequest("https://c.y.qq.com/splcloud/fcgi-bin/fcg_get_diss_tag_conf.fcg", p, HTTPMethod.get, QQCategoryFilter.self);
+      res.data.categories.forEach { CategoryGrooupItem in
+        var c = CategoryFilter(categoryGroupName: CategoryGrooupItem.categoryGroupName, filters: [])
+        if CategoryGrooupItem.usable == 1 {
+          CategoryGrooupItem.items.forEach { CategoryFilterItem in
+            c.filters.append(CategoryFilter.filterItem(id: CategoryFilterItem.categoryId, name: CategoryFilterItem.categoryName))
+          }
+          all.append(c)
+        }
+      }
+      return all
+    } catch {
+      Log.error("Fetching fetchCategoryFilter failed with error \(error)")
+    }
+    return []
+  }
+  
+  
+  private func randomInt(_ digits: Int) -> Int {
+    let min = Int(pow(10, Double(digits-1))) - 1
+    let max = Int(pow(10, Double(digits))) - 1
+    return Int.random(in: (min...max))
+  }
 }

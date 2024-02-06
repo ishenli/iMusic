@@ -43,6 +43,12 @@ class apiTests: XCTestCase {
     XCTAssert(res?.playList[0].id == 2867496601)
   }
   
+  func testQQAPI_fetchCategoryFilter() async throws {
+    let api = QQMusic()
+    let res = await api.fetchCategoryFilter()
+    XCTAssert(res[0].categoryGroupName == "语种")
+  }
+  
   func testPerformanceExample() throws {
     // This is an example of a performance test case.
     self.measure {

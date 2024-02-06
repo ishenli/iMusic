@@ -12,7 +12,7 @@ struct RankView: View {
   @StateObject var vm = RankViewModel.Shared
   var body: some View {
     GeometryReader { geo in
-//      Text("w: \(geo.size.width, specifier: "%.1f")  h: \(geo.size.height, specifier: "%.1f")") 
+//      Text("w: \(geo.size.width, specifier: "%.1f")  h: \(geo.size.height, specifier: "%.1f")")
       RankPanelView().task {
         await vm.fetch()
       }.environmentObject(vm)
@@ -67,7 +67,7 @@ struct RankPanelView: View {
         Spacer()
       }
       .padding(40)
-      .frame(minWidth: 500,
+      .frame(minWidth: 500,
               minHeight: 600)
     }
   }
@@ -78,7 +78,7 @@ struct RankView_Previews: PreviewProvider {
   static let vm: RankViewModel = RankViewModel()
   
   static var previews: some View {
-    RankPanelView().environmentObject(vm).frame(width: 600)
+    RankPanelView().frame(width: 600).environmentObject(vm)
       .task {
         vm.isLoading = false
         vm.ranks = [

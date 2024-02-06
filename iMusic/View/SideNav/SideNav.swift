@@ -28,13 +28,15 @@ enum CategoryKey {
   case Setting
   case PlaySetting
   case PersonInfo
+  case HotCategory
 }
 
 
 struct SideNav: View {
   let works:[WorkItem] = [
     .init(key: "Music", title: "我的音乐", categoryList: [
-      .init(key: .Rank, title: "发现音乐", image: "align.vertical.bottom.fill"),
+      .init(key: .Rank, title: "热门歌单", image: "align.vertical.bottom.fill"),
+      .init(key: .HotCategory, title: "热门分类", image: "list.star"), // qq音乐的分类
       .init(key: .MySong, title: "我的歌单", image: "music.note"),
       .init(key: .MySinger, title: "歌星", image: "person.fill"),
       .init(key: .PlaySetting, title: "播放器设置", image: "gear.circle"),
@@ -56,7 +58,7 @@ struct SideNav: View {
         alignment: .leading
       ) {
         ForEach((works), id: \.self) { option in
-          CategoryView (
+          CategoryNavView (
             workItem: option,
             selection: $selection
           )
@@ -76,7 +78,7 @@ struct NavigationLinkStyle: ButtonStyle {
   }
 }
 
-struct CategoryView : View {
+struct CategoryNavView : View {
   var workItem: WorkItem
   
   @Binding var selection: CategoryKey?;

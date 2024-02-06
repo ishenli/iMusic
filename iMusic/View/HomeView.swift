@@ -57,7 +57,8 @@ struct MainView: View {
           }, label: {
             Text("gogoo")
           })
-          
+        case CategoryKey.HotCategory:
+          CategoryView()
         case CategoryKey.PlaySetting:
           Text("toat-\(String(AppViewModel.Shared.globalToastShow))")
           Button("Tap me") {

@@ -46,6 +46,8 @@
 		C7727E132856CDE900ECB495 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727E122856CDE800ECB495 /* SearchResultView.swift */; };
 		C7727E152856CFA000ECB495 /* SearchVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7727E142856CFA000ECB495 /* SearchVM.swift */; };
 		C793CF072872796E00EDC56E /* SearchInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793CF062872796E00EDC56E /* SearchInputView.swift */; };
+		C793CF0A28732B6200EDC56E /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793CF0928732B6200EDC56E /* CategoryView.swift */; };
+		C793CF0C28732E1F00EDC56E /* CategoryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = C793CF0B28732E1F00EDC56E /* CategoryVM.swift */; };
 		C7AFD611285D56030016C15C /* qqapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD610285D56030016C15C /* qqapi.swift */; };
 		C7AFD613285D5B1E0016C15C /* QQCodeableObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD612285D5B1E0016C15C /* QQCodeableObjects.swift */; };
 		C7AFD615285D88BC0016C15C /* ModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7AFD614285D88BC0016C15C /* ModelProtocol.swift */; };
@@ -158,6 +160,8 @@
 		C7727E122856CDE800ECB495 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		C7727E142856CFA000ECB495 /* SearchVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVM.swift; sourceTree = "<group>"; };
 		C793CF062872796E00EDC56E /* SearchInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInputView.swift; sourceTree = "<group>"; };
+		C793CF0928732B6200EDC56E /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		C793CF0B28732E1F00EDC56E /* CategoryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVM.swift; sourceTree = "<group>"; };
 		C7AFD610285D56030016C15C /* qqapi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = qqapi.swift; sourceTree = "<group>"; };
 		C7AFD612285D5B1E0016C15C /* QQCodeableObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QQCodeableObjects.swift; sourceTree = "<group>"; };
 		C7AFD614285D88BC0016C15C /* ModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelProtocol.swift; sourceTree = "<group>"; };
@@ -381,6 +385,7 @@
 		C74545AC28393011001A638D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C793CF0828732B4500EDC56E /* Category */,
 				C73BA8812859D20300A6A805 /* PlayingList */,
 				C7727E112856CDC800ECB495 /* Search */,
 				C7D1C6EC2843BBA700A0C01C /* Rank */,
@@ -435,6 +440,15 @@
 				C793CF062872796E00EDC56E /* SearchInputView.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		C793CF0828732B4500EDC56E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C793CF0928732B6200EDC56E /* CategoryView.swift */,
+				C793CF0B28732E1F00EDC56E /* CategoryVM.swift */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		C79B2D632841D84500884423 /* Packages */ = {
@@ -772,6 +786,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C793CF0C28732E1F00EDC56E /* CategoryVM.swift in Sources */,
 				C7AFD611285D56030016C15C /* qqapi.swift in Sources */,
 				C7AFD6222866F3E20016C15C /* Cookie.swift in Sources */,
 				C7D0B5A9284F48FC0040DFB7 /* PlayListTableView.swift in Sources */,
@@ -798,6 +813,7 @@
 				C7B826E92842517900222DF8 /* PlayCore.swift in Sources */,
 				C7492ECA2853586C004501D0 /* ImageLoader.swift in Sources */,
 				C72BFF522843292E00974067 /* channel.swift in Sources */,
+				C793CF0A28732B6200EDC56E /* CategoryView.swift in Sources */,
 				C7727DEE2854832000ECB495 /* SidePlayListVM.swift in Sources */,
 				C7AFD6172865BF3A0016C15C /* Track.swift in Sources */,
 				C7727DF22854D6BF00ECB495 /* Preferences.swift in Sources */,

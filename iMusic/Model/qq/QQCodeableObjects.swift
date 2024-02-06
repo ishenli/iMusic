@@ -130,3 +130,24 @@ class QQTrack: Decodable, TrackProtocol {
     var picUrl: URL?
   }
 }
+
+
+struct QQCategoryFilter: Decodable {
+  var code: Int
+  var data: CategoryFilterData
+  
+  struct CategoryFilterData: Decodable {
+    var categories: [CategoryGrooupItem]
+  }
+  struct CategoryGrooupItem: Decodable {
+    var categoryGroupName: String
+    var items: [CategoryFilterItem]
+    var usable: Int
+  }
+  
+  struct CategoryFilterItem: Decodable {
+    var categoryId: Int
+    var categoryName: String
+    var usable: Int
+  }
+}
