@@ -2,11 +2,6 @@
 
 业余时间做的一款方便自己的听歌的软件，支持 Mac OS X
 
-<img src="https://code.alipay.com/fi/m-jiebei/uploads/92ccf4d97293457d9c3430ebe0b5c1cd/image.png" width=400 />
-
-### 项目进展
-
-请查看 https://yuque.antfin.com/michael.sl/notebook/apy9ya
 
 ### 支持音乐平台
 
@@ -29,4 +24,3 @@
 - [CryptoSwift](https://github.com/krzyzanowskim/CryptoSwift)
 - [HotKey](https://github.com/soffes/HotKey)
 - [SDWebImage](https://github.com/SDWebImage/SDWebImage)
-- [CocoaLumberjack
